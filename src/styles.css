@@ -1,2 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.flex-start{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.flex-end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+}

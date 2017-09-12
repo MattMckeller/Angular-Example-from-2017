@@ -3,5 +3,10 @@
 }
 
 .spacer{
-    flex: 1 1 auto;
+    flex: 1 1;
+}
+
+.header-slice{
+    width: 30%;
+    display:flex;
 }
