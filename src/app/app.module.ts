@@ -9,7 +9,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdSidenavModule} from '@angular/material';
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
 import { SideNavService } from './side-nav.service';
 
 const AngularMaterialDependencies = [
@@ -24,8 +23,7 @@ const AngularMaterialDependencies = [
   declarations: [
     AppComponent,
     MainNavbarComponent,
-    MainFooterComponent,
-    SideNavComponent
+    MainFooterComponent
   ],
   imports: [
     BrowserModule,
