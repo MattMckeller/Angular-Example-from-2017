@@ -8,10 +8,16 @@
         <a routerLink="/home">Home</a>
     </md-sidenav>
 
-    <app-main-navbar></app-main-navbar>
+    <div class="header">
+        <app-main-navbar></app-main-navbar>
+    </div>
 
-    <router-outlet></router-outlet>
+    <div class="router-container">
+        <router-outlet></router-outlet>
+    </div>
 
-    <app-main-footer></app-main-footer>
+    <div class="footer">
+        <app-main-footer></app-main-footer>
+    </div>
 </md-sidenav-container>
 

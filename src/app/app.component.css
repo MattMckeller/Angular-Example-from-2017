@@ -1,0 +1,9 @@
+.header{
+    min-height: 10vh;
+}
+.router-container{
+    min-height: 80vh;
+}
+.footer{
+    min-height: 10vh;
+}
