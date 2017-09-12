@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SideNavService } from "./side-nav.service";
 
 @Component({
@@ -6,14 +6,26 @@ import { SideNavService } from "./side-nav.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+  drawerOpen: boolean;
 
   constructor(
     private sideNavService: SideNavService,
   ) { }
 
-  toggleSideNav() {
-    this.sideNavService.toggle();
+  ngOnInit() {
+    this.sideNavService.getOpenedSubject()
+      .subscribe(opened => {
+        this.drawerOpen = opened;
+      });
+    this.drawerOpen = this.sideNavService.getIsOpened();
+  }
+
+  handleClose() {
+    this.sideNavService.close();
+  }
+  handleOpen() {
+    this.sideNavService.open();
   }
 }

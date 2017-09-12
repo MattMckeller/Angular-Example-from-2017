@@ -21,4 +21,14 @@ export class SideNavService {
     this.isOpened = !this.isOpened;
     this.openedSubject.next(this.isOpened);
   }
+
+  close(){
+    this.isOpened = false;
+    this.openedSubject.next(false);
+  }
+
+  open(){
+    this.isOpened = true;
+    this.openedSubject.next(true);
+  }
 }
