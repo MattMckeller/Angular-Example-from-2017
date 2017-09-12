@@ -5,16 +5,12 @@
         <button md-mini-fab class="example-fab" (click)="handleClose()">
             <md-icon>add</md-icon>
         </button>
-        <div class="example-scrolling-content">
-            Lorem ipsum
-        </div>
+        <a routerLink="/home">Home</a>
     </md-sidenav>
 
     <app-main-navbar></app-main-navbar>
 
-    <button md-mini-fab class="example-fab" (click)="handleOpen()">
-        <md-icon>add</md-icon>
-    </button>
+    <router-outlet></router-outlet>
 
     <app-main-footer></app-main-footer>
 </md-sidenav-container>
