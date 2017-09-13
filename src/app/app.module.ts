@@ -3,37 +3,16 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './material.module';
 
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MdButtonModule,
-  MdCheckboxModule,
-  MdToolbarModule,
-  MdIconModule,
-  MdSidenavModule,
-  MdGridListModule,
-  MdCardModule,
-  MdListModule
-} from '@angular/material';
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { SideNavService } from './side-nav.service';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-
-const AngularMaterialDependencies = [
-  MdButtonModule,
-  MdCheckboxModule,
-  MdToolbarModule,
-  MdIconModule,
-  MdSidenavModule,
-  MdGridListModule,
-  MdCardModule,
-  MdListModule
-];
 
 @NgModule({
   declarations: [
@@ -47,9 +26,8 @@ const AngularMaterialDependencies = [
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    ...AngularMaterialDependencies
+    MaterialModule,
+    FormsModule
   ],
   providers: [
     SideNavService
