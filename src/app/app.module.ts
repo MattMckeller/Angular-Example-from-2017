@@ -8,9 +8,16 @@ import { AppComponent } from './app.component';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdSidenavModule} from '@angular/material';
-import {MdGridListModule} from "@angular/material";
-import {MdCardModule} from "@angular/material";
+import {
+  MdButtonModule,
+  MdCheckboxModule,
+  MdToolbarModule,
+  MdIconModule,
+  MdSidenavModule,
+  MdGridListModule,
+  MdCardModule,
+  MdListModule
+} from '@angular/material';
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { SideNavService } from './side-nav.service';
@@ -24,7 +31,8 @@ const AngularMaterialDependencies = [
   MdIconModule,
   MdSidenavModule,
   MdGridListModule,
-  MdCardModule
+  MdCardModule,
+  MdListModule
 ];
 
 @NgModule({
