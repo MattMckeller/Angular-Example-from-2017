@@ -2,10 +2,18 @@
 
 <md-sidenav-container class="sidenav-container">
     <md-sidenav #sidenav mode="over" opened="{{drawerOpen}}" (open)="handleOpen($event)" (close)="handleClose($event)">
+
         <button md-mini-fab class="example-fab" (click)="handleClose()">
             <md-icon>add</md-icon>
         </button>
-        <a routerLink="/home">Home</a>
+        <md-list>
+            <md-list-item>
+                <a routerLink="/home" routerLinkActive="active" (click)="handleClose($event)">Home</a>
+            </md-list-item>
+            <md-list-item>
+                <a routerLink="/about" routerLinkActive="active" (click)="handleClose($event)">About</a>
+            </md-list-item>
+        </md-list>
     </md-sidenav>
 
     <div class="header">

@@ -15,6 +15,7 @@ import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { SideNavService } from './side-nav.service';
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 const AngularMaterialDependencies = [
   MdButtonModule,
@@ -31,7 +32,8 @@ const AngularMaterialDependencies = [
     AppComponent,
     MainNavbarComponent,
     MainFooterComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

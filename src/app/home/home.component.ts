@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SideNavService } from '../side-nav.service';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +6,6 @@ import { SideNavService } from '../side-nav.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(
-    private sideNavService: SideNavService,
-  ) { }
-
-  openSideNav() {
-    this.sideNavService.open();
-  }
 
   ngOnInit() {
   }
