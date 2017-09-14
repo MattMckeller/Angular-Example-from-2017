@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { MaterialModule } from '../material/material.module';
 import { ProductService } from './product.service';
 import { CartService } from './cart.service';
 
@@ -9,7 +8,9 @@ import { CartComponent } from './cart/cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
-  imports: [],
+  imports: [
+    MaterialModule
+  ],
   exports: [
     ProductComponent,
     CartComponent,

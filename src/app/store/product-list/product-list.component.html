@@ -1,3 +1,5 @@
-<p>
-  product-list works!
-</p>
+<md-grid-list cols="12">
+  <md-grid-tile *ngFor="let product of products">
+    {{product.name}}
+  </md-grid-tile>
+</md-grid-list>

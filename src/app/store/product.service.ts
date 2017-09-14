@@ -12,7 +12,7 @@ export class ProductService {
 
   constructor() { }
 
-  get(): Array<Product> {
+  get(): Product[] {
     return products;
   }
 
