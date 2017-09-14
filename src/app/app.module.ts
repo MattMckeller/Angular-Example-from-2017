@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './material.module';
-
+import { MaterialModule } from './material/material.module';
+import { EcommerceModule } from './store/ecommerce.module';
 
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
@@ -27,7 +27,8 @@ import { AboutComponent } from './about/about.component';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    EcommerceModule
   ],
   providers: [
     SideNavService
