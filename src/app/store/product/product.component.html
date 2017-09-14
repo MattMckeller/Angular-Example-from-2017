@@ -1,3 +1,23 @@
-<p>
-  product works!
-</p>
+<md-grid-list cols="12">
+    <md-grid-tile colspan=6 rowspan="6">
+        <img md-card-image src="{{product.imgHref}}">
+    </md-grid-tile>
+    <md-grid-tile colspan="6" rowspan="2">
+        <h1>{{product.name}}</h1>
+    </md-grid-tile>
+    <md-grid-tile colspan="6" rowspan="2">
+        <div class="flex-end gutter">
+            <label>Price:</label>
+            <label>Shipping:</label>
+        </div>
+        <div class="flex-start gutter">
+            <span class="price-display">{{formattedPrice(product.id)}}</span>
+            <span class="shipping-display">Eventually</span>
+        </div>
+
+    </md-grid-tile>
+    <md-grid-tile colspan="6" rowspan="2">
+        <button md-raised-button (click)="buy()">Buy Now</button>
+        <button md-raised-button (click)="addToCart()"><md-icon>add_shopping_cart</md-icon></button>
+    </md-grid-tile>
+</md-grid-list>
