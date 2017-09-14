@@ -17,10 +17,15 @@ export class ProductService {
   }
 
   getById(id: any): Product {
-    return null;
+    console.log(this.get().filter(product => product.id === parseInt(id))[0]);
+    return this.get().filter(product => product.id === parseInt(id))[0];
   }
 
   search(attributes: any[], tags: any[], priceMin: number, priceMax: number){
 
+  }
+
+  formatPrice(price: Number){
+    return '$'+price.toFixed(2);
   }
 }
