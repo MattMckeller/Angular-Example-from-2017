@@ -2,9 +2,9 @@ export class Product {
     id: number;
     name: string;
     price: number;
-    size: string;
-    attributes: Array<Attribute>;
-    tags: Array<Tag>;
+    size?: string;
+    attributes?: Array<Attribute>;
+    tags?: Array<Tag>;
 }
 
 export class Attribute {
