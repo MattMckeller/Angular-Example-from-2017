@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
 
   formattedPrice(productID){
     let product = this.products.filter(product => product.id === productID)[0];
-    return '$'+product.price.toFixed(2);
+    return this.productService.formatPrice(product.price);
   }
 
 }

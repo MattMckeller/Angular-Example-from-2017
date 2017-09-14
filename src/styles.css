@@ -2,6 +2,11 @@
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+.price-display{
+    font-weight: bold;
+    color: #c45500;
+}
+
 .flex-start{
     display: flex;
     justify-content: flex-start;
