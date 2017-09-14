@@ -2,6 +2,7 @@ export class Product {
     id: number;
     name: string;
     price: number;
+    imgHref: string;
     size?: string;
     attributes?: Array<Attribute>;
     tags?: Array<Tag>;
