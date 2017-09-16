@@ -22,6 +22,7 @@ export class CheckoutComponent implements OnInit {
    * Initialize the cart. Default to having all items in the cart being purchased.
    */
   ngOnInit() {
+    this.itemsBeingPurchased = [];
     this.cart = this.cartService.get();
     this.cart.items.forEach(item => this.itemsBeingPurchased.push(item));
   }
