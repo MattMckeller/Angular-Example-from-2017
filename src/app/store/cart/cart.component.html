@@ -1,3 +1,8 @@
-<p>
-  cart works!
-</p>
+<div class="cart-container">
+  <div *ngIf="itemsCount > 0" class="item-count-badge">
+    <span>
+      {{itemsCount}}
+    </span>
+  </div>
+  <md-icon class="icon">shopping_cart</md-icon>
+</div>
