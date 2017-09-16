@@ -15,12 +15,14 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private cart: CartService,
+    private cartService: CartService,
     private route: ActivatedRoute
   ) {}
 
   addToCart(){
     console.log('Add '+this.product+' to cart!');
+    this.cartService.add(this.product);
+    console.log(this.cartService.get());
   }
 
   buy(){
