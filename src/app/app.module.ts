@@ -14,6 +14,7 @@ import { SideNavService } from './side-nav.service';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { VintageComponent } from './vintage/vintage.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { VintageComponent } from './vintage/vintage.component';
     MainFooterComponent,
     HomeComponent,
     AboutComponent,
-    VintageComponent
+    VintageComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
