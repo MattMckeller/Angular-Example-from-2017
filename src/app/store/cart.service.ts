@@ -20,7 +20,7 @@ export class CartService {
   }
 
   remove(product: Product){
-    this.cart.items = this.cart.items = [];
+    this.cart.items = [];
 
     console.log('Attempt to remove product');
   }
