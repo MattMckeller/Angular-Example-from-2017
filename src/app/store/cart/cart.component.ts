@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
     this.cart = this.cartService.get();
   }
 
-  get itemsCount(){
+  get itemCount(){
     return this.cart.items.length;
   }
 
