@@ -4,14 +4,13 @@ import { Cart } from './cart';
 
 @Injectable()
 export class CartService {
-  cart: Cart;
+  private cart: Cart;
 
   constructor() {
     //Instantiate the cart to be empty
     this.cart = {
-      id: Math.random(),
-      items: [] as Product[],
-      itemsTotal: 0
+      id: Math.ceil((Math.random()*100)),
+      items: [] as Product[]
     } as Cart;
   }
 
@@ -21,7 +20,7 @@ export class CartService {
   }
 
   remove(product: Product){
-    this.cart.items = this.cart.items.filter( item => (item.id !== product.id));
+    this.cart.items = this.cart.items = [];
 
     console.log('Attempt to remove product');
   }
@@ -32,6 +31,11 @@ export class CartService {
 
   get(): Cart{
     console.log('Attempt to retrieve cart');
+    //todo create a real cart object somewhere and have a computed property...
+    // Not sure if this should be a component yet or not
+    let total = 0;
+    this.cart.items.forEach((item)=>(total += item.price));
+    this.cart.itemsTotal = total;
     return this.cart;
   }
 }
