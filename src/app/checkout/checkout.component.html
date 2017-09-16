@@ -1,3 +1,12 @@
-<p>
-  checkout works!
-</p>
+<div *ngFor="let item of itemsBeingPurchased">
+  {{item.price}}
+</div>
+
+<div>
+  Total items being purchased: {{itemPurchaseCount}}
+</div>
+
+<div>
+  Total cost: {{checkoutTotal}}
+</div>
+

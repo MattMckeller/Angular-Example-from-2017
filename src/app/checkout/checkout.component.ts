@@ -48,7 +48,9 @@ export class CheckoutComponent implements OnInit {
    * @return {number}
    */
   get productTotalCost(){
-    return 0;
+    let total = 0;
+    this.itemsBeingPurchased.forEach(item => total += item.price);
+    return total;
   }
 
   /**
