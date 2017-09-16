@@ -1,4 +1,4 @@
-<div class="cart-container">
+<div class="cart-container" clickable (click)="redirectCheckout()">
   <div *ngIf="itemCount > 0" class="item-count-badge">
     <span>
       {{itemCount}}
