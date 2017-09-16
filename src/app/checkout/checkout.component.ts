@@ -27,11 +27,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   get itemsInCartCount(){
-    return this.cart.items.length;
+    return (this.cart.items.length)?(this.cart.items.length):(0);
   }
 
   get itemPurchaseCount(){
-    return this.itemsBeingPurchased.length;
+    return (this.itemsBeingPurchased.length)?(this.itemsBeingPurchased.length):(0);
   }
 
   /**
