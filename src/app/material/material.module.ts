@@ -9,7 +9,9 @@ import {
   MdSidenavModule,
   MdGridListModule,
   MdCardModule,
-  MdListModule
+  MdListModule,
+  MdFormFieldModule,
+  MdInputModule
 } from '@angular/material';
 
 @NgModule({
@@ -22,7 +24,9 @@ import {
     MdSidenavModule,
     MdGridListModule,
     MdCardModule,
-    MdListModule
+    MdListModule,
+    MdFormFieldModule,
+    MdInputModule
   ],
 
   declarations: []
