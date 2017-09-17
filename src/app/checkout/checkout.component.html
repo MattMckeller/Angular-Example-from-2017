@@ -1,5 +1,16 @@
-<div *ngFor="let item of itemsBeingPurchased">
-  {{item.price}}
+<div class="cart-container">
+    <md-list>
+        <md-list-item *ngFor="let item of itemsBeingPurchased">
+            <div class="list-items">
+                <div>
+                    <img class="item-icon" src="{{item.imgHref}}">
+                </div>
+                <div>{{item.id}}</div>
+                <div>{{item.name}}</div>
+                <div>{{item.price}}</div>
+            </div>
+        </md-list-item>
+    </md-list>
 </div>
 
 <div>
