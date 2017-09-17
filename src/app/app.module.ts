@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { VintageComponent } from './vintage/vintage.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutFormComponent } from './checkout/checkout-form/checkout-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     HomeComponent,
     AboutComponent,
     VintageComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CheckoutFormComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AppRoutingModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     EcommerceModule
   ],
   providers: [
