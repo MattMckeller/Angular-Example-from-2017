@@ -1,4 +1,3 @@
-
 <div class="container">
   <h1>Checkout</h1>
   <form [formGroup]="checkoutForm" #formDir="ngForm" (ngSubmit)="onSubmit()" class="checkout-form">
@@ -120,7 +119,11 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        Shipping options
+        <md-radio-group class="shipping-radio-group" formControlName="shippingSelection">
+          <md-radio-button class="shipping-radio-button" *ngFor="let shippingOption of shippingOptions" [value]="shippingOption">
+            {{shippingOption}}
+          </md-radio-button>
+        </md-radio-group>
 
         <md-action-row>
           <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
@@ -138,8 +141,142 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        Payment stuff
+        <!--Card number-->
+        <md-form-field class="full-width">
+          <label for="cardNumber">Card Number</label>
+          <input mdInput id="cardNumber"
+                 formControlName="cardNumber" required
+          >
+          <md-error *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+            Card number is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
+        <!--Card expiration month-->
+        <md-form-field class="full-width">
+          <label for="cardExpirationMonth">Expiration Month</label>
+          <input mdInput id="cardExpirationMonth"
+                 formControlName="cardExpirationMonth" required
+          >
+          <md-error *ngIf="cardExpirationMonth.invalid && (cardExpirationMonth.dirty || cardExpirationMonth.touched)">
+            Card expiration month is <strong>required</strong>
+          </md-error>
+        </md-form-field>
+
+        <!--Card Expiration Year-->
+        <md-form-field class="full-width">
+          <label for="cardExpirationYear">Expiration Year</label>
+          <input mdInput id="cardExpirationYear"
+                 formControlName="cardExpirationYear" required
+          >
+          <md-error *ngIf="cardExpirationYear.invalid && (cardExpirationYear.dirty || cardExpirationYear.touched)">
+            Card expiration year is <strong>required</strong>
+          </md-error>
+        </md-form-field>
+
+        <!--Security code-->
+        <md-form-field class="full-width">
+          <label for="cardSecurityCode">Security Code</label>
+          <input mdInput id="cardSecurityCode"
+                 formControlName="cardSecurityCode" required
+          >
+          <md-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
+            Card security code is <strong>required</strong>
+          </md-error>
+        </md-form-field>
+
+        <!--Use shipping as billing-->
+        <md-checkbox type="checkbox" formControlName="useShippingAddressForBilling" required>
+          My billing address is the same as my shipping address
+        </md-checkbox>
+
+        <!--Billing address-->
+        <div *ngIf="useShippingAddressForBilling.value === false">
+          <!--First Name-->
+          <md-form-field class="full-width">
+            <label for="billingFirstName">First Name</label>
+            <input mdInput id="billingFirstName"
+                   formControlName="billingFirstName" required
+            >
+            <md-error *ngIf="billingFirstName.invalid && (billingFirstName.dirty || billingFirstName.touched)">
+              First name is <strong>required</strong>
+            </md-error>
+          </md-form-field>
+
+          <!--Last Name-->
+          <md-form-field class="full-width">
+            <label for="billingLastName">Last Name</label>
+            <input mdInput type="text" id="billingLastName"
+                   required
+                   formControlName="billingLastName"
+            >
+            <md-error *ngIf="billingLastName.invalid && (billingLastName.dirty || billingLastName.touched)">
+              Last name is <strong>required</strong>
+            </md-error>
+          </md-form-field>
+
+          <!--Address 1-->
+          <md-form-field class="full-width">
+            <label for="billingAddress1">Address 1</label>
+            <input mdInput type="text" id="billingAddress1"
+                   required
+                   formControlName="billingAddress1"
+            >
+            <md-error *ngIf="billingAddress1.invalid && (billingAddress1.dirty || billingAddress1.touched)">
+              Address 1 is <strong>required</strong>
+            </md-error>
+          </md-form-field>
+
+          <!--Address 2-->
+          <md-form-field class="full-width">
+            <label for="billingAddress2">Address 2</label>
+            <input mdInput type="text" id="billingAddress2"
+                   required
+                   formControlName="billingAddress2"
+            >
+          </md-form-field>
+
+          <!--City-->
+          <md-form-field class="full-width">
+            <label for="billingCity">City</label>
+            <input mdInput type="text" id="billingCity"
+                   required
+                   formControlName="billingCity"
+            >
+            <md-error *ngIf="billingCity.invalid && (billingCity.dirty || billingCity.touched)">
+              City is <strong>required</strong>
+            </md-error>
+          </md-form-field>
+
+          <!--State-->
+          <md-form-field class="full-width">
+            <label for="billingState">State</label>
+            <input mdInput type="text" id="billingState"
+                   required
+                   formControlName="billingState"
+            >
+            <md-error *ngIf="billingState.invalid && (billingState.dirty || billingState.touched)">
+              State is <strong>required</strong>
+            </md-error>
+          </md-form-field>
+
+          <!--Zip-->
+          <md-form-field class="full-width">
+            <label for="billingZip">Zip Code</label>
+            <input mdInput type="text" id="billingZip"
+                   required
+                   formControlName="billingZip"
+            >
+            <md-error *ngIf="billingZip.invalid && (billingZip.dirty || billingZip.touched)">
+              Zip is <strong>required</strong>
+            </md-error>
+          </md-form-field>
+        </div>
+
+
+        contact details
+        Get email address or phone number
+        possibly promotional checkbox
         <md-action-row>
           <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
           <button md-raised-button color="primary" (click)="nextStep()">Save and continue</button>
@@ -156,7 +293,17 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        Review stuff
+        <div>
+          Total cost: {{checkoutTotal}}
+        </div>
+
+        section always displayed
+
+        merchandise cost
+        shipping cost
+        estimated sales tax
+        -------
+        total
 
         <md-action-row>
           <button md-raised-button color="warn" (click)="prevStep()">Go back</button>

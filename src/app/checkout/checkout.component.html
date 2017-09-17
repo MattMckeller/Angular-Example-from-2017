@@ -1,15 +1,8 @@
 <div class="form-container">
     <app-checkout-form></app-checkout-form>
-
-    <div>
-        Total items being purchased: {{itemPurchaseCount}}
-    </div>
-
-    <div>
-        Total cost: {{checkoutTotal}}
-    </div>
 </div>
-<div class="cart-container">
+<!--TODO - REMOVE OR EDIT THIS...-->
+<div class="cart-container" *ngIf="false">
     <md-list>
         <md-list-item *ngFor="let item of itemsBeingPurchased">
             <div class="list-items">

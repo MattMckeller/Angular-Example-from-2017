@@ -13,6 +13,7 @@ import {
   MdFormFieldModule,
   MdInputModule,
   MdExpansionModule,
+  MdRadioModule
 } from '@angular/material';
 
 @NgModule({
@@ -28,7 +29,8 @@ import {
     MdListModule,
     MdFormFieldModule,
     MdInputModule,
-    MdExpansionModule
+    MdExpansionModule,
+    MdRadioModule
   ],
 
   declarations: []

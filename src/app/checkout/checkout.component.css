@@ -1,3 +1,8 @@
+.form-container{
+    width: 100%;
+    margin: auto;
+}
+
 .cart-container{
     display: flex;
     flex-direction: row;
