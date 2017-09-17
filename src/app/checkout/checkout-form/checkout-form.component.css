@@ -7,3 +7,12 @@
 .full-width{
     width: 100%;
 }
+
+.mat-expansion-panel-header-description
+{
+    justify-content: flex-end;
+}
+
+.mat-action-row button{
+    margin: 0 2px;
+}

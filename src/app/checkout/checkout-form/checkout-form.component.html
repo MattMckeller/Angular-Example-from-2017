@@ -2,99 +2,172 @@
 <div class="container">
   <h1>Checkout</h1>
   <form [formGroup]="checkoutForm" #formDir="ngForm" (ngSubmit)="onSubmit()" class="checkout-form">
-    <!--First Name-->
-    <md-form-field class="full-width">
-      <label for="firstName">First Name</label>
-      <input mdInput id="firstName"
-             formControlName="firstName" required
-       >
-      <md-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-        First name is <strong>required</strong>
-      </md-error>
-    </md-form-field>
+    <md-accordion class="align-headers">
+      <md-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            Shipping Address
+          </md-panel-title>
+          <md-panel-description>
+            <md-icon>local_shipping</md-icon>
+          </md-panel-description>
+        </md-expansion-panel-header>
+        <!--First Name-->
+        <md-form-field class="full-width">
+          <label for="firstName">First Name</label>
+          <input mdInput id="firstName"
+                 formControlName="firstName" required
+           >
+          <md-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+            First name is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
-    <!--Last Name-->
-    <md-form-field class="full-width">
-      <label for="lastName">Last Name</label>
-      <input mdInput type="text" id="lastName"
-             required
-             formControlName="lastName"
-      >
-      <md-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-        Last name is <strong>required</strong>
-      </md-error>
-    </md-form-field>
+        <!--Last Name-->
+        <md-form-field class="full-width">
+          <label for="lastName">Last Name</label>
+          <input mdInput type="text" id="lastName"
+                 required
+                 formControlName="lastName"
+          >
+          <md-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+            Last name is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
-    <!--Address 1-->
-    <md-form-field class="full-width">
-      <label for="address1">Address 1</label>
-      <input mdInput type="text" id="address1"
-             required
-             formControlName="address1"
-      >
-      <md-error *ngIf="address1.invalid && (address1.dirty || address1.touched)">
-        Address 1 is <strong>required</strong>
-      </md-error>
-    </md-form-field>
+        <!--Address 1-->
+        <md-form-field class="full-width">
+          <label for="address1">Address 1</label>
+          <input mdInput type="text" id="address1"
+                 required
+                 formControlName="address1"
+          >
+          <md-error *ngIf="address1.invalid && (address1.dirty || address1.touched)">
+            Address 1 is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
-    <!--Address 2-->
-    <md-form-field class="full-width">
-      <label for="address2">Address 2</label>
-      <input mdInput type="text" id="address2"
-             required
-             formControlName="address2"
-      >
-    </md-form-field>
+        <!--Address 2-->
+        <md-form-field class="full-width">
+          <label for="address2">Address 2</label>
+          <input mdInput type="text" id="address2"
+                 required
+                 formControlName="address2"
+          >
+        </md-form-field>
 
-    <!--City-->
-    <md-form-field class="full-width">
-      <label for="city">City</label>
-      <input mdInput type="text" id="city"
-             required
-             formControlName="city"
-      >
-      <md-error *ngIf="city.invalid && (city.dirty || city.touched)">
-        City is <strong>required</strong>
-      </md-error>
-    </md-form-field>
+        <!--City-->
+        <md-form-field class="full-width">
+          <label for="city">City</label>
+          <input mdInput type="text" id="city"
+                 required
+                 formControlName="city"
+          >
+          <md-error *ngIf="city.invalid && (city.dirty || city.touched)">
+            City is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
-    <!--State-->
-    <md-form-field class="full-width">
-      <label for="state">State</label>
-      <input mdInput type="text" id="state"
-             required
-             formControlName="state"
-      >
-      <md-error *ngIf="state.invalid && (state.dirty || state.touched)">
-        State is <strong>required</strong>
-      </md-error>
-    </md-form-field>
+        <!--State-->
+        <md-form-field class="full-width">
+          <label for="state">State</label>
+          <input mdInput type="text" id="state"
+                 required
+                 formControlName="state"
+          >
+          <md-error *ngIf="state.invalid && (state.dirty || state.touched)">
+            State is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
-    <!--Zip-->
-    <md-form-field class="full-width">
-      <label for="zip">Zip Code</label>
-      <input mdInput type="text" id="zip"
-             required
-             formControlName="zip"
-      >
-      <md-error *ngIf="zip.invalid && (zip.dirty || zip.touched)">
-        Zip is <strong>required</strong>
-      </md-error>
-    </md-form-field>
+        <!--Zip-->
+        <md-form-field class="full-width">
+          <label for="zip">Zip Code</label>
+          <input mdInput type="text" id="zip"
+                 required
+                 formControlName="zip"
+          >
+          <md-error *ngIf="zip.invalid && (zip.dirty || zip.touched)">
+            Zip is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
-    <!--Phone-->
-    <md-form-field class="full-width">
-      <label for="phone">Phone</label>
-      <input mdInput type="text" id="phone"
-             required
-             formControlName="phone"
-      >
-      <md-error *ngIf="phone.invalid && (phone.dirty || phone.touched)">
-        Phone is <strong>required</strong>
-      </md-error>
-    </md-form-field>
+        <!--Phone-->
+        <md-form-field class="full-width">
+          <label for="phone">Phone</label>
+          <input mdInput type="text" id="phone"
+                 required
+                 formControlName="phone"
+          >
+          <md-error *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+            Phone is <strong>required</strong>
+          </md-error>
+        </md-form-field>
 
-    <button type="submit" md-raised-button
-            [disabled]="checkoutForm.invalid">Submit</button>
+
+        <md-action-row>
+          <button md-raised-button color="primary" (click)="nextStep()">Save and continue</button>
+        </md-action-row>
+      </md-expansion-panel>
+
+      <md-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            Shipping Method
+          </md-panel-title>
+          <md-panel-description>
+            <md-icon>redeem</md-icon>
+          </md-panel-description>
+        </md-expansion-panel-header>
+
+        Shipping options
+
+        <md-action-row>
+          <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
+          <button md-raised-button color="primary" (click)="nextStep()">Save and continue</button>
+        </md-action-row>
+      </md-expansion-panel>
+
+      <md-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            Payment
+          </md-panel-title>
+          <md-panel-description>
+            <md-icon>payment</md-icon>
+          </md-panel-description>
+        </md-expansion-panel-header>
+
+        Payment stuff
+
+        <md-action-row>
+          <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
+          <button md-raised-button color="primary" (click)="nextStep()">Save and continue</button>
+        </md-action-row>
+      </md-expansion-panel>
+
+      <md-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            Review Your Order
+          </md-panel-title>
+          <md-panel-description>
+            <md-icon>assignment</md-icon>
+          </md-panel-description>
+        </md-expansion-panel-header>
+
+        Review stuff
+
+        <md-action-row>
+          <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
+          <button md-raised-button color="primary" (click)="submit()"
+                  [disabled]="checkoutForm.invalid">Submit</button>
+        </md-action-row>
+      </md-expansion-panel>
+    <!--<button type="submit" md-raised-button-->
+            <!--[disabled]="checkoutForm.invalid">Submit</button>-->
+    </md-accordion>
+
+
   </form>
 </div>

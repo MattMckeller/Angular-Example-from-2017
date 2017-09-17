@@ -9,6 +9,8 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 })
 export class CheckoutFormComponent implements OnInit {
 
+  step: number;
+
   submitted = false;
 
   model: CheckoutModel;
@@ -20,6 +22,7 @@ export class CheckoutFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.setStep(0);
     this.model = new CheckoutModel();
 
     this.checkoutForm = new FormGroup({
@@ -50,6 +53,17 @@ export class CheckoutFormComponent implements OnInit {
     });
   }
 
+  setStep(stepNumber: number){
+    this.step = stepNumber;
+  }
+
+  prevStep(){
+    this.setStep(this.step - 1);
+  }
+
+  nextStep(){
+    this.setStep(this.step + 1);
+  }
 
   get firstName() { return this.checkoutForm.get('firstName'); }
   get lastName() { return this.checkoutForm.get('lastName'); }

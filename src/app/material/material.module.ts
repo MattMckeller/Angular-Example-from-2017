@@ -11,7 +11,8 @@ import {
   MdCardModule,
   MdListModule,
   MdFormFieldModule,
-  MdInputModule
+  MdInputModule,
+  MdExpansionModule,
 } from '@angular/material';
 
 @NgModule({
@@ -26,7 +27,8 @@ import {
     MdCardModule,
     MdListModule,
     MdFormFieldModule,
-    MdInputModule
+    MdInputModule,
+    MdExpansionModule
   ],
 
   declarations: []
