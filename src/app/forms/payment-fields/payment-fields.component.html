@@ -12,28 +12,25 @@
   </md-form-field>
 
   <!--Card expiration month-->
-  <md-form-field class="full-width">
-    <label for="cardExpirationMonth">Expiration Month</label>
-    <input mdInput id="cardExpirationMonth"
-           formControlName="cardExpirationMonth" required
-           [(ngModel)]="model.cardExpirationMonth"
-    >
-    <md-error *ngIf="cardExpirationMonth.invalid && (cardExpirationMonth.dirty || cardExpirationMonth.touched)">
-      Card expiration month is <strong>required</strong>
-    </md-error>
-  </md-form-field>
+  <md-select id="cardExpirationMonth"
+         formControlName="cardExpirationMonth" required
+         [(ngModel)]="model.cardExpirationMonth"
+          placeholder="Expiration Month">
+    <md-option *ngFor="let month of expirationMonths" [value]="month.value">
+      {{month.viewValue}}
+    </md-option>
+  </md-select>
 
   <!--Card Expiration Year-->
-  <md-form-field class="full-width">
-    <label for="cardExpirationYear">Expiration Year</label>
-    <input mdInput id="cardExpirationYear"
-           formControlName="cardExpirationYear" required
-           [(ngModel)]="model.cardExpirationYear"
-    >
-    <md-error *ngIf="cardExpirationYear.invalid && (cardExpirationYear.dirty || cardExpirationYear.touched)">
-      Card expiration year is <strong>required</strong>
-    </md-error>
-  </md-form-field>
+  <md-select id="cardExpirationYear"
+         formControlName="cardExpirationYear"
+          required
+         [(ngModel)]="model.cardExpirationYear"
+         placeholder="Expiration Year">
+    <md-option *ngFor="let year of expirationYears" value="year">
+      {{year}}
+    </md-option>
+  </md-select>
 
   <!--Security code-->
   <md-form-field class="full-width">

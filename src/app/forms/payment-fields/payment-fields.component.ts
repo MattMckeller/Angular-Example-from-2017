@@ -10,6 +10,23 @@ import { CardPaymentMethod } from '../../models/card-payment-method';
 export class PaymentFieldsComponent implements OnInit {
   @Input() model: CardPaymentMethod;
   form: FormGroup;
+  expirationMonths = [
+    {'viewValue': '01 January', 'value': '1'},
+    {'viewValue': '02 February', 'value': '2'},
+    {'viewValue': '03 March', 'value': '3'},
+    {'viewValue': '04 April', 'value': '4'},
+    {'viewValue': '05 May', 'value': '5'},
+    {'viewValue': '06 June', 'value': '6'},
+    {'viewValue': '07 July', 'value': '7'},
+    {'viewValue': '08 August', 'value': '8'},
+    {'viewValue': '09 September', 'value': '9'},
+    {'viewValue': '10 November', 'value': '10'},
+    {'viewValue': '11 October', 'value': '11'},
+    {'viewValue': '12 December', 'value': '12'}
+  ];
+  expirationYears = [
+    2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030
+  ];
 
   constructor() {}
 
