@@ -16,6 +16,7 @@ import { AboutComponent } from './about/about.component';
 import { VintageComponent } from './vintage/vintage.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutFormComponent } from './checkout/checkout-form/checkout-form.component';
+import { AddressFieldsComponent } from './forms/address-fields/address-fields.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CheckoutFormComponent } from './checkout/checkout-form/checkout-form.co
     AboutComponent,
     VintageComponent,
     CheckoutComponent,
-    CheckoutFormComponent
+    CheckoutFormComponent,
+    AddressFieldsComponent
   ],
   imports: [
     BrowserModule,

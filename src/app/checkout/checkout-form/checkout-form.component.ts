@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckoutModel } from '../checkout-model';
+import { CheckoutModel } from '../../models/checkout';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 
 @Component({
@@ -15,37 +15,16 @@ export class CheckoutFormComponent implements OnInit {
 
   model: CheckoutModel;
   checkoutForm: FormGroup;
+  shippingAddressForm: FormGroup;
 
   onSubmit() { this.submitted = true; console.log('form was submit!') }
 
   constructor() {}
 
   ngOnInit() {
-    // this.setStep(0);
     this.model = new CheckoutModel();
 
     this.checkoutForm = new FormGroup({
-      'firstName': new FormControl(this.model.shippingAddress.firstName, [
-        Validators.required
-      ]),
-      'lastName': new FormControl(this.model.shippingAddress.lastName, [
-        Validators.required
-      ]),
-      'address1': new FormControl(this.model.shippingAddress.address1, [
-        Validators.required
-      ]),
-      'address2': new FormControl(this.model.shippingAddress.address2, [
-        Validators.required
-      ]),
-      'city': new FormControl(this.model.shippingAddress.city, [
-        Validators.required
-      ]),
-      'state': new FormControl(this.model.shippingAddress.state, [
-        Validators.required
-      ]),
-      'zip': new FormControl(this.model.shippingAddress.zip, [
-        Validators.required
-      ]),
       'phone': new FormControl(this.model.phone, [
         Validators.required
       ]),
@@ -68,30 +47,7 @@ export class CheckoutFormComponent implements OnInit {
 
       'useShippingAddressForBilling': new FormControl(this.model.useShippingAddressForBilling, [
         Validators.required
-      ]),
-      'billingFirstName': new FormControl(this.model.billingAddress.firstName, [
-        // (this.model.useShippingAddressForBilling == true)?(Validators.required):(null)
-        Validators.required
-      ]),
-      'billingLastName': new FormControl(this.model.billingAddress.lastName, [
-        Validators.required
-      ]),
-      'billingAddress1': new FormControl(this.model.billingAddress.address1, [
-        Validators.required
-      ]),
-      'billingAddress2': new FormControl(this.model.billingAddress.address2, [
-        Validators.required
-      ]),
-      'billingCity': new FormControl(this.model.billingAddress.city, [
-        Validators.required
-      ]),
-      'billingState': new FormControl(this.model.billingAddress.state, [
-        Validators.required
-      ]),
-      'billingZip': new FormControl(this.model.billingAddress.zip, [
-        Validators.required
       ])
-
     });
   }
 
@@ -137,11 +93,4 @@ export class CheckoutFormComponent implements OnInit {
 
   get useShippingAddressForBilling() { return this.checkoutForm.get('useShippingAddressForBilling'); }
 
-  get billingFirstName() { return this.checkoutForm.get('billingFirstName'); }
-  get billingLastName() { return this.checkoutForm.get('billingLastName'); }
-  get billingAddress1() { return this.checkoutForm.get('billingAddress1'); }
-  get billingAddress2() { return this.checkoutForm.get('billingAddress2'); }
-  get billingCity() { return this.checkoutForm.get('billingCity'); }
-  get billingState() { return this.checkoutForm.get('billingState'); }
-  get billingZip() { return this.checkoutForm.get('billingZip'); }
 }
