@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckoutModel } from '../../models/checkout';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {CardPaymentMethod} from "../../models/card-payment-method";
+import {Address} from "../../models/address";
 
 @Component({
   selector: 'app-checkout-form',
@@ -15,8 +17,9 @@ export class CheckoutFormComponent implements OnInit {
 
   model: CheckoutModel;
   checkoutForm: FormGroup;
-  shippingAddressForm: FormGroup;
-  paymentForm: FormGroup;
+  shippingAddressModel: Address;
+  billingAddressModel: Address;
+  paymentModel: CardPaymentMethod;
 
   onSubmit() { this.submitted = true; console.log('form was submit!') }
 
@@ -24,6 +27,9 @@ export class CheckoutFormComponent implements OnInit {
 
   ngOnInit() {
     this.model = new CheckoutModel();
+    this.shippingAddressModel = new Address();
+    this.billingAddressModel = new Address();
+    this.paymentModel = new CardPaymentMethod();
 
     this.checkoutForm = new FormGroup({
       'phone': new FormControl(this.model.phone, [
@@ -32,7 +38,6 @@ export class CheckoutFormComponent implements OnInit {
       'shippingSelection': new FormControl(this.model.shippingSelection, [
         Validators.required
       ]),
-
       'useShippingAddressForBilling': new FormControl(this.model.useShippingAddressForBilling, [
         Validators.required
       ])

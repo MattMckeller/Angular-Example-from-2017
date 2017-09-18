@@ -12,7 +12,7 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        <app-address-fields></app-address-fields>
+        <app-address-fields [(model)]="shippingAddressModel"></app-address-fields>
 
         <!--Phone-->
         <md-form-field class="full-width">
@@ -73,7 +73,7 @@
 
         <!--Billing address-->
         <div *ngIf="useShippingAddressForBilling.value === false">
-          <app-address-fields></app-address-fields>
+          <app-address-fields [(model)]="billingAddressModel"></app-address-fields>
         </div>
 
 
