@@ -4,6 +4,7 @@
     <label for="cardNumber">Card Number</label>
     <input mdInput id="cardNumber"
            formControlName="cardNumber" required
+           [(ngModel)]="model.cardNumber"
     >
     <md-error *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
       Card number is <strong>required</strong>
@@ -15,6 +16,7 @@
     <label for="cardExpirationMonth">Expiration Month</label>
     <input mdInput id="cardExpirationMonth"
            formControlName="cardExpirationMonth" required
+           [(ngModel)]="model.cardExpirationMonth"
     >
     <md-error *ngIf="cardExpirationMonth.invalid && (cardExpirationMonth.dirty || cardExpirationMonth.touched)">
       Card expiration month is <strong>required</strong>
@@ -26,6 +28,7 @@
     <label for="cardExpirationYear">Expiration Year</label>
     <input mdInput id="cardExpirationYear"
            formControlName="cardExpirationYear" required
+           [(ngModel)]="model.cardExpirationYear"
     >
     <md-error *ngIf="cardExpirationYear.invalid && (cardExpirationYear.dirty || cardExpirationYear.touched)">
       Card expiration year is <strong>required</strong>
@@ -37,6 +40,7 @@
     <label for="cardSecurityCode">Security Code</label>
     <input mdInput id="cardSecurityCode"
            formControlName="cardSecurityCode" required
+           [(ngModel)]="model.cardSecurityCode"
     >
     <md-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
       Card security code is <strong>required</strong>
