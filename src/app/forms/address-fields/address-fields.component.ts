@@ -9,47 +9,47 @@ import { Address } from '../../models/address';
 })
 export class AddressFieldsComponent implements OnInit {
 
-  @Input() addressModel: Address;
-  addressForm: FormGroup;
+  @Input() model: Address;
+  form: FormGroup;
 
   constructor() {}
 
   ngOnInit() {
-    if (this.addressModel === undefined) {
-      this.addressModel = new Address();
+    if (this.model === undefined) {
+      this.model = new Address();
     }
 
-    this.addressForm = new FormGroup({
-      'firstName': new FormControl(this.addressModel.firstName, [
+    this.form = new FormGroup({
+      'firstName': new FormControl(this.model.firstName, [
         Validators.required
       ]),
-      'lastName': new FormControl(this.addressModel.lastName, [
+      'lastName': new FormControl(this.model.lastName, [
         Validators.required
       ]),
-      'address1': new FormControl(this.addressModel.address1, [
+      'address1': new FormControl(this.model.address1, [
         Validators.required
       ]),
-      'address2': new FormControl(this.addressModel.address2, [
+      'address2': new FormControl(this.model.address2, [
         Validators.required
       ]),
-      'city': new FormControl(this.addressModel.city, [
+      'city': new FormControl(this.model.city, [
         Validators.required
       ]),
-      'state': new FormControl(this.addressModel.state, [
+      'state': new FormControl(this.model.state, [
         Validators.required
       ]),
-      'zip': new FormControl(this.addressModel.zip, [
+      'zip': new FormControl(this.model.zip, [
         Validators.required
       ])
     });
   }
 
-  get firstName() { return this.addressForm.get('firstName'); }
-  get lastName() { return this.addressForm.get('lastName'); }
-  get address1() { return this.addressForm.get('address1'); }
-  get address2() { return this.addressForm.get('address2'); }
-  get city() { return this.addressForm.get('city'); }
-  get state() { return this.addressForm.get('state'); }
-  get zip() { return this.addressForm.get('zip'); }
+  get firstName() { return this.form.get('firstName'); }
+  get lastName() { return this.form.get('lastName'); }
+  get address1() { return this.form.get('address1'); }
+  get address2() { return this.form.get('address2'); }
+  get city() { return this.form.get('city'); }
+  get state() { return this.form.get('state'); }
+  get zip() { return this.form.get('zip'); }
 
 }
