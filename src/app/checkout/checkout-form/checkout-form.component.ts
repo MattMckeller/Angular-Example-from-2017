@@ -16,6 +16,7 @@ export class CheckoutFormComponent implements OnInit {
   model: CheckoutModel;
   checkoutForm: FormGroup;
   shippingAddressForm: FormGroup;
+  paymentForm: FormGroup;
 
   onSubmit() { this.submitted = true; console.log('form was submit!') }
 
@@ -29,19 +30,6 @@ export class CheckoutFormComponent implements OnInit {
         Validators.required
       ]),
       'shippingSelection': new FormControl(this.model.shippingSelection, [
-        Validators.required
-      ]),
-
-      'cardNumber': new FormControl(this.model.cardNumber, [
-        Validators.required
-      ]),
-      'cardExpirationMonth': new FormControl(this.model.cardExpirationMonth, [
-        Validators.required
-      ]),
-      'cardExpirationYear': new FormControl(this.model.cardExpirationYear, [
-        Validators.required
-      ]),
-      'cardSecurityCode': new FormControl(this.model.cardSecurityCode, [
         Validators.required
       ]),
 
@@ -85,11 +73,6 @@ export class CheckoutFormComponent implements OnInit {
   get phone() { return this.checkoutForm.get('phone'); }
 
   get shippingSelection() { return this.checkoutForm.get('shippingSelection'); }
-
-  get cardNumber() { return this.checkoutForm.get('cardNumber'); }
-  get cardExpirationMonth() { return this.checkoutForm.get('cardExpirationMonth'); }
-  get cardExpirationYear() { return this.checkoutForm.get('cardExpirationYear'); }
-  get cardSecurityCode() { return this.checkoutForm.get('cardSecurityCode'); }
 
   get useShippingAddressForBilling() { return this.checkoutForm.get('useShippingAddressForBilling'); }
 

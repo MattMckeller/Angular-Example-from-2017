@@ -64,49 +64,7 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        <!--Card number-->
-        <md-form-field class="full-width">
-          <label for="cardNumber">Card Number</label>
-          <input mdInput id="cardNumber"
-                 formControlName="cardNumber" required
-          >
-          <md-error *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
-            Card number is <strong>required</strong>
-          </md-error>
-        </md-form-field>
-
-        <!--Card expiration month-->
-        <md-form-field class="full-width">
-          <label for="cardExpirationMonth">Expiration Month</label>
-          <input mdInput id="cardExpirationMonth"
-                 formControlName="cardExpirationMonth" required
-          >
-          <md-error *ngIf="cardExpirationMonth.invalid && (cardExpirationMonth.dirty || cardExpirationMonth.touched)">
-            Card expiration month is <strong>required</strong>
-          </md-error>
-        </md-form-field>
-
-        <!--Card Expiration Year-->
-        <md-form-field class="full-width">
-          <label for="cardExpirationYear">Expiration Year</label>
-          <input mdInput id="cardExpirationYear"
-                 formControlName="cardExpirationYear" required
-          >
-          <md-error *ngIf="cardExpirationYear.invalid && (cardExpirationYear.dirty || cardExpirationYear.touched)">
-            Card expiration year is <strong>required</strong>
-          </md-error>
-        </md-form-field>
-
-        <!--Security code-->
-        <md-form-field class="full-width">
-          <label for="cardSecurityCode">Security Code</label>
-          <input mdInput id="cardSecurityCode"
-                 formControlName="cardSecurityCode" required
-          >
-          <md-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
-            Card security code is <strong>required</strong>
-          </md-error>
-        </md-form-field>
+        <app-payment-fields></app-payment-fields>
 
         <!--Use shipping as billing-->
         <md-checkbox type="checkbox" formControlName="useShippingAddressForBilling" required>
