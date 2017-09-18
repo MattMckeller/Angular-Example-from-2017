@@ -4,6 +4,7 @@ import { ProductService } from '../store/product.service';
 import { Product } from '../store/product';
 import { Cart } from '../store/cart';
 
+// todo create checkout module
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
