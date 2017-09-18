@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Address } from '../../models/address';
+import { Address } from '../../../models/address';
 
 @Component({
   selector: 'app-address-fields',

@@ -15,9 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { VintageComponent } from './vintage/vintage.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { CheckoutFormComponent } from './checkout/checkout-form/checkout-form.component';
-import { AddressFieldsComponent } from './forms/address-fields/address-fields.component';
-import { PaymentFieldsComponent } from './forms/payment-fields/payment-fields.component';
+import { CheckoutFormComponent } from './forms/checkout-form/checkout-form.component';
+import { AddressFieldsComponent } from './forms/input-groups/address-fields/address-fields.component';
+import { PaymentFieldsComponent } from './forms/input-groups/payment-fields/payment-fields.component';
 
 @NgModule({
   declarations: [

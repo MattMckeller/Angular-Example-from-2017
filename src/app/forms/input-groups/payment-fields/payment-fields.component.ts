@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import { CardPaymentMethod } from '../../models/card-payment-method';
+import { CardPaymentMethod } from '../../../models/card-payment-method';
 
 @Component({
   selector: 'app-payment-fields',
