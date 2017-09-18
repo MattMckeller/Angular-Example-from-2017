@@ -17,9 +17,6 @@ export class AddressFieldsComponent implements OnInit {
   ngOnInit() {
     if (this.addressModel === undefined) {
       this.addressModel = new Address();
-    }else {
-      console.log('not null');
-      console.log(this.addressModel);
     }
 
     this.addressForm = new FormGroup({
