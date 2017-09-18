@@ -11,36 +11,39 @@
     </md-error>
   </md-form-field>
 
+  <div class="expiration-container">
   <!--Card expiration month-->
-  <md-select id="cardExpirationMonth"
-         formControlName="cardExpirationMonth" required
-         [(ngModel)]="model.cardExpirationMonth"
-          placeholder="Expiration Month">
-    <md-option *ngFor="let month of expirationMonths" [value]="month.value">
-      {{month.viewValue}}
-    </md-option>
-  </md-select>
+    <md-select id="cardExpirationMonth"
+           formControlName="cardExpirationMonth" required
+           [(ngModel)]="model.cardExpirationMonth"
+            placeholder="Expiration Month">
+      <md-option *ngFor="let month of expirationMonths" [value]="month.value">
+        {{month.viewValue}}
+      </md-option>
+    </md-select>
 
-  <!--Card Expiration Year-->
-  <md-select id="cardExpirationYear"
-         formControlName="cardExpirationYear"
-          required
-         [(ngModel)]="model.cardExpirationYear"
-         placeholder="Expiration Year">
-    <md-option *ngFor="let year of expirationYears" value="year">
-      {{year}}
-    </md-option>
-  </md-select>
-
+    <!--Card Expiration Year-->
+    <md-select id="cardExpirationYear"
+           formControlName="cardExpirationYear"
+            required
+           [(ngModel)]="model.cardExpirationYear"
+           placeholder="Expiration Year">
+      <md-option *ngFor="let year of expirationYears" value="year">
+        {{year}}
+      </md-option>
+    </md-select>
+  </div>
   <!--Security code-->
-  <md-form-field class="full-width">
-    <label for="cardSecurityCode">Security Code</label>
-    <input mdInput id="cardSecurityCode"
-           formControlName="cardSecurityCode" required
-           [(ngModel)]="model.cardSecurityCode"
-    >
-    <md-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
-      Card security code is <strong>required</strong>
-    </md-error>
-  </md-form-field>
+  <div class="full-width">
+    <md-form-field class="cvv">
+      <label for="cardSecurityCode">CVV</label>
+      <input mdInput id="cardSecurityCode"
+             formControlName="cardSecurityCode" required
+             [(ngModel)]="model.cardSecurityCode"
+      >
+      <md-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
+        Card security code is <strong>required</strong>
+      </md-error>
+    </md-form-field>
+  </div>
 </div>
