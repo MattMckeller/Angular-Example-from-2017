@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Address } from '../../models/address';
 
 @Component({
@@ -51,5 +51,4 @@ export class AddressFieldsComponent implements OnInit {
   get city() { return this.form.get('city'); }
   get state() { return this.form.get('state'); }
   get zip() { return this.form.get('zip'); }
-
 }
