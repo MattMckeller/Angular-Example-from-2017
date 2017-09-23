@@ -26,11 +26,17 @@ export class CartService {
   /**
    * Removes 1 of the specified items from the cart.
    * @param product
+   * @param count
    */
-  remove(product: Product){
+  remove(product: Product, count: number = 1){
     console.log('Attempt to remove product');
     //todo may need to update to use find exact item / move find exact onto the product model
-    this.cart.items = this.cart.items.filter(item => product.id === item.id);
+    let removedCount = 0;
+    this.cart.items = this.cart.items.filter(item => {
+      let match = (product.id === item.id);
+      if(match){removedCount++}
+      return !(match && removedCount<=count);
+    });
   }
 
   /**
