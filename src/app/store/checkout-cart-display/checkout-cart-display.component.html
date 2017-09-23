@@ -1,0 +1,32 @@
+<h2>My Shopping Cart</h2>
+<md-list>
+  <md-list-item>
+    <div class="list-items">
+      <div *ngFor="let column of columns" class="column-name" [style.flex-basis]="column.flexBasis">
+        {{column.name}}
+      </div>
+    </div>
+  </md-list-item>
+  <md-list-item *ngFor="let item of itemsBeingPurchased">
+    <div class="list-items">
+      <div class="item-container">
+        <div class="item-image">
+          <img class="item-icon" src="{{item.imgHref}}">
+        </div>
+        <div class="item-text">
+          <p>{{item.name}}</p>
+        </div>
+      </div>
+      <!--TODO: add item quantity-->
+      <div>??</div>
+      <div>{{item.price | currency:'USD':true}}</div>
+    </div>
+  </md-list-item>
+  <div>
+    Total items being purchased: {{itemPurchaseCount}}
+  </div>
+
+  <div>
+    Total cost: {{checkoutTotal}}
+  </div>
+</md-list>

@@ -6,6 +6,7 @@ import { CartService } from './cart.service';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { CheckoutCartDisplayComponent } from './checkout-cart-display/checkout-cart-display.component';
 
 @NgModule({
   imports: [
@@ -14,12 +15,14 @@ import { ProductListComponent } from './product-list/product-list.component';
   exports: [
     ProductComponent,
     CartComponent,
-    ProductListComponent
+    ProductListComponent,
+    CheckoutCartDisplayComponent
   ],
   declarations: [
     ProductComponent,
     CartComponent,
-    ProductListComponent
+    ProductListComponent,
+    CheckoutCartDisplayComponent
   ],
   providers: [
     ProductService,
