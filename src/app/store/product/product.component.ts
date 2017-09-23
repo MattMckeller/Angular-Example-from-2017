@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from '../product.service';
 import { CartService } from '../cart.service';
 import { Product } from '../product';
@@ -12,14 +12,17 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ProductComponent implements OnInit {
   product: Product;
+  hasBeenAdded: boolean = false;
 
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   addToCart(){
+    this.hasBeenAdded = true;
     console.log('Add '+this.product+' to cart!');
     this.cartService.add(this.product);
     console.log(this.cartService.get());
@@ -27,6 +30,14 @@ export class ProductComponent implements OnInit {
 
   buy(){
     console.log('Checkout '+this.product+'now!');
+    if(this.hasBeenAdded === false){
+      this.addToCart();
+    }
+    this.redirectCheckout();
+  }
+
+  redirectCheckout(){
+    this.router.navigate(['/checkout']);
   }
 
   ngOnInit() {
