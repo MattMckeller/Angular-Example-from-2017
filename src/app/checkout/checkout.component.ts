@@ -3,6 +3,7 @@ import { CartService } from '../store/cart.service';
 import { ProductService } from '../store/product.service';
 import { Product } from '../store/product';
 import { Cart } from '../store/cart';
+import {Router} from "@angular/router";
 
 // todo create checkout module
 @Component({
@@ -13,12 +14,22 @@ import { Cart } from '../store/cart';
 export class CheckoutComponent implements OnInit {
   cart: Cart;
   itemsBeingPurchased: Product[];
+  displayCart: boolean = true;
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) { }
 
+  redirectShopping(){
+    this.router.navigate(['/vintage']);
+  }
+
+  showForm() {
+    //todo cannot navigate back to shopping cart with this method of display
+    this.displayCart = false;
+  }
   /**
    * Initialize the cart. Default to having all items in the cart being purchased.
    */
