@@ -56,3 +56,7 @@ md-list{
     font-weight: bold;
     flex-basis: 70% !important;
 }
+
+.remove-item-button{
+    color: #3a7585;
+}

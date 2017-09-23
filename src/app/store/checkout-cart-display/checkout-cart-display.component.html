@@ -1,12 +1,5 @@
-<h2>My Shopping Cart</h2>
+<h2>My Cart ({{itemPurchaseCount}}) {{checkoutTotal | currency:'USD':true}}</h2>
 <md-list>
-  <md-list-item>
-    <div class="list-items">
-      <div *ngFor="let column of columns" class="column-name" [style.flex-basis]="column.flexBasis">
-        {{column.name}}
-      </div>
-    </div>
-  </md-list-item>
   <md-list-item *ngFor="let item of itemsBeingPurchased">
     <div class="list-items">
       <div class="item-container">
@@ -19,13 +12,7 @@
       </div>
       <!--TODO: add item quantity-->
       <div>{{item.price | currency:'USD':true}}</div>
+      <div><button md-button class="remove-item-button" (click)="removeItem(item)">Remove</button></div>
     </div>
   </md-list-item>
-  <div>
-    Total items being purchased: {{itemPurchaseCount}}
-  </div>
-
-  <div>
-    Total cost: {{checkoutTotal}}
-  </div>
 </md-list>

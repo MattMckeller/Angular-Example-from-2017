@@ -12,20 +12,21 @@ import { Cart } from '@app/store/cart';
 export class CheckoutCartDisplayComponent implements OnInit {
   cart: Cart;
   itemsBeingPurchased: Product[];
-  columns = [
-    {name:'Item', 'flexBasis':'50%'},
-    {name:'Price', 'flexBasis':'50%'}
-  ];
 
   constructor(
     private productService: ProductService,
     private cartService: CartService
   ) { }
 
+  removeItem(product: Product){
+    this.cartService.remove(product);
+    this.ngOnInit(); //TODO TEMPORARY FIX
+  }
   /**
    * Initialize the cart. Default to having all items in the cart being purchased.
    */
   ngOnInit() {
+    //TODO NEED TO UPDATE THIS TO OBSERVER, WHEN ITEM IS REMOVED NOTHING UPDATES
     let products = this.productService.get();
     products.forEach(product => this.cartService.add(product));
 
