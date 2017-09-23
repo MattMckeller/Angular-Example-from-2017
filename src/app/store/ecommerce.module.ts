@@ -4,7 +4,7 @@ import { ProductService } from './product.service';
 import { CartService } from './cart.service';
 
 import { ProductComponent } from './product/product.component';
-import { CartComponent } from './cart/cart.component';
+import { CartIconComponent } from './cart/cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CheckoutCartDisplayComponent } from './checkout-cart-display/checkout-cart-display.component';
 
@@ -15,13 +15,13 @@ import { CheckoutCartDisplayComponent } from './checkout-cart-display/checkout-c
   ],
   exports: [
     ProductComponent,
-    CartComponent,
+    CartIconComponent,
     ProductListComponent,
     CheckoutCartDisplayComponent
   ],
   declarations: [
     ProductComponent,
-    CartComponent,
+    CartIconComponent,
     ProductListComponent,
     CheckoutCartDisplayComponent
   ],

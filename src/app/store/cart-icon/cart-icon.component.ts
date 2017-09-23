@@ -4,11 +4,11 @@ import { Cart } from '../cart';
 import { CartService } from '../cart.service';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'cart-icon',
+  templateUrl: './cart-icon.component.html',
+  styleUrls: ['./cart-icon.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartIconComponent implements OnInit {
   cart: Cart;
   total: Number;
 
