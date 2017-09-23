@@ -30,6 +30,7 @@ export class ProductComponent implements OnInit {
 
   buy(){
     console.log('Checkout '+this.product+'now!');
+    //If item has not already been added add it to cart
     if(this.hasBeenAdded === false){
       this.addToCart();
     }
