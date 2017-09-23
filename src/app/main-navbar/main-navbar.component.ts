@@ -19,6 +19,10 @@ export class MainNavbarComponent implements OnInit {
     this.sideNavService.open();
   }
 
+  toggleSideNav() {
+    this.sideNavService.toggle();
+  }
+
   ngOnInit() {
   }
 
