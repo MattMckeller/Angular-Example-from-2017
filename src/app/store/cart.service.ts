@@ -29,13 +29,8 @@ export class CartService {
    */
   remove(product: Product){
     console.log('Attempt to remove product');
-    let index = this.findExact(product).indexOf(product);
-    if(index !== -1){
-      this.cart.items.splice(index,1);
-      return true;
-    }else{
-      return false;
-    }
+    //todo may need to update to use find exact item / move find exact onto the product model
+    this.cart.items = this.cart.items.filter(item => product.id === item.id);
   }
 
   /**
@@ -60,20 +55,16 @@ export class CartService {
   }
 
   /**
-   * Finds exact matches of the provided product in the cart and returns them
+   * Searches for the exact match of the provided item in the cart and returns it.
    * @param product
-   * @return {Product[]}
+   * @return Product | False
    */
-  findExact(product: Product): Array<Product>{
-    return this.get().items.filter(item => product.id == item.id);
-  }
-
-  /**
-   * Returns the current quantity of the provided item in the cart
-   * @param product Product to find
-   * @return {number}
-   */
-  getQuantity(product: Product): number{
-    return this.findExact(product).length;
+  findExact(product: Product): Product | false{
+    let foundItem = this.get().items.filter(item => product.id == item.id);
+    if(foundItem.length){
+      return foundItem[0];
+    }else{
+      return false;
+    }
   }
 }

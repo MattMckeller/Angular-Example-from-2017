@@ -14,8 +14,7 @@ export class CheckoutCartDisplayComponent implements OnInit {
   itemsBeingPurchased: Product[];
   columns = [
     {name:'Item', 'flexBasis':'50%'},
-    {name:'Quantity', 'flexBasis':'25%'},
-    {name:'Price', 'flexBasis':'25%'}
+    {name:'Price', 'flexBasis':'50%'}
   ];
 
   constructor(
