@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckoutModel } from '../../models/checkout';
+import { CheckoutModel } from '@app/models/checkout';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-import {CardPaymentMethod} from "../../models/card-payment-method";
-import {Address} from "../../models/address";
+import {CardPaymentMethod} from "@app/models/card-payment-method";
+import {Address} from "@app/models/address";
+import {CartService} from "@app/store/cart.service";
+import {Product} from "@app/store/product";
+import {Cart} from "@app/store/cart";
+import {ShippingOption} from "@app/models/shipping-option";
 
 @Component({
   selector: 'app-checkout-form',
@@ -12,6 +16,7 @@ import {Address} from "../../models/address";
 export class CheckoutFormComponent implements OnInit {
 
   step = 0;
+  itemsBeingPurchased: Product[];
 
   submitted = false;
 
@@ -20,10 +25,15 @@ export class CheckoutFormComponent implements OnInit {
   shippingAddressModel: Address;
   billingAddressModel: Address;
   paymentModel: CardPaymentMethod;
+  cart: Cart;
+
+  shippingOptions: ShippingOption[];
 
   onSubmit() { this.submitted = true; console.log('form was submit!') }
 
-  constructor() {}
+  constructor(
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.model = new CheckoutModel();
@@ -42,6 +52,14 @@ export class CheckoutFormComponent implements OnInit {
         Validators.required
       ])
     });
+
+    this.shippingOptions = [];
+    this.shippingOptions.push(new ShippingOption('Pickup - free', 0));
+    this.shippingOptions.push(new ShippingOption('Standard - 10$', 10));
+
+    this.itemsBeingPurchased = [];
+    this.cart = this.cartService.get();
+    this.cart.items.forEach(item => this.itemsBeingPurchased.push(item));
   }
 
   setStep(stepNumber: number){
@@ -56,25 +74,43 @@ export class CheckoutFormComponent implements OnInit {
     this.setStep(this.step + 1);
   }
 
-  get checkoutTotal() {
-    return 'todo implement checkout service';
+  /**
+   * Adds product total shipping total and tax totals to return the checkout total
+   * @return {number}
+   */
+  get checkoutTotal(){
+    return this.productTotalCost + this.shippingTotalCost + this.taxTotalCost;
   }
 
-  get shippingOptions(): Array<string> {
-    //todo implement shipping service
-    return [
-      'Pickup - free',
-      'Standard - 10$'
-    ];
+  /**
+   * Calculates the base price of all of the items selected for purchase
+   * @return {number}
+   */
+  get productTotalCost(){
+    let total = 0;
+    this.itemsBeingPurchased.forEach(item => total += item.price);
+    return total;
   }
 
-  get firstName() { return this.checkoutForm.get('firstName'); }
-  get lastName() { return this.checkoutForm.get('lastName'); }
-  get address1() { return this.checkoutForm.get('address1'); }
-  get address2() { return this.checkoutForm.get('address2'); }
-  get city() { return this.checkoutForm.get('city'); }
-  get state() { return this.checkoutForm.get('state'); }
-  get zip() { return this.checkoutForm.get('zip'); }
+  /**
+   * Calculates the shipping cost for all items being purchased
+   * todo: handle shipping calculations and allow for shipping options / pickup
+   * @return {number}
+   */
+  get shippingTotalCost(): number{
+    let shippingCost = (this.shippingSelection.value)?(this.shippingSelection.value):(0);
+    return shippingCost;
+  }
+
+  /**
+   * Calculates the total cost of tax for all items being purchased
+   * todo: figure out how we are handling taxes
+   * @return {number}
+   */
+  get taxTotalCost(){
+    return 0.00;
+  }
+
   get phone() { return this.checkoutForm.get('phone'); }
 
   get shippingSelection() { return this.checkoutForm.get('shippingSelection'); }

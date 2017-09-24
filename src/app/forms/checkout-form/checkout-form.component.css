@@ -31,3 +31,21 @@
 .shipping-radio-button {
     margin: 5px;
 }
+
+
+.checkout-review-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+.divider-top{
+    border-top: dotted #bbb;
+    border-width: 1px 0;
+    margin: 20px 0 !important;
+}
+
+.review-label{
+
+}

@@ -43,8 +43,10 @@
         </md-expansion-panel-header>
 
         <md-radio-group class="shipping-radio-group" formControlName="shippingSelection">
-          <md-radio-button class="shipping-radio-button" *ngFor="let shippingOption of shippingOptions" [value]="shippingOption">
-            {{shippingOption}}
+          <md-radio-button class="shipping-radio-button"
+                           *ngFor="let shippingOption of shippingOptions"
+                           [value]="shippingOption.cost">
+            {{shippingOption.text}}
           </md-radio-button>
         </md-radio-group>
 
@@ -96,17 +98,25 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        <div>
-          Total cost: {{checkoutTotal}}
+        <div class="checkout-review-container">
+          <div class="review-label">Merchandise cost </div>
+          <div>{{productTotalCost | currency:'USD':true}}</div>
         </div>
 
-        section always displayed
+        <div class="checkout-review-container">
+          <div class="review-label">Shipping cost </div>
+          <div>{{shippingTotalCost | currency:'USD':true}}</div>
+        </div>
 
-        merchandise cost
-        shipping cost
-        estimated sales tax
-        -------
-        total
+        <div class="checkout-review-container">
+          <div class="review-label">Estimated Sales Tax </div>
+          <div>{{taxTotalCost | currency:'USD':true}}</div>
+        </div>
+
+        <div class="checkout-review-container divider-top">
+          <div class="review-label">Total cost </div>
+          <div>{{checkoutTotal | currency:'USD':true}}</div>
+        </div>
 
         <md-action-row>
           <button md-raised-button color="warn" (click)="prevStep()">Go back</button>

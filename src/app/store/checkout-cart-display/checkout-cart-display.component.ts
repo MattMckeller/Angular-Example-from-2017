@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from '@app/store/cart.service';
 import { ProductService } from '@app/store/product.service';
 import { Product } from '@app/store/product';
@@ -10,6 +10,8 @@ import { Cart } from '@app/store/cart';
   styleUrls: ['./checkout-cart-display.component.css']
 })
 export class CheckoutCartDisplayComponent implements OnInit {
+  @Input() displayRemove: boolean = true;
+  @Input() displayTitle: boolean = true;
   cart: Cart;
   itemsBeingPurchased: Product[];
 
@@ -58,6 +60,7 @@ export class CheckoutCartDisplayComponent implements OnInit {
   get productTotalCost(){
     let total = 0;
     this.itemsBeingPurchased.forEach(item => total += item.price);
+    console.log(total);
     return total;
   }
 

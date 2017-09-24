@@ -1,4 +1,4 @@
-<h2>My Cart ({{itemPurchaseCount}}) {{checkoutTotal | currency:'USD':true}}</h2>
+<h2 *ngIf="displayTitle">My Cart ({{itemPurchaseCount}}) {{checkoutTotal | currency:'USD':true}}</h2>
 <md-list>
   <md-list-item *ngFor="let item of itemsBeingPurchased">
     <div class="list-items">
@@ -12,7 +12,9 @@
       </div>
       <!--TODO: add item quantity-->
       <div>{{item.price | currency:'USD':true}}</div>
-      <div><button md-button class="remove-item-button" (click)="removeItem(item)">Remove</button></div>
+      <div *ngIf="displayRemove">
+        <button md-button class="remove-item-button" (click)="removeItem(item)">Remove</button>
+      </div>
     </div>
   </md-list-item>
 </md-list>

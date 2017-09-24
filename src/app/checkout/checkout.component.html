@@ -5,7 +5,7 @@
       <button md-raised-button (click)="showForm()">Proceed to checkout</button>
     </div>
     <div class="cart-container">
-        <checkout-cart-display></checkout-cart-display>
+        <checkout-cart-display [displayRemove]="true"></checkout-cart-display>
     </div>
     <div class="bottom-button-container">
       <button md-raised-button (click)="showForm()">Checkout</button>
