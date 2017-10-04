@@ -1,12 +1,25 @@
 .header{
     min-height: 10vh;
 }
+
+md-sidenav{
+    box-shadow: 5px 0 5px -5px #333;
+}
+
 .router-container{
     min-height: 80vh;
+    overflow: hidden;
 }
+
 .footer{
-    min-height: 10vh;
 }
-.active{
-    color: red;
+
+.sidenav-content-container{
+    min-width: 30vh;
+    height: 100vh;
+}
+
+app-sidenav{
+    width: 100%;
+    height: 100%;
 }
