@@ -51,7 +51,7 @@ export class PaymentFieldsComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(4),
-        CustomValidators.digits()
+        CustomValidators.digits
       ])
     });
   }
