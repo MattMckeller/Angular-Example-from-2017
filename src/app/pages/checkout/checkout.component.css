@@ -1,37 +1,4 @@
-.checkout-container{
-    margin-top: 20px;
-}
 .form-container{
     width: 100%;
     margin: auto;
-}
-
-.cart-container{
-    display: flex;
-    flex-direction: row;
-    width: 70%;
-    margin: 0 auto;
-}
-
-.button-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 70%;
-    margin: auto;
-}
-.button-container button{
-    margin: 0 5%;
-}
-
-.bottom-button-container{
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
-    width: 70%;
-    margin: auto;
-}
-
-checkout-cart-display{
-    width: 100%;
 }

@@ -18,6 +18,7 @@ import { CheckoutComponent } from '@pages/checkout/checkout.component';
 import { CheckoutFormModule } from '@forms/checkout-form/checkout-form.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { MyCartComponent } from '@pages/my-cart/my-cart.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     HomeComponent,
     AboutComponent,
     VintageComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MyCartComponent
   ],
   imports: [
     BrowserModule,

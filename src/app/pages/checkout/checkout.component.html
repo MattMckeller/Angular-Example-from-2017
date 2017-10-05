@@ -1,21 +1,5 @@
-<div class="checkout-container">
-  <div *ngIf="displayCart">
-    <div class="button-container">
-      <button md-raised-button (click)="redirectShopping()">Continue Shopping</button>
-      <button md-raised-button (click)="showForm()">Proceed to checkout</button>
-    </div>
-    <div class="cart-container">
-        <checkout-cart-display [displayRemove]="true"></checkout-cart-display>
-    </div>
-    <div class="bottom-button-container">
-      <button md-raised-button (click)="showForm()">Checkout</button>
-    </div>
-  </div>
-  <div *ngIf="!displayCart">
-    <div class="form-container">
-      <app-checkout-form></app-checkout-form>
-    </div>
-  </div>
+<div class="form-container">
+  <app-checkout-form></app-checkout-form>
 </div>
 
 
