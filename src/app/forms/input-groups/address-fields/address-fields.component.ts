@@ -30,7 +30,7 @@ export class AddressFieldsComponent implements OnInit {
         Validators.required
       ]),
       'address2': new FormControl(this.model.address2, [
-        Validators.required
+
       ]),
       'city': new FormControl(this.model.city, [
         Validators.required
