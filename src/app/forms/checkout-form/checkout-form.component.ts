@@ -7,6 +7,7 @@ import {CartService} from "@app/store/cart.service";
 import {Product} from "@app/store/product";
 import {Cart} from "@app/store/cart";
 import {ShippingOption} from "@app/models/shipping-option";
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'app-checkout-form',
@@ -14,10 +15,9 @@ import {ShippingOption} from "@app/models/shipping-option";
   styleUrls: ['./checkout-form.component.css']
 })
 export class CheckoutFormComponent implements OnInit {
-
   step = 0;
   itemsBeingPurchased: Product[];
-
+  phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   submitted = false;
 
   model: CheckoutModel;
@@ -29,7 +29,7 @@ export class CheckoutFormComponent implements OnInit {
 
   shippingOptions: ShippingOption[];
 
-  onSubmit() { this.submitted = true; console.log('form was submit!') }
+  onSubmit() { this.submitted = true; console.log('form was submit!'); }
 
   constructor(
     private cartService: CartService
@@ -42,14 +42,14 @@ export class CheckoutFormComponent implements OnInit {
     this.paymentModel = new CardPaymentMethod();
 
     this.checkoutForm = new FormGroup({
-      'phone': new FormControl(this.model.phone, [
-        Validators.required
+      'phoneNumber': new FormControl(this.sanitizedPhoneNumber, [
+        Validators.required,
+        CustomValidators.phone('US')
       ]),
       'shippingSelection': new FormControl(this.model.shippingSelection, [
         Validators.required
       ]),
       'useShippingAddressForBilling': new FormControl(this.model.useShippingAddressForBilling, [
-        Validators.required
       ])
     });
 
@@ -72,6 +72,28 @@ export class CheckoutFormComponent implements OnInit {
 
   nextStep(){
     this.setStep(this.step + 1);
+  }
+
+
+  /**
+   * Using custom getter and setter for phone number
+   *  field to allow for input masking
+   * @return {string}
+   */
+  get sanitizedPhoneNumber() {
+    return this.model.phoneNumber;
+  }
+  /**
+   * Using custom getter and setter for phone number
+   *  field to allow for input masking
+   * @return {string}
+   */
+  set sanitizedPhoneNumber(phoneNumberVal){
+    if(phoneNumberVal){
+      //Replace all mask characters (i.e. non decimals)
+      phoneNumberVal = phoneNumberVal.replace(/\D+/g, '');
+    }
+    this.model.phoneNumber = phoneNumberVal;
   }
 
   /**
@@ -111,10 +133,9 @@ export class CheckoutFormComponent implements OnInit {
     return 0.00;
   }
 
-  get phone() { return this.checkoutForm.get('phone'); }
 
+  get phoneNumber() { return this.checkoutForm.get('phoneNumber'); }
   get shippingSelection() { return this.checkoutForm.get('shippingSelection'); }
-
   get useShippingAddressForBilling() { return this.checkoutForm.get('useShippingAddressForBilling'); }
 
 }

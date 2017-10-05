@@ -16,12 +16,14 @@
 
         <!--Phone-->
         <md-form-field class="full-width">
-          <label for="phone">Phone</label>
-          <input mdInput type="text" id="phone"
+          <label for="phoneNumber">Phone</label>
+          <input mdInput type="text" id="phoneNumber"
                  required
-                 formControlName="phone"
+                 formControlName="phoneNumber"
+                 [textMask]="{mask: phoneMask}"
+                 [(ngModel)]="sanitizedPhoneNumber"
           >
-          <md-error *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+          <md-error *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
             Phone is <strong>required</strong>
           </md-error>
         </md-form-field>
