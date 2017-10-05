@@ -6,7 +6,7 @@
            [(ngModel)]="model.firstName"
     >
     <md-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-      First name is <strong>required</strong>
+      Invalid input
     </md-error>
   </md-form-field>
 
@@ -19,7 +19,7 @@
            [(ngModel)]="model.lastName"
     >
     <md-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-      Last name is <strong>required</strong>
+      Invalid input
     </md-error>
   </md-form-field>
 
@@ -32,7 +32,7 @@
            [(ngModel)]="model.address1"
     >
     <md-error *ngIf="address1.invalid && (address1.dirty || address1.touched)">
-      Address 1 is <strong>required</strong>
+      Invalid input
     </md-error>
   </md-form-field>
 
@@ -55,7 +55,7 @@
            [(ngModel)]="model.city"
     >
     <md-error *ngIf="city.invalid && (city.dirty || city.touched)">
-      City is <strong>required</strong>
+      Invalid input
     </md-error>
   </md-form-field>
 
@@ -68,7 +68,7 @@
            [(ngModel)]="model.state"
     >
     <md-error *ngIf="state.invalid && (state.dirty || state.touched)">
-      State is <strong>required</strong>
+      Invalid input
     </md-error>
   </md-form-field>
 
@@ -81,7 +81,7 @@
            [(ngModel)]="model.zip"
     >
     <md-error *ngIf="zip.invalid && (zip.dirty || zip.touched)">
-      Zip is <strong>required</strong>
+      Invalid input
     </md-error>
   </md-form-field>
 </div>
