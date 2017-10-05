@@ -14,7 +14,6 @@ import {Router} from "@angular/router";
 export class CheckoutComponent implements OnInit {
   cart: Cart;
   itemsBeingPurchased: Product[];
-  displayCart: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -22,14 +21,6 @@ export class CheckoutComponent implements OnInit {
     private router: Router
   ) { }
 
-  redirectShopping(){
-    this.router.navigate(['/vintage']);
-  }
-
-  showForm() {
-    //todo cannot navigate back to shopping cart with this method of display
-    this.displayCart = false;
-  }
   /**
    * Initialize the cart. Default to having all items in the cart being purchased.
    */
@@ -40,50 +31,6 @@ export class CheckoutComponent implements OnInit {
     this.itemsBeingPurchased = [];
     this.cart = this.cartService.get();
     this.cart.items.forEach(item => this.itemsBeingPurchased.push(item));
-  }
-
-  get itemsInCartCount(){
-    return (this.cart.items.length)?(this.cart.items.length):(0);
-  }
-
-  get itemPurchaseCount(){
-    return (this.itemsBeingPurchased.length)?(this.itemsBeingPurchased.length):(0);
-  }
-
-  /**
-   * Adds product total shipping total and tax totals to return the checkout total
-   * @return {number}
-   */
-  get checkoutTotal(){
-    return this.productTotalCost + this.shippingTotalCost + this.taxTotalCost;
-  }
-
-  /**
-   * Calculates the base price of all of the items selected for purchase
-   * @return {number}
-   */
-  get productTotalCost(){
-    let total = 0;
-    this.itemsBeingPurchased.forEach(item => total += item.price);
-    return total;
-  }
-
-  /**
-   * Calculates the shipping cost for all items being purchased
-   * todo: handle shipping calculations and allow for shipping options / pickup
-   * @return {number}
-   */
-  get shippingTotalCost(){
-    return 0;
-  }
-
-  /**
-   * Calculates the total cost of tax for all items being purchased
-   * todo: figure out how we are handling taxes
-   * @return {number}
-   */
-  get taxTotalCost(){
-    return 0;
   }
 
 }
