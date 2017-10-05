@@ -7,7 +7,7 @@
            [(ngModel)]="model.cardNumber"
     >
     <md-error *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
-      Card number is <strong>required</strong>
+      Invalid input
     </md-error>
   </md-form-field>
 
@@ -42,7 +42,7 @@
              [(ngModel)]="model.cardSecurityCode"
       >
       <md-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
-        Card security code is <strong>required</strong>
+        Invalid input
       </md-error>
     </md-form-field>
   </div>

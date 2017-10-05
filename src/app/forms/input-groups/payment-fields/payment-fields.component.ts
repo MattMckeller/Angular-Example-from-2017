@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import { CardPaymentMethod } from '../../../models/card-payment-method';
+import { CardPaymentMethod } from '@models/card-payment-method';
+import {CustomValidators} from "ng2-validation";
 
 @Component({
   selector: 'app-payment-fields',
@@ -37,7 +38,8 @@ export class PaymentFieldsComponent implements OnInit {
 
     this.form = new FormGroup({
       'cardNumber': new FormControl(this.model.cardNumber, [
-        Validators.required
+        Validators.required,
+        CustomValidators.creditCard
       ]),
       'cardExpirationMonth': new FormControl(this.model.cardExpirationMonth, [
         Validators.required
@@ -46,7 +48,10 @@ export class PaymentFieldsComponent implements OnInit {
         Validators.required
       ]),
       'cardSecurityCode': new FormControl(this.model.cardSecurityCode, [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(4),
+        CustomValidators.digits()
       ])
     });
   }
