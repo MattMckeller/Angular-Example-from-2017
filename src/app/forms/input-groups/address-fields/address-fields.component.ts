@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Address } from '@models/address';
+import { CustomValidators } from 'ng2-validation';
+import { CustomRegularExpressions } from '@models/custom-regular-expressions';
 
 @Component({
   selector: 'app-address-fields',
@@ -21,25 +23,31 @@ export class AddressFieldsComponent implements OnInit {
 
     this.form = new FormGroup({
       'firstName': new FormControl(this.model.firstName, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(CustomRegularExpressions.firstName)
       ]),
       'lastName': new FormControl(this.model.lastName, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(CustomRegularExpressions.lastName)
       ]),
       'address1': new FormControl(this.model.address1, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(CustomRegularExpressions.address)
       ]),
       'address2': new FormControl(this.model.address2, [
-
+        Validators.pattern(CustomRegularExpressions.address)
       ]),
       'city': new FormControl(this.model.city, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(CustomRegularExpressions.city)
       ]),
       'state': new FormControl(this.model.state, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(CustomRegularExpressions.state)
       ]),
       'zip': new FormControl(this.model.zip, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(CustomRegularExpressions.zip)
       ])
     });
   }
