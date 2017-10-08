@@ -1,12 +1,12 @@
-<div class="cart-container">
+<div class="page-container">
     <div class="button-container">
       <button md-raised-button (click)="redirectShopping()">Continue Shopping</button>
-      <button md-raised-button (click)="showForm()">Proceed to checkout</button>
+      <button md-raised-button (click)="redirectCheckout()">Proceed to checkout</button>
     </div>
     <div class="cart-container">
       <checkout-cart-display [displayRemove]="true"></checkout-cart-display>
     </div>
     <div class="bottom-button-container">
-      <button md-raised-button (click)="showForm()">Checkout</button>
+      <button md-raised-button (click)="redirctCheckout()">Checkout</button>
     </div>
 </div>

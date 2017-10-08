@@ -36,6 +36,10 @@ export class MyCartComponent implements OnInit {
     this.router.navigate(['/vintage']);
   }
 
+  redirectCheckout(){
+    this.router.navigate(['/checkout']);
+  }
+
 
   get itemsInCartCount(){
     return (this.cart.items.length)?(this.cart.items.length):(0);

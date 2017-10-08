@@ -26,8 +26,8 @@ export class CartIconComponent implements OnInit {
     return this.cart.items.length;
   }
 
-  redirectCheckout(){
-    this.router.navigate(['/checkout']);
+  redirectCart(){
+    this.router.navigate(['/cart']);
   }
 
 

@@ -34,11 +34,11 @@ export class ProductComponent implements OnInit {
     if(this.hasBeenAdded === false){
       this.addToCart();
     }
-    this.redirectCheckout();
+    this.redirectCart();
   }
 
-  redirectCheckout(){
-    this.router.navigate(['/checkout']);
+  redirectCart(){
+    this.router.navigate(['/cart']);
   }
 
   ngOnInit() {

@@ -29,7 +29,9 @@ export class CheckoutFormComponent implements OnInit {
 
   shippingOptions: ShippingOption[];
 
-  onSubmit() { this.submitted = true; console.log('form was submit!'); }
+  onSubmit() {
+    this.submitted = true; console.log('form was submit!');
+  }
 
   constructor(
     private cartService: CartService
