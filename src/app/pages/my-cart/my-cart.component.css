@@ -1,6 +1,14 @@
 .form-container{
     margin-top: 20px;
 }
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+}
+
 .cart-container{
     display: flex;
     flex-direction: row;
