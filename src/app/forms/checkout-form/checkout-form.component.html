@@ -44,10 +44,12 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        <md-radio-group class="shipping-radio-group" formControlName="shippingSelection">
+        <md-radio-group class="shipping-radio-group"
+                        formControlName="shippingSelection"
+                        [(ngModel)]="model.shippingSelection">
           <md-radio-button class="shipping-radio-button"
                            *ngFor="let shippingOption of shippingOptions"
-                           [value]="shippingOption.cost">
+                           [value]="shippingOption">
             {{shippingOption.text}}
           </md-radio-button>
         </md-radio-group>

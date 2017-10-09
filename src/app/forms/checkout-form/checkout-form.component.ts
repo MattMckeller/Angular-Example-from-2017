@@ -73,24 +73,25 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    let _this = this;
-    let changes = _.reduce(this.shippingAddressModel, function(result, value, key){
-      if(! _.isEqual(value, _this.model.shippingAddress[key])){
+    // let _this = this;
+    this.synchronizeModels(this.shippingAddressModel, this.model.shippingAddress);
+    this.synchronizeModels(this.billingAddressModel, this.model.billingAddress);
+    this.synchronizeModels(this.paymentModel, this.model.cardPaymentMethod);
+
+  }
+
+  synchronizeModels(fromModel, toModel) {
+    let changes = _.reduce(fromModel, function(result, value, key){
+      if (! _.isEqual(value, toModel[key])) {
         (result[key] || (result[key] = [])).push(value);
       }
       return result;
-      // return _.isEqual(value, _this.model.shippingAddress[key]) ? (result): ((result[key] || result[key] = []).push(value));
     }, {});
 
-    console.log(changes);
-
-    // if (shippingChanges) {
-    //   shippingChanges.forEachChangedItem((element) => {
-    //     console.log(element);
-    //     this.model.shippingAddress[element.key] = this.shippingAddressModel[element.key];
-    //     console.log(this.model.shippingAddress);
-    //   });
-    // }
+    _.each(changes, (value, key) => {
+      toModel[key] = fromModel[key];
+      console.log(toModel);
+    });
   }
 
   setStep(stepNumber: number){
@@ -153,8 +154,8 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
    * @return {number}
    */
   get shippingTotalCost(): number{
-    let shippingCost = (this.shippingSelection.value)?(this.shippingSelection.value):(0);
-    return shippingCost;
+    return (this.shippingSelection.value) ?
+      (this.shippingSelection.value.cost) : (0);
   }
 
   /**
