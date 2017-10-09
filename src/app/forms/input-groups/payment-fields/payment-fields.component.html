@@ -28,7 +28,7 @@
             required
            [(ngModel)]="model.cardExpirationYear"
            placeholder="Expiration Year">
-      <md-option *ngFor="let year of expirationYears" value="year">
+      <md-option *ngFor="let year of expirationYears" [value]="year">
         {{year}}
       </md-option>
     </md-select>
