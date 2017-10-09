@@ -10,6 +10,8 @@ import {ShippingOption} from "@app/models/shipping-option";
 import { CustomValidators } from 'ng2-validation';
 
 import _ from "lodash";
+import {HttpClient} from "@angular/common/http";
+import {CheckoutService} from "@services/checkout.service";
 
 @Component({
   selector: 'app-checkout-form',
@@ -31,19 +33,20 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
 
   shippingOptions: ShippingOption[];
 
+  constructor(
+    private cartService: CartService,
+    private checkoutService: CheckoutService
+  ) {}
+
   save() {
-    console.log(this.model);
-    console.log('form was saved!');
+    this.checkoutService.save(this.model);
   }
 
   onSubmit() {
-    console.log(this.model);
-    this.submitted = true; console.log('form was submit!');
+    this.submitted = true;
+    this.checkoutService.submit(this.model);
   }
 
-  constructor(
-    private cartService: CartService
-  ) {}
 
   ngOnInit() {
     this.model = new CheckoutModel();

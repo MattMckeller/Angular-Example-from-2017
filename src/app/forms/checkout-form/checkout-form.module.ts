@@ -7,6 +7,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AddressFieldsComponent } from '@forms/input-groups/address-fields/address-fields.component';
 import { PaymentFieldsComponent } from '@forms/input-groups/payment-fields/payment-fields.component';
+import {CheckoutService} from "@services/checkout.service";
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import { PaymentFieldsComponent } from '@forms/input-groups/payment-fields/payme
     CheckoutFormComponent,
     AddressFieldsComponent,
     PaymentFieldsComponent
+  ],
+  providers: [
+    CheckoutService
   ]
 })
 export class CheckoutFormModule { }
