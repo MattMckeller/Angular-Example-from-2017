@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { CheckoutModel } from '@app/models/checkout';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {CardPaymentMethod} from "@app/models/card-payment-method";
@@ -9,12 +9,14 @@ import {Cart} from "@app/store/cart";
 import {ShippingOption} from "@app/models/shipping-option";
 import { CustomValidators } from 'ng2-validation';
 
+import _ from "lodash";
+
 @Component({
   selector: 'app-checkout-form',
   templateUrl: './checkout-form.component.html',
   styleUrls: ['./checkout-form.component.css']
 })
-export class CheckoutFormComponent implements OnInit {
+export class CheckoutFormComponent implements OnInit, DoCheck {
   step = 0;
   itemsBeingPurchased: Product[];
   phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -29,7 +31,13 @@ export class CheckoutFormComponent implements OnInit {
 
   shippingOptions: ShippingOption[];
 
+  save() {
+    console.log(this.model);
+    console.log('form was saved!');
+  }
+
   onSubmit() {
+    console.log(this.model);
     this.submitted = true; console.log('form was submit!');
   }
 
@@ -64,16 +72,39 @@ export class CheckoutFormComponent implements OnInit {
     this.cart.items.forEach(item => this.itemsBeingPurchased.push(item));
   }
 
+  ngDoCheck() {
+    let _this = this;
+    let changes = _.reduce(this.shippingAddressModel, function(result, value, key){
+      if(! _.isEqual(value, _this.model.shippingAddress[key])){
+        (result[key] || (result[key] = [])).push(value);
+      }
+      return result;
+      // return _.isEqual(value, _this.model.shippingAddress[key]) ? (result): ((result[key] || result[key] = []).push(value));
+    }, {});
+
+    console.log(changes);
+
+    // if (shippingChanges) {
+    //   shippingChanges.forEachChangedItem((element) => {
+    //     console.log(element);
+    //     this.model.shippingAddress[element.key] = this.shippingAddressModel[element.key];
+    //     console.log(this.model.shippingAddress);
+    //   });
+    // }
+  }
+
   setStep(stepNumber: number){
     this.step = stepNumber;
   }
 
   prevStep(){
     this.setStep(this.step - 1);
+    this.save();
   }
 
   nextStep(){
     this.setStep(this.step + 1);
+    this.save();
   }
 
 

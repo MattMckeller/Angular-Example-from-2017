@@ -30,7 +30,7 @@
 
 
         <md-action-row>
-          <button md-raised-button color="primary" (click)="nextStep()">Save and continue</button>
+          <button md-raised-button color="primary" type="button" (click)="nextStep()">Save and continue</button>
         </md-action-row>
       </md-expansion-panel>
 
@@ -53,8 +53,8 @@
         </md-radio-group>
 
         <md-action-row>
-          <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
-          <button md-raised-button color="primary" (click)="nextStep()">Save and continue</button>
+          <button md-raised-button color="warn" type="button" (click)="prevStep()">Go back</button>
+          <button md-raised-button color="primary" type="button" (click)="nextStep()">Save and continue</button>
         </md-action-row>
       </md-expansion-panel>
 
@@ -80,13 +80,9 @@
           <app-address-fields [(model)]="billingAddressModel"></app-address-fields>
         </div>
 
-
-        contact details
-        Get email address or phone number
-        possibly promotional checkbox
         <md-action-row>
-          <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
-          <button md-raised-button color="primary" (click)="nextStep()">Save and continue</button>
+          <button md-raised-button color="warn" type="button" (click)="prevStep()">Go back</button>
+          <button md-raised-button color="primary" type="button" (click)="nextStep()">Save and continue</button>
         </md-action-row>
       </md-expansion-panel>
 
@@ -122,8 +118,8 @@
 
         <md-action-row>
           <div class="submit-button-container">
-            <button md-raised-button color="warn" (click)="prevStep()">Go back</button>
-            <button md-raised-button color="primary" (click)="submit()"
+            <button md-raised-button color="warn" type="button" (click)="prevStep()">Go back</button>
+            <button md-raised-button color="primary" type="submit" (click)="onSubmit()"
                     [disabled]="checkoutForm.invalid">Place Order</button>
           </div>
         </md-action-row>
