@@ -1,6 +1,7 @@
 import { Address } from './address';
 import { CardPaymentMethod } from './card-payment-method';
 import {ShippingOption} from "@models/shipping-option";
+import {Product} from "@store/product";
 
 export class CheckoutModel {
   constructor(
@@ -9,6 +10,7 @@ export class CheckoutModel {
     public shippingSelection: ShippingOption = null,
     public cardPaymentMethod: CardPaymentMethod = new CardPaymentMethod(),
     public useShippingAddressForBilling: Boolean = true,
-    public billingAddress: Address = new Address()
+    public billingAddress: Address = new Address(),
+    public products: Product[] = []
   ) {  }
 }

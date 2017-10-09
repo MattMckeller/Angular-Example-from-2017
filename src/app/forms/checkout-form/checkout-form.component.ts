@@ -20,7 +20,6 @@ import {CheckoutService} from "@services/checkout.service";
 })
 export class CheckoutFormComponent implements OnInit, DoCheck {
   step = 0;
-  itemsBeingPurchased: Product[];
   phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   submitted = false;
 
@@ -70,9 +69,9 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
     this.shippingOptions.push(new ShippingOption('Pickup - free', 0));
     this.shippingOptions.push(new ShippingOption('Standard - 10$', 10));
 
-    this.itemsBeingPurchased = [];
+    this.model.products = [];
     this.cart = this.cartService.get();
-    this.cart.items.forEach(item => this.itemsBeingPurchased.push(item));
+    this.cart.items.forEach(item => this.model.products.push(item));
   }
 
   ngDoCheck() {
@@ -146,7 +145,7 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
    */
   get productTotalCost(){
     let total = 0;
-    this.itemsBeingPurchased.forEach(item => total += item.price);
+    this.model.products.forEach(item => total += item.price);
     return total;
   }
 
