@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Checkout</h1>
-  <form [formGroup]="checkoutForm" #formDir="ngForm" (ngSubmit)="onSubmit()" class="checkout-form">
+  <form [formGroup]="checkoutForm" #formDir="ngForm" class="checkout-form">
     <md-accordion class="align-headers">
       <md-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
         <md-expansion-panel-header>
@@ -70,7 +70,7 @@
           </md-panel-description>
         </md-expansion-panel-header>
 
-        <app-payment-fields></app-payment-fields>
+        <app-payment-fields [(model)]="paymentModel"></app-payment-fields>
 
         <!--Use shipping as billing-->
         <md-checkbox type="checkbox" formControlName="useShippingAddressForBilling" required>
