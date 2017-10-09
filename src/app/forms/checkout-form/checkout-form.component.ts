@@ -90,7 +90,6 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
 
     _.each(changes, (value, key) => {
       toModel[key] = fromModel[key];
-      console.log(toModel);
     });
   }
 
