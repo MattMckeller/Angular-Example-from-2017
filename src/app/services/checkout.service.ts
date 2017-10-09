@@ -11,7 +11,8 @@ export class CheckoutService {
     private http: HttpClient
   ) { }
 
-  submit(checkoutData: CheckoutModel) {
+  submit(checkoutData: CheckoutModel, token=null) {
+    console.log('token from checkout service', token);
     let url = 'http://api.expanseservices.com/api/checkout/submit';
     this.http.post(url, checkoutData)
       .subscribe(

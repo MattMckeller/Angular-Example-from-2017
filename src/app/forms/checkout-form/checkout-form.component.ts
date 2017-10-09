@@ -22,6 +22,12 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
   step = 0;
   phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   submitted = false;
+  stripe = {
+    style: null,
+    card: null,
+    instance: null
+  };
+  stripeCard;
 
   model: CheckoutModel;
   checkoutForm: FormGroup;
@@ -43,11 +49,22 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
 
   onSubmit() {
     this.submitted = true;
-    this.checkoutService.submit(this.model);
+    this.stripe.instance.createToken(this.stripe.card).then((result) => {
+      if (result.error) {
+        // Inform the user if there was an error
+        let errorElement = document.getElementById('card-errors');
+        errorElement.textContent = result.error.message;
+      } else {
+        // Send the token to your server
+        console.log(result.token);
+        this.checkoutService.submit(this.model, result.token);
+      }
+    });
   }
 
 
   ngOnInit() {
+    this.setupStripe();
     this.model = new CheckoutModel();
     this.shippingAddressModel = new Address();
     this.billingAddressModel = new Address();
@@ -80,6 +97,40 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
     this.synchronizeModels(this.billingAddressModel, this.model.billingAddress);
     this.synchronizeModels(this.paymentModel, this.model.cardPaymentMethod);
 
+  }
+
+  setupStripe(){
+    // Create a Stripe client
+    this.stripe.instance = (<any>window).Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+    this.stripe.style = {
+      base: {
+        color: '#32325d',
+        lineHeight: '24px',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+      }
+    };
+    let elements = this.stripe.instance.elements();
+    this.stripe.card = elements.create('card', {style: this.stripe.style});
+    this.stripe.card.mount('#card-element');
+
+    // Handle real-time validation errors from the card Element.
+    this.stripe.card.addEventListener('change', function(event) {
+      let displayError = document.getElementById('card-errors');
+      if (event.error) {
+        displayError.textContent = event.error.message;
+      } else {
+        displayError.textContent = '';
+      }
+    });
   }
 
   synchronizeModels(fromModel, toModel) {
