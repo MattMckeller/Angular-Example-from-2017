@@ -27,13 +27,11 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
     card: null,
     instance: null
   };
-  stripeCard;
 
   model: CheckoutModel;
   checkoutForm: FormGroup;
   shippingAddressModel: Address;
   billingAddressModel: Address;
-  paymentModel: CardPaymentMethod;
   cart: Cart;
 
   shippingOptions: ShippingOption[];
@@ -49,15 +47,15 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
 
   onSubmit() {
     this.submitted = true;
-    this.stripe.instance.createToken(this.stripe.card).then((result) => {
+    this.stripe.instance.createToken(this.stripe.card, this.extraStripeInformation()).then((result) => {
       if (result.error) {
         // Inform the user if there was an error
         let errorElement = document.getElementById('card-errors');
         errorElement.textContent = result.error.message;
       } else {
         // Send the token to your server
-        console.log(result.token);
-        this.checkoutService.submit(this.model, result.token);
+        this.model.stripeToken = result.id;
+        this.checkoutService.submit(this.model, result.id);
       }
     });
   }
@@ -68,7 +66,6 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
     this.model = new CheckoutModel();
     this.shippingAddressModel = new Address();
     this.billingAddressModel = new Address();
-    this.paymentModel = new CardPaymentMethod();
 
     this.checkoutForm = new FormGroup({
       'phoneNumber': new FormControl(this.sanitizedPhoneNumber, [
@@ -95,7 +92,6 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
     // let _this = this;
     this.synchronizeModels(this.shippingAddressModel, this.model.shippingAddress);
     this.synchronizeModels(this.billingAddressModel, this.model.billingAddress);
-    this.synchronizeModels(this.paymentModel, this.model.cardPaymentMethod);
 
   }
 
@@ -144,6 +140,19 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
     _.each(changes, (value, key) => {
       toModel[key] = fromModel[key];
     });
+  }
+
+  extraStripeInformation() {
+    let addressModelReference = (this.model.useShippingAddressForBilling) ?
+      (this.model.shippingAddress) : (this.model.billingAddress);
+    return {
+      name: addressModelReference.firstName + ' ' + addressModelReference.lastName,
+      address_line1: addressModelReference.address1,
+      address_line2: addressModelReference.address2,
+      address_city: addressModelReference.city,
+      address_state: addressModelReference.state,
+      address_zip: addressModelReference.zip
+    };
   }
 
   setStep(stepNumber: number){
