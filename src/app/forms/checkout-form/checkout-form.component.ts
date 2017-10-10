@@ -54,8 +54,8 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
         errorElement.textContent = result.error.message;
       } else {
         // Send the token to your server
-        this.model.stripeToken = result.id;
-        this.checkoutService.submit(this.model, result.id);
+        this.model.stripeToken = result.token.id;
+        this.checkoutService.submit(this.model, result.token.id);
       }
     });
   }
