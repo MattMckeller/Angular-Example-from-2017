@@ -97,7 +97,7 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
 
   setupStripe(){
     // Create a Stripe client
-    this.stripe.instance = (<any>window).Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+    this.stripe.instance = (<any>window).Stripe('pk_test_QqDWcYHU6irSiaodHmX2eFEy');
     this.stripe.style = {
       base: {
         color: '#32325d',
