@@ -8,7 +8,7 @@ export class CheckoutModel {
     public shippingAddress: Address = new Address(),
     public phoneNumber: string = null,
     public shippingSelection: ShippingOption = null,
-    public cardPaymentMethod: CardPaymentMethod = new CardPaymentMethod(),
+    public stripeToken: string = null,
     public useShippingAddressForBilling: Boolean = true,
     public billingAddress: Address = new Address(),
     public products: Product[] = []
