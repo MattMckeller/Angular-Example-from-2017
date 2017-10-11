@@ -1,7 +1,5 @@
-.form-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.page-container{
+    width: 80%;
+    margin: 0 auto;
 }
 

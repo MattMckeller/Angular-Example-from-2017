@@ -20,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { MyCartComponent } from '@pages/my-cart/my-cart.component';
 import {ManageProductsModule} from "@app/admin/manage-products/manage-products.module";
+import {FileUploadModule} from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {ManageProductsModule} from "@app/admin/manage-products/manage-products.m
     FlexLayoutModule,
     EcommerceModule,
     CheckoutFormModule,
-    ManageProductsModule
+    ManageProductsModule,
+    FileUploadModule
   ],
   providers: [
     SideNavService

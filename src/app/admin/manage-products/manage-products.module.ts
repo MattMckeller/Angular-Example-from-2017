@@ -6,22 +6,22 @@ import {MaterialModule} from "@app/material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ManageProductsComponent} from "@app/admin/manage-products/manage-products.component";
 import { CreateProductComponent } from './create-product/create-product.component';
-
+import {FileUploadModule} from "ng2-file-upload";
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
     TextMaskModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FileUploadModule
   ],
   exports: [
-    ManageProductsComponent,
-    CreateProductComponent
+    ManageProductsComponent
   ],
   declarations: [
     ManageProductsComponent,
-    CreateProductComponent
+    CreateProductComponent,
   ]
 })
 export class ManageProductsModule { }

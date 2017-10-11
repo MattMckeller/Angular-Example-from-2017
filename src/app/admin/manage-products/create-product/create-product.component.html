@@ -25,7 +25,56 @@
       </mat-error>
     </mat-form-field>
 
-    <div class="submit-button-container">
+    <h3>Upload Product Images</h3>
+    <div class="upload-section" fxLayout="row" fxLayoutGap="5%">
+      <div fxFlex="30%" class="uploading-actions-container">
+        <div class="drop-zone-container">
+          <div ng2FileDrop
+               [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+               (fileOver)="fileOverBase($event)"
+               [uploader]="uploader"
+               class="my-drop-zone">
+            Drop images to upload
+          </div>
+        </div>
+        <h4>Browse for images</h4>
+        <div class="upload-button-container">
+          <input class="upload-button" type="file" ng2FileSelect [uploader]="uploader" multiple/>
+        </div>
+      </div>
+
+      <div fxFlex="70%" class="uploaded-items-container">
+        <div *ngFor="let item of uploader.queue">
+          <div>{{item?.file?.name}}</div>
+          <div>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
+          <div>
+            <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+            <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+            <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+          </div>
+          <div>
+            <button mat-raised-button color="accent" type="button" class="btn btn-success btn-xs"
+                    (click)="uploadImage(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+              <span class="glyphicon glyphicon-upload"></span> Upload
+            </button>
+            <button mat-raised-button color="warn" type="button" class="btn btn-warning btn-xs"
+                    (click)="cancelImage(item)" [disabled]="!item.isUploading">
+              <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+            </button>
+            <button mat-raised-button color="warn" type="button" class="btn btn-danger btn-xs"
+                    (click)="removeImage(item)">
+              <span class="glyphicon glyphicon-trash"></span> Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="current-images-container">
+      current images go here.
+    </div>
+
+    <div class="submit-button-container" fxLayout="row" fxLayoutAlign="center">
       <button mat-raised-button
               fxFlex.lt-md="50%"
               fxFlex.gt-sm="40%"
