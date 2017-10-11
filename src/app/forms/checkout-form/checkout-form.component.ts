@@ -10,8 +10,11 @@ import {ShippingOption} from "@app/models/shipping-option";
 import { CustomValidators } from 'ng2-validation';
 
 import _ from "lodash";
+import { Observable }        from 'rxjs/Observable';
+
 import {HttpClient} from "@angular/common/http";
 import {CheckoutService} from "@services/checkout.service";
+import {ShippingService} from "@app/services/shipping.service";
 
 @Component({
   selector: 'app-checkout-form',
@@ -34,11 +37,12 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
   billingAddressModel: Address;
   cart: Cart;
 
-  shippingOptions: ShippingOption[];
+  shippingOptions: Observable<ShippingOption[]>;
 
   constructor(
     private cartService: CartService,
-    private checkoutService: CheckoutService
+    private checkoutService: CheckoutService,
+    private shippingService: ShippingService
   ) {}
 
   save() {
@@ -79,9 +83,7 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
       ])
     });
 
-    this.shippingOptions = [];
-    this.shippingOptions.push(new ShippingOption('Pickup - free', 0));
-    this.shippingOptions.push(new ShippingOption('Standard - 10$', 10));
+    this.shippingOptions = this.shippingService.get();
 
     this.model.products = [];
     this.cart = this.cartService.get();

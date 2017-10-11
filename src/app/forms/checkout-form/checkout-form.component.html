@@ -48,7 +48,7 @@
                         formControlName="shippingSelection"
                         [(ngModel)]="model.shippingSelection">
           <md-radio-button class="shipping-radio-button"
-                           *ngFor="let shippingOption of shippingOptions"
+                           *ngFor="let shippingOption of shippingOptions | async"
                            [value]="shippingOption">
             {{shippingOption.text}}
           </md-radio-button>

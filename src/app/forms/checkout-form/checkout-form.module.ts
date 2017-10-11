@@ -8,6 +8,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { AddressFieldsComponent } from '@forms/input-groups/address-fields/address-fields.component';
 import { PaymentFieldsComponent } from '@forms/input-groups/payment-fields/payment-fields.component';
 import {CheckoutService} from "@services/checkout.service";
+import {ShippingService} from "@app/services/shipping.service";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {CheckoutService} from "@services/checkout.service";
     PaymentFieldsComponent
   ],
   providers: [
-    CheckoutService
+    CheckoutService,
+    ShippingService
   ]
 })
 export class CheckoutFormModule { }
