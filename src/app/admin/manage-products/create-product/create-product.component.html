@@ -1,0 +1,39 @@
+<div class="form-container">
+  <div [formGroup]="form">
+    <mat-form-field class="full-width"
+                    [hideRequiredMarker]="form.value.hideRequired"
+                    [floatPlaceholder]="form.value.floatPlaceholder">
+      <input matInput type="text" id="productName" placeholder="Product Name"
+             required
+             formControlName="productName"
+             [(ngModel)]="model.name"
+      >
+      <mat-error *ngIf="productName.invalid && (productName.dirty || productName.touched)">
+        Product name is invalid
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="text" id="productPrice"
+             placeholder="Product Price"
+             required
+             formControlName="productPrice"
+             [(ngModel)]="model.price"
+      >
+      <mat-error *ngIf="productPrice.invalid && (productPrice.dirty || productPrice.touched)">
+        Product price is invalid
+      </mat-error>
+    </mat-form-field>
+
+    <div class="submit-button-container">
+      <button mat-raised-button
+              fxFlex.lt-md="50%"
+              fxFlex.gt-sm="40%"
+              type="submit"
+              [disabled]="form.invalid"
+              color="accent"
+              (click)="submit()"
+      >Save Product</button>
+    </div>
+  </div>
+</div>
