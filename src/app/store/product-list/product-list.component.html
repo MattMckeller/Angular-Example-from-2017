@@ -1,22 +1,22 @@
-<md-grid-list cols="12" rowHeight="500px">
-  <md-grid-tile *ngFor="let product of products" colspan="3">
-    <md-card>
-      <img md-card-image src="{{product.imgHref}}" (click)="redirect(product.id)">
-      <md-card-header>
-        <md-card-title>
+<mat-grid-list cols="12" rowHeight="500px">
+  <mat-grid-tile *ngFor="let product of products" colspan="3">
+    <mat-card>
+      <img mat-card-image src="{{product.imgHref}}" (click)="redirect(product.id)">
+      <mat-card-header>
+        <mat-card-title>
           <a (click)="redirect(product.id)">
             <span>{{product.name}}</span>
           </a>
-        </md-card-title>
-      </md-card-header>
-      <md-card-content>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
         <span class="price-display">{{formattedPrice(product.id)}}</span>
         <span class="shipping-display">Ships eventually</span>
-      </md-card-content>
-      <!--<md-card-actions>-->
-        <!--<button md-raised-button (click)="redirect(product.id)">More Information</button>-->
-        <!--<button md-raised-button (click)="addToCart()"><md-icon>add_shopping_cart</md-icon></button>-->
-      <!--</md-card-actions>-->
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+      </mat-card-content>
+      <!--<mat-card-actions>-->
+        <!--<button mat-raised-button (click)="redirect(product.id)">More Information</button>-->
+        <!--<button mat-raised-button (click)="addToCart()"><mat-icon>add_shopping_cart</mat-icon></button>-->
+      <!--</mat-card-actions>-->
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

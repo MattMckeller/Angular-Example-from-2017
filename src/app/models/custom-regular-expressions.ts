@@ -23,4 +23,6 @@ export class CustomRegularExpressions {
     static state: RegExp = /^[a-zA-Z\u0080-\u024F\s\/\-\)\(\`\.\"\']*$/i;
     static stateShort: RegExp = /^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$/i;
     static zip: RegExp = /^\d{5}$|^\d{5}-\d{4}$/i;
+
+    static usdCurrency: RegExp = /(?=.)^\$?(([1-9][0-9]{0,2}(,[0-9]{3})*)|[0-9]+)?(\.[0-9]{1,2})?$/;
 }

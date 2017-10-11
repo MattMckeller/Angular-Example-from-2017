@@ -19,6 +19,8 @@ import { CheckoutFormModule } from '@forms/checkout-form/checkout-form.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { MyCartComponent } from '@pages/my-cart/my-cart.component';
+import {ManageProductsModule} from "@app/admin/manage-products/manage-products.module";
+import {FileUploadModule} from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { MyCartComponent } from '@pages/my-cart/my-cart.component';
     ReactiveFormsModule,
     FlexLayoutModule,
     EcommerceModule,
-    CheckoutFormModule
+    CheckoutFormModule,
+    ManageProductsModule,
+    FileUploadModule
   ],
   providers: [
     SideNavService

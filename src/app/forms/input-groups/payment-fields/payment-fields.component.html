@@ -1,49 +1,49 @@
 <div [formGroup]="form">
   <!--Card number-->
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="cardNumber">Card Number</label>
-    <input mdInput id="cardNumber"
+    <input matInput id="cardNumber"
            formControlName="cardNumber" required
            [(ngModel)]="model.cardNumber"
     >
-    <md-error *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+    <mat-error *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
       Invalid input
-    </md-error>
-  </md-form-field>
+    </mat-error>
+  </mat-form-field>
 
   <div class="expiration-container">
   <!--Card expiration month-->
-    <md-select id="cardExpirationMonth"
+    <mat-select id="cardExpirationMonth"
            formControlName="cardExpirationMonth" required
            [(ngModel)]="model.cardExpirationMonth"
             placeholder="Expiration Month">
-      <md-option *ngFor="let month of expirationMonths" [value]="month.value">
+      <mat-option *ngFor="let month of expirationMonths" [value]="month.value">
         {{month.viewValue}}
-      </md-option>
-    </md-select>
+      </mat-option>
+    </mat-select>
 
     <!--Card Expiration Year-->
-    <md-select id="cardExpirationYear"
+    <mat-select id="cardExpirationYear"
            formControlName="cardExpirationYear"
             required
            [(ngModel)]="model.cardExpirationYear"
            placeholder="Expiration Year">
-      <md-option *ngFor="let year of expirationYears" [value]="year">
+      <mat-option *ngFor="let year of expirationYears" [value]="year">
         {{year}}
-      </md-option>
-    </md-select>
+      </mat-option>
+    </mat-select>
   </div>
   <!--Security code-->
   <div class="full-width">
-    <md-form-field class="cvv">
+    <mat-form-field class="cvv">
       <label for="cardSecurityCode">CVV</label>
-      <input mdInput id="cardSecurityCode"
+      <input matInput id="cardSecurityCode"
              formControlName="cardSecurityCode" required
              [(ngModel)]="model.cardSecurityCode"
       >
-      <md-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
+      <mat-error *ngIf="cardSecurityCode.invalid && (cardSecurityCode.dirty || cardSecurityCode.touched)">
         Invalid input
-      </md-error>
-    </md-form-field>
+      </mat-error>
+    </mat-form-field>
   </div>
 </div>
