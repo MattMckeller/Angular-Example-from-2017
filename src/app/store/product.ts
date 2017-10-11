@@ -1,8 +1,11 @@
+import {ProductImage} from "@store/product-image";
+
 export class Product {
     id: number;
     name: string;
     price: number;
     imgHref: string;
+    images?: Array<ProductImage>;
     size?: string;
     attributes?: Array<Attribute>;
     tags?: Array<Tag>;
