@@ -7,6 +7,7 @@ import { VintageComponent } from '@pages/vintage/vintage.component';
 import { CheckoutComponent } from '@pages/checkout/checkout.component';
 import { ProductComponent } from '@store/product/product.component';
 import {MyCartComponent} from "@app/pages/my-cart/my-cart.component";
+import {ManageProductsComponent} from "@app/admin/manage-products/manage-products.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'vintage',  component: VintageComponent },
   { path: 'product/:id', component: ProductComponent },
   { path: 'cart', component: MyCartComponent },
-  { path: 'checkout', component: CheckoutComponent }
+  { path: 'checkout', component: CheckoutComponent },
+
+  { path: 'admin/manage-products', component: ManageProductsComponent}
 ];
 
 @NgModule({

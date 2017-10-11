@@ -1,9 +1,9 @@
-<md-sidenav-container class="sidenav-container background-container mat-typography">
-    <md-sidenav #sidenav mode="over" opened="{{drawerOpen}}" (open)="handleOpen($event)" (close)="handleClose($event)">
+<mat-sidenav-container class="sidenav-container background-container mat-typography">
+    <mat-sidenav #sidenav mode="over" opened="{{drawerOpen}}" (open)="handleOpen($event)" (close)="handleClose($event)">
         <div class="sidenav-content-container">
             <app-sidenav></app-sidenav>
         </div>
-    </md-sidenav>
+    </mat-sidenav>
 
     <div class="header">
         <app-main-navbar></app-main-navbar>
@@ -16,5 +16,5 @@
     <div class="footer">
         <app-main-footer></app-main-footer>
     </div>
-</md-sidenav-container>
+</mat-sidenav-container>
 

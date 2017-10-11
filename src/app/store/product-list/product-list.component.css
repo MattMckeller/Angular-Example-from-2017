@@ -1,15 +1,15 @@
-md-card img{
+mat-card img{
     cursor: pointer;
 }
-md-card-header{
+mat-card-header{
     margin-bottom: 6px;
 }
-md-card-title a{
+mat-card-title a{
     cursor: pointer;
     text-decoration: none;
     color: #0066c0;
 }
-md-card-title a:hover{
+mat-card-title a:hover{
     text-decoration: underline;
     cursor: pointer;
     color: #c45500;

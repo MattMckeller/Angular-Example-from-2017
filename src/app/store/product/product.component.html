@@ -1,11 +1,11 @@
-<md-grid-list cols="12">
-    <md-grid-tile colspan=6 rowspan="6">
-        <img md-card-image src="{{product.imgHref}}">
-    </md-grid-tile>
-    <md-grid-tile colspan="6" rowspan="2">
+<mat-grid-list cols="12">
+    <mat-grid-tile colspan=6 rowspan="6">
+        <img mat-card-image src="{{product.imgHref}}">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" rowspan="2">
         <h1>{{product.name}}</h1>
-    </md-grid-tile>
-    <md-grid-tile colspan="6" rowspan="2">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" rowspan="2">
         <div class="flex-end gutter">
             <label>Price:</label>
             <label>Shipping:</label>
@@ -15,9 +15,9 @@
             <span class="shipping-display">Eventually</span>
         </div>
 
-    </md-grid-tile>
-    <md-grid-tile colspan="6" rowspan="2">
-        <button md-raised-button (click)="buy()">Buy Now</button>
-        <button md-raised-button (click)="addToCart()"><md-icon>add_shopping_cart</md-icon></button>
-    </md-grid-tile>
-</md-grid-list>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" rowspan="2">
+        <button mat-raised-button (click)="buy()">Buy Now</button>
+        <button mat-raised-button (click)="addToCart()"><mat-icon>add_shopping_cart</mat-icon></button>
+    </mat-grid-tile>
+</mat-grid-list>

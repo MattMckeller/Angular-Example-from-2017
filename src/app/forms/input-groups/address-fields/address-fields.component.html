@@ -1,87 +1,87 @@
 <div [formGroup]="form">
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="firstName">First Name</label>
-    <input mdInput id="firstName"
+    <input matInput id="firstName"
            formControlName="firstName" required
            [(ngModel)]="model.firstName"
     >
-    <md-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+    <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
       Invalid input
-    </md-error>
-  </md-form-field>
+    </mat-error>
+  </mat-form-field>
 
   <!--Last Name-->
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="lastName">Last Name</label>
-    <input mdInput type="text" id="lastName"
+    <input matInput type="text" id="lastName"
            required
            formControlName="lastName"
            [(ngModel)]="model.lastName"
     >
-    <md-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+    <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
       Invalid input
-    </md-error>
-  </md-form-field>
+    </mat-error>
+  </mat-form-field>
 
   <!--Address 1-->
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="address1">Address 1</label>
-    <input mdInput type="text" id="address1"
+    <input matInput type="text" id="address1"
            required
            formControlName="address1"
            [(ngModel)]="model.address1"
     >
-    <md-error *ngIf="address1.invalid && (address1.dirty || address1.touched)">
+    <mat-error *ngIf="address1.invalid && (address1.dirty || address1.touched)">
       Invalid input
-    </md-error>
-  </md-form-field>
+    </mat-error>
+  </mat-form-field>
 
   <!--Address 2-->
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="address2">Address 2</label>
-    <input mdInput type="text" id="address2"
+    <input matInput type="text" id="address2"
            required
            formControlName="address2"
            [(ngModel)]="model.address2"
     >
-  </md-form-field>
+  </mat-form-field>
 
   <!--City-->
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="city">City</label>
-    <input mdInput type="text" id="city"
+    <input matInput type="text" id="city"
            required
            formControlName="city"
            [(ngModel)]="model.city"
     >
-    <md-error *ngIf="city.invalid && (city.dirty || city.touched)">
+    <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
       Invalid input
-    </md-error>
-  </md-form-field>
+    </mat-error>
+  </mat-form-field>
 
   <!--State-->
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="state">State</label>
-    <input mdInput type="text" id="state"
+    <input matInput type="text" id="state"
            required
            formControlName="state"
            [(ngModel)]="model.state"
     >
-    <md-error *ngIf="state.invalid && (state.dirty || state.touched)">
+    <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">
       Invalid input
-    </md-error>
-  </md-form-field>
+    </mat-error>
+  </mat-form-field>
 
   <!--Zip-->
-  <md-form-field class="full-width">
+  <mat-form-field class="full-width">
     <label for="zip">Zip Code</label>
-    <input mdInput type="text" id="zip"
+    <input matInput type="text" id="zip"
            required
            formControlName="zip"
            [(ngModel)]="model.zip"
     >
-    <md-error *ngIf="zip.invalid && (zip.dirty || zip.touched)">
+    <mat-error *ngIf="zip.invalid && (zip.dirty || zip.touched)">
       Invalid input
-    </md-error>
-  </md-form-field>
+    </mat-error>
+  </mat-form-field>
 </div>
