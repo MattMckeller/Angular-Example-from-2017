@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
 import {Product} from "@store/product";
 import {CustomRegularExpressions} from "@models/custom-regular-expressions";
 import {FileItem, FileUploader} from "ng2-file-upload";
+import {ProductImage} from "@store/product-image";
+import {map} from 'rxjs/operator/map';
 
 @Component({
   selector: 'app-create-product',
@@ -11,23 +13,33 @@ import {FileItem, FileUploader} from "ng2-file-upload";
 })
 export class CreateProductComponent implements OnInit {
   @Input() model: Product;
+  @Output() imageUpload: EventEmitter<any> = new EventEmitter();
   form: FormGroup;
   uploader: FileUploader;
   hasBaseDropZoneOver: boolean = false;
 
+  productImagesCtrl: FormControl;
+
   constructor(
     formBuilder: FormBuilder
   ) {
+    const _thisRef = this;
     this.form = formBuilder.group({
       hideRequired: false,
       floatPlaceholder: 'auto',
     });
     const uploadUrl = 'http://api.expanseservices.com/api/productImages/addImage';
     this.uploader = new FileUploader({url: uploadUrl});
+    this.uploader.onSuccessItem =
+      (item, response) => {
+        const image = <ProductImage>JSON.parse(response);
+        this.addProductImage(image);
+        this.imageUpload.emit({newImage: image, caller: _thisRef});
+      };
   }
 
   submit() {
-
+    console.log('Should submit product');
   }
 
   public fileOverBase(e: any): void {
@@ -39,6 +51,11 @@ export class CreateProductComponent implements OnInit {
       this.model = new Product();
     }
 
+    // Create product images form control separately since it's not a standard form element,
+    // and will need to be referenced later in init.
+    this.productImagesCtrl = new FormControl(this.model.images, [
+      Validators.required
+    ]);
     this.form = new FormGroup({
       'productName': new FormControl(this.model.name, [
         Validators.required,
@@ -49,22 +66,21 @@ export class CreateProductComponent implements OnInit {
         Validators.required,
         Validators.pattern(CustomRegularExpressions.usdCurrency),
       ]),
-      'productImages': new FormControl(this.model.images, [
-        Validators.required
-      ])
+      'productImages': this.productImagesCtrl
     });
+
+    this.imageUpload.subscribe(this.onUpload);
+
   }
 
-  uploadImage(item: FileItem) {
-    item.upload();
+  onUpload(event) {
+    event.productImagesCtrl.reset(event.caller.model.images);
   }
 
-  cancelImage(item: FileItem) {
-    item.cancel();
-  }
-
-  removeImage(item: FileItem) {
-    item.remove();
+  addProductImage(productImage: ProductImage) {
+    this.model.images = this.model.images || [];
+    this.model.images.push(productImage);
+    console.log(this.model);
   }
 
   get productName() { return this.form.get('productName'); }
