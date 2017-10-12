@@ -1,6 +1,6 @@
 export class CustomRegularExpressions {
     // General
-    static standardCharacters: RegExp = /^[A-Za-z0-9\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\\\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~]*$/;
+    static standardCharacters: RegExp = /^[A-Za-z0-9\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\\\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~\s]*$/;
     static hasUpper: RegExp = /[A-Z]/;
     static hasLower: RegExp = /[a-z]/;
     static hasSpace: RegExp = /[ ]/;
