@@ -2,9 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
 import {Product} from "@store/product";
 import {CustomRegularExpressions} from "@models/custom-regular-expressions";
-import {FileItem, FileUploader} from "ng2-file-upload";
+import {FileUploader} from "ng2-file-upload";
 import {ProductImage} from "@store/product-image";
-import {map} from 'rxjs/operator/map';
+import {ProductService} from "@app/admin/services/product.service";
 
 @Component({
   selector: 'app-create-product',
@@ -21,7 +21,8 @@ export class CreateProductComponent implements OnInit {
   productImagesCtrl: FormControl;
 
   constructor(
-    formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private productService: ProductService
   ) {
     const _thisRef = this;
     this.form = formBuilder.group({
@@ -40,6 +41,7 @@ export class CreateProductComponent implements OnInit {
 
   submit() {
     console.log('Should submit product');
+    this.productService.create(this.model);
   }
 
   public fileOverBase(e: any): void {
