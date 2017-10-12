@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-product-list',
@@ -10,7 +11,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[];
+  products: Observable<Product[]>;
 
   constructor(
     private productService: ProductService,
@@ -26,8 +27,8 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['/product',productID]);
   }
 
-  formattedPrice(productID){
-    let product = this.products.filter(product => product.id === productID)[0];
+  formattedPrice(product){
+    // return '5';
     return this.productService.formatPrice(product.price);
   }
 

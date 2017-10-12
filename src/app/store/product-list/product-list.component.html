@@ -1,5 +1,5 @@
 <mat-grid-list cols="12" rowHeight="500px">
-  <mat-grid-tile *ngFor="let product of products" colspan="3">
+  <mat-grid-tile *ngFor="let product of products | async" colspan="3">
     <mat-card>
       <img mat-card-image src="{{product.imgHref}}" (click)="redirect(product.id)">
       <mat-card-header>
@@ -10,7 +10,7 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <span class="price-display">{{formattedPrice(product.id)}}</span>
+        <span class="price-display">{{formattedPrice(product)}}</span>
         <span class="shipping-display">Ships eventually</span>
       </mat-card-content>
       <!--<mat-card-actions>-->

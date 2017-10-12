@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '@store/cart.service';
-import { ProductService } from '@store/product.service';
 import { Product } from '@store/product';
 import { Cart } from '@store/cart';
 import {Router} from "@angular/router";
@@ -15,7 +14,6 @@ export class MyCartComponent implements OnInit {
   itemsBeingPurchased: Product[];
 
   constructor(
-    private productService: ProductService,
     private cartService: CartService,
     private router: Router
   ) { }
@@ -24,9 +22,6 @@ export class MyCartComponent implements OnInit {
    * Initialize the cart. Default to having all items in the cart being purchased.
    */
   ngOnInit() {
-    let products = this.productService.get();
-    products.forEach(product => this.cartService.add(product));
-
     this.itemsBeingPurchased = [];
     this.cart = this.cartService.get();
     this.cart.items.forEach(item => this.itemsBeingPurchased.push(item));
