@@ -74,7 +74,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   onUpload(event) {
-    event.productImagesCtrl.reset(event.caller.model.images);
+    event.caller.productImagesCtrl.reset(event.caller.model.images);
   }
 
   addProductImage(productImage: ProductImage) {
