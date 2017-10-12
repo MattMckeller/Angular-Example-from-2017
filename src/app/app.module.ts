@@ -19,8 +19,8 @@ import { CheckoutFormModule } from '@forms/checkout-form/checkout-form.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { MyCartComponent } from '@pages/my-cart/my-cart.component';
-import {ManageProductsModule} from "@app/admin/manage-products/manage-products.module";
 import {FileUploadModule} from "ng2-file-upload";
+import {AdminModule} from "@app/admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import {FileUploadModule} from "ng2-file-upload";
     FlexLayoutModule,
     EcommerceModule,
     CheckoutFormModule,
-    ManageProductsModule,
+    AdminModule,
     FileUploadModule
   ],
   providers: [
