@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import {Observable} from "rxjs/Observable";
+import {ProductImageService} from "@app/services/product-image.service";
+
+import "rxjs/add/operator/toPromise";
 
 @Component({
   selector: 'app-product-list',
@@ -11,15 +14,35 @@ import {Observable} from "rxjs/Observable";
 })
 export class ProductListComponent implements OnInit {
 
-  products: Observable<Product[]>;
+  products: Product[];
+  productArray: Product[];
+  pic;
 
   constructor(
     private productService: ProductService,
+    private productImageService: ProductImageService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.products = this.productService.get();
+    this.productService.get().toPromise().then(
+      (products) => {
+        this.products = products;
+        // _.each(this.productArray)
+        console.log(products);
+        this.getThumbnail(products[0]);
+      });
+
+  }
+
+  getThumbnail(product) {
+    // console.log(product);
+    this.productImageService.getProductImage(product).then((image)=>{
+      // const img = new Image();
+      this.pic = URL.createObjectURL(image);
+      // document.body.appendChild(img);
+      // this.pic = img
+    });
   }
 
   redirect(productID){
@@ -28,7 +51,7 @@ export class ProductListComponent implements OnInit {
   }
 
   formattedPrice(product){
-    // return '5';
+    console.log(product);
     return this.productService.formatPrice(product.price);
   }
 
