@@ -4,6 +4,7 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 import {Observable} from "rxjs/Observable";
 import {ProductImageService} from "@app/services/product-image.service";
+import _ from "lodash";
 
 import "rxjs/add/operator/toPromise";
 
@@ -15,8 +16,7 @@ import "rxjs/add/operator/toPromise";
 export class ProductListComponent implements OnInit {
 
   products: Product[];
-  productArray: Product[];
-  pic;
+  thumbnails: Array<any> = [];
 
   constructor(
     private productService: ProductService,
@@ -24,25 +24,43 @@ export class ProductListComponent implements OnInit {
     private router: Router
   ) { }
 
+  /**
+   * Retrieve the products to be displayed.
+   */
   ngOnInit() {
     this.productService.get().toPromise().then(
       (products) => {
         this.products = products;
-        // _.each(this.productArray)
-        console.log(products);
-        this.getThumbnail(products[0]);
+        this.fetchThumbnails();
       });
-
   }
 
-  getThumbnail(product) {
-    // console.log(product);
-    this.productImageService.getProductImage(product).then((image)=>{
-      // const img = new Image();
-      this.pic = URL.createObjectURL(image);
-      // document.body.appendChild(img);
-      // this.pic = img
+  /**
+   * Retrieve images from api, and convert them to object urls. Stores urls in thumbnail variable.
+   */
+  fetchThumbnails(){
+    let _this = this;
+    _.each(this.products, function(product){
+      _this.productImageService.getProductImage(product).then(
+        (image) => {
+          let imageUrl = URL.createObjectURL(image);
+          _this.thumbnails[product.id] = _this.thumbnails[product.id] || [];
+          _this.thumbnails[product.id].push(imageUrl);
+        });
     });
+  }
+
+  /**
+   * Returns the thumbnail for the provided product
+   * @param product
+   * @return false | blobUrl
+   */
+  getThumbnail(product) {
+    if(product && this.thumbnails[product.id] && this.thumbnails[product.id][0]){
+      return this.thumbnails[product.id][0];
+    }else{
+      return false;
+    }
   }
 
   redirect(productID){

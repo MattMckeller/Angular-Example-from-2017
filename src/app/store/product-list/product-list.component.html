@@ -1,7 +1,7 @@
 <mat-grid-list cols="12" rowHeight="500px">
-  <mat-grid-tile *ngFor="let product of products | async" colspan="3">
+  <mat-grid-tile *ngFor="let product of products" colspan="3">
     <mat-card>
-      <img mat-card-image src="{{product.imgHref}}" (click)="redirect(product.id)">
+      <img [src]="getThumbnail(product) | safeImage" (click)="redirect(product.id)">
       <mat-card-header>
         <mat-card-title>
           <a (click)="redirect(product.id)">

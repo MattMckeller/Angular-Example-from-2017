@@ -9,6 +9,7 @@ export class Product {
     size?: string;
     attributes?: Array<Attribute>;
     tags?: Array<Tag>;
+    blobImages?: Array<any>
 }
 
 export class Attribute {
