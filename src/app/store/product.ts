@@ -5,7 +5,7 @@ export class Product {
     name: string;
     price: number;
     imgHref: string;
-    images?: Array<ProductImage>;
+    productImages?: Array<ProductImage>;
     size?: string;
     attributes?: Array<Attribute>;
     tags?: Array<Tag>;
