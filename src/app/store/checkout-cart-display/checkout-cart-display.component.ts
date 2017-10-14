@@ -28,10 +28,6 @@ export class CheckoutCartDisplayComponent implements OnInit {
    * Initialize the cart. Default to having all items in the cart being purchased.
    */
   ngOnInit() {
-    //TODO NEED TO UPDATE THIS TO OBSERVER, WHEN ITEM IS REMOVED NOTHING UPDATES
-    let products = this.productService.get();
-    products.forEach(product => this.cartService.add(product));
-
     this.itemsBeingPurchased = [];
     this.cart = this.cartService.get();
     this.cart.items.forEach(item => this.itemsBeingPurchased.push(item));
