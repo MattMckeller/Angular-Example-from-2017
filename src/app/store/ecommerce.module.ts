@@ -7,11 +7,12 @@ import { ProductComponent } from './product/product.component';
 import { CartIconComponent } from './cart-icon/cart-icon.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CheckoutCartDisplayComponent } from './checkout-cart-display/checkout-cart-display.component';
-
+import {ImagePipeModule} from "@app/pipes/images/image-pipe.module";
 
 @NgModule({
   imports: [
-    MaterialModule
+    MaterialModule,
+    ImagePipeModule
   ],
   exports: [
     ProductComponent,

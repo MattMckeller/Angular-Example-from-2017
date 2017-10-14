@@ -21,6 +21,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { MyCartComponent } from '@pages/my-cart/my-cart.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {AdminModule} from "@app/admin/admin.module";
+import {ProductImageService} from "@app/services/product-image.service";
+import {ImagePipeModule} from "@app/pipes/images/image-pipe.module";
 
 @NgModule({
   declarations: [
@@ -45,10 +47,12 @@ import {AdminModule} from "@app/admin/admin.module";
     EcommerceModule,
     CheckoutFormModule,
     AdminModule,
-    FileUploadModule
+    FileUploadModule,
+    ImagePipeModule
   ],
   providers: [
-    SideNavService
+    SideNavService,
+    ProductImageService
   ],
   bootstrap: [AppComponent]
 })
