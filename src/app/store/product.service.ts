@@ -32,7 +32,11 @@ export class ProductService {
 
   }
 
-  formatPrice(price: Number){
-    return '$'+price.toFixed(2);
+  formatPrice(product: Product){
+    if (product && product.price) {
+      return '$' + product.price.toFixed(2);
+    }else {
+      return '';
+    }
   }
 }

@@ -69,7 +69,7 @@ export class ProductListComponent implements OnInit {
   }
 
   formattedPrice(product){
-    return this.productService.formatPrice(product.price);
+    return this.productService.formatPrice(product);
   }
 
 }
