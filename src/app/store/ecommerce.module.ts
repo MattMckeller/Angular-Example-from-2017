@@ -8,11 +8,13 @@ import { CartIconComponent } from './cart-icon/cart-icon.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CheckoutCartDisplayComponent } from './checkout-cart-display/checkout-cart-display.component';
 import {ImagePipeModule} from "@app/pipes/images/image-pipe.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
     MaterialModule,
-    ImagePipeModule
+    ImagePipeModule,
+    FlexLayoutModule
   ],
   exports: [
     ProductComponent,
