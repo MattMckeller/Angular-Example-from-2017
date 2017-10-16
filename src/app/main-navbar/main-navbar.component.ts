@@ -7,7 +7,7 @@ import {SideNavService} from "../side-nav.service";
 @Component({
   selector: 'app-main-navbar',
   templateUrl: './main-navbar.component.html',
-  styleUrls: ['./main-navbar.component.css']
+  styleUrls: ['./main-navbar.component.scss']
 })
 export class MainNavbarComponent implements OnInit {
 

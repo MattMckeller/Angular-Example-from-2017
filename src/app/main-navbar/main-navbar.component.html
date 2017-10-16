@@ -1,15 +1,25 @@
+<!--<div class="liner"></div>-->
 <mat-toolbar color="primary">
-  <div class="header-slice flex-start">
-    <button mat-mini-fab class="example-fab" (click)="toggleSideNav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
-  <div class="spacer"></div>
-  <div class="header-slice flex-center">
-    <span>VintageHails</span>
-  </div>
-  <div class="spacer"></div>
-  <div class="header-slice flex-end">
-    <cart-icon></cart-icon>
+  <div class="toolbar-content-wrapper"
+       fxLayout="row" fxLayoutAlign="space-between"
+  >
+    <div class="header-slice" fxLayout="row" fxLayoutAlign="center center">
+      <div class="menu-button-container" fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon class="menu-button-icon" (click)="toggleSideNav()">menu</mat-icon>
+      </div>
+    </div>
+
+    <div class="header-slice" fxLayout="row" fxLayoutAlign="center center">
+      <!--Expanse Services-->
+      <button class="header-logo-button" mat-button routerLink="/home" >
+        <img class="header-logo-img" src="assets/logos/VintageHails-Logo-2-WEB-01.png">
+      </button>
+    </div>
+
+    <div class="header-slice" fxLayout="row" fxLayoutAlign="center center">
+      <!--Expanse Services-->
+      <cart-icon></cart-icon>
+    </div>
   </div>
 </mat-toolbar>
+<!--<div class="liner"></div>-->
