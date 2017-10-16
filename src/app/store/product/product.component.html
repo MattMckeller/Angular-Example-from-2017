@@ -1,9 +1,9 @@
 <mat-grid-list cols="12">
     <mat-grid-tile colspan=6 rowspan="6">
-        <img mat-card-image src="{{product.imgHref}}">
+        <img *ngIf="getThumbnail(product)" [src]="getThumbnail(product) | safeImage">
     </mat-grid-tile>
     <mat-grid-tile colspan="6" rowspan="2">
-        <h1>{{product.name}}</h1>
+        <h1>{{product?.name}}</h1>
     </mat-grid-tile>
     <mat-grid-tile colspan="6" rowspan="2">
         <div class="flex-end gutter">
@@ -11,7 +11,7 @@
             <label>Shipping:</label>
         </div>
         <div class="flex-start gutter">
-            <span class="price-display">{{formattedPrice(product.id)}}</span>
+            <span class="price-display">{{formattedPrice(product)}}</span>
             <span class="shipping-display">Eventually</span>
         </div>
 
