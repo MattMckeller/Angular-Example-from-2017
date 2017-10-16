@@ -69,7 +69,6 @@ export class ProductListComponent implements OnInit {
   }
 
   formattedPrice(product){
-    console.log(product);
     return this.productService.formatPrice(product.price);
   }
 
