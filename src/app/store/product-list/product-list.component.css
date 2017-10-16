@@ -1,11 +1,4 @@
 .card-image-container{
-    /*min-height: 50%;*/
-    margin: auto;
-    /*display:flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-}
-.image-positioner{
     margin: auto;
 }
 .card-container{

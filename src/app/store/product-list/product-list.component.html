@@ -7,7 +7,7 @@
             <div fxFlex="100%" fxLayout="column" fxFlexFill>
 
               <div class="card-image-container" fxFlex="50%">
-                <img [src]="getThumbnail(product) | safeImage" (click)="redirect(product.id)">
+                <img *ngIf="getThumbnail(product)" [src]="getThumbnail(product) | safeImage" (click)="redirect(product.id)">
               </div>
               <div fxFlex="25%">
                 <mat-card-header >
