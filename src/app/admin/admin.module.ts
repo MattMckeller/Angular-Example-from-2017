@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ProductService} from "@app/admin/services/product.service";
 import {ManageProductsModule} from "@app/admin/manage-products/manage-products.module";
+import { AdminComponent } from './admin.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ManageProductsModule
   ],
-  declarations: [],
+  declarations: [AdminComponent],
   providers: [
     ProductService
   ]

@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {ManageProductsComponent} from "@app/admin/manage-products/manage-products.component";
 import { CreateProductComponent } from './create-product/create-product.component';
 import {FileUploadModule} from "ng2-file-upload";
+import {ManageProductsRoutingModule} from "@app/admin/manage-products/manage-products-routing.module";
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +15,8 @@ import {FileUploadModule} from "ng2-file-upload";
     MaterialModule,
     TextMaskModule,
     FlexLayoutModule,
-    FileUploadModule
+    FileUploadModule,
+    ManageProductsRoutingModule
   ],
   exports: [
     ManageProductsComponent

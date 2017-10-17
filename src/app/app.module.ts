@@ -39,16 +39,16 @@ import {ImagePipeModule} from "@app/pipes/images/image-pipe.module";
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     EcommerceModule,
     CheckoutFormModule,
-    AdminModule,
     FileUploadModule,
-    ImagePipeModule
+    ImagePipeModule,
+    AdminModule,
+    AppRoutingModule,
   ],
   providers: [
     SideNavService,
