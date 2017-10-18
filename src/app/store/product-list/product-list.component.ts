@@ -68,9 +68,4 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['/product',productID]);
   }
 
-  // todo: should be pipe
-  formattedPrice(product){
-    return this.productService.formatPrice(product);
-  }
-
 }

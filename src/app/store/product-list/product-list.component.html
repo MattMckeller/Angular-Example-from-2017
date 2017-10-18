@@ -20,7 +20,7 @@
               </div>
               <div fxFlex="25%">
                 <mat-card-content>
-                  <span class="price-display">{{formattedPrice(product)}}</span>
+                  <span class="price-display">{{product.price | currency:'USD':true}}</span>
                   <span class="shipping-display">Ships eventually</span>
                 </mat-card-content>
               </div>
