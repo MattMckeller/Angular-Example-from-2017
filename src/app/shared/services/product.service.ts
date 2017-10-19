@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product'
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import _ from "lodash";
+import { Product } from '../models/product';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import _ from 'lodash';
 
 @Injectable()
 export class ProductService {
@@ -12,12 +12,12 @@ export class ProductService {
   ) { }
 
   get(): Observable<Product[]> {
-    let url = this.apiBaseUrl + 'products/getProducts';
+    const url = this.apiBaseUrl + 'products/getProducts';
     return this.http.get<Product[]>(url);
   }
 
   getById(id: any): Observable<Product> {
-    let url = this.apiBaseUrl + 'products/getProduct/' + id;
+    const url = this.apiBaseUrl + 'products/getProduct/' + id;
     return this.http.get<Product>(url);
   }
 
@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   create(productData: Product) {
-    let url = this.apiBaseUrl + 'products/createProduct';
+    const url = this.apiBaseUrl + 'products/createProduct';
     this.http.post(url, {product: productData})
       .subscribe(
         this.nextHandler,
@@ -35,7 +35,7 @@ export class ProductService {
   }
 
   update(productData: Product) {
-    let url = this.apiBaseUrl + 'products/updateProduct';
+    const url = this.apiBaseUrl + 'products/updateProduct/' + productData.id;
     this.http.post(url, {product: productData})
       .subscribe(
         this.nextHandler,

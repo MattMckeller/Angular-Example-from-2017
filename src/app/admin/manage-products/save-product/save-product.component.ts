@@ -1,39 +1,44 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
-import {Product} from "@models/product";
-import {CustomRegularExpressions} from "@models/custom-regular-expressions";
-import {FileUploader} from "ng2-file-upload";
-import {ProductImage} from "@models/product-image";
-import {ProductService} from "@services/product.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {Product} from '@models/product';
+import {CustomRegularExpressions} from '@models/custom-regular-expressions';
+import {FileUploader} from 'ng2-file-upload';
+import {ProductImage} from '@models/product-image';
+import {ProductService} from '@services/product.service';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
+import {ProductImageService} from "@services/product-image.service";
+import {AppSettings} from "@app/app-settings";
 
 @Component({
-  selector: 'app-create-product',
-  templateUrl: './create-product.component.html',
-  styleUrls: ['./create-product.component.css']
+  selector: 'app-save-product',
+  templateUrl: './save-product.component.html',
+  styleUrls: ['./save-product.component.css']
 })
-export class CreateProductComponent implements OnInit {
+export class SaveProductComponent implements OnInit {
   @Input() model: Product;
   @Output() imageUpload: EventEmitter<any> = new EventEmitter();
+  saveType: string;
   form: FormGroup;
   uploader: FileUploader;
-  hasBaseDropZoneOver: boolean = false;
+  hasBaseDropZoneOver = false;
+  allProductImages: Array<string> = [];
 
   productImagesCtrl: FormControl;
 
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productImageService: ProductImageService
   ) {
     const _thisRef = this;
     this.form = formBuilder.group({
       hideRequired: false,
       floatPlaceholder: 'auto',
     });
-    const uploadUrl = 'http://api.expanseservices.com/api/productImages/addImage';
+    const uploadUrl = AppSettings.API_BASEURL + 'productImages/addImage';
     this.uploader = new FileUploader({url: uploadUrl});
     this.uploader.onSuccessItem =
       (item, response) => {
@@ -45,7 +50,7 @@ export class CreateProductComponent implements OnInit {
 
   submit() {
     console.log('Should submit product');
-    if(this.model.id) {
+    if (this.saveType === 'edit') {
       this.productService.update(this.model);
     }else{
       this.productService.create(this.model);
@@ -62,9 +67,23 @@ export class CreateProductComponent implements OnInit {
       this.model = new Product();
       // Check if an id was provided to see if we are editing or creating
       if (this.route.snapshot.params['id']) {
+        this.saveType = 'edit';
+      }else{
+        this.saveType = 'create';
+      }
+
+      if (this.saveType === 'edit') {
+        let _thisRef = this;
         this.route.paramMap
           .switchMap((params: ParamMap) => this.productService.getById(+params.get('id')))
-          .subscribe(product => this.model = product);
+          .subscribe(product => {
+            _thisRef.model = product;
+            console.log('yay here');
+            _thisRef.productImageService
+              .getProductImages(product)
+              .then(images => _thisRef.allProductImages = images);
+          });
+
       }
     }
 
