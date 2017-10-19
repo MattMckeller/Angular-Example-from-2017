@@ -8,6 +8,8 @@ import {Observable} from "rxjs";
 import "rxjs/add/operator/toPromise";
 import "rxjs/add/operator/map";
 import {ResponseContentType} from "@angular/http";
+import _ from 'lodash';
+import {AppSettings} from "@app/app-settings";
 
 
 @Injectable()
@@ -18,51 +20,52 @@ export class ProductImageService {
     private productService: ProductService
   ) { }
 
-  getProductImage(product: Product): Promise<any> {
+  getProductImages(product: Product): Promise<any> {
     let _this = this;
     return new Promise(function(resolve, reject){
-      _this.getImageReference(product).then(
-        (imgRef) => {
-          _this._getImageFile(imgRef).then(
-            (response) => {
-              console.log('here', response);
-              resolve(response);
-            }
-          )
-        });
+      _this.getImageObjects(product).then(
+        (productImages) => {
+          let productImagesResponse = [];
+          _.forEach(productImages, (productImage) => {
+            const imageHref = _this._getImageHref(productImage);
+            productImagesResponse.push(imageHref);
+          });
+          resolve(productImagesResponse);
+      });
     });
   }
 
-  getAllProductImages(product) {
-
-  }
-
-  private getImageReference(product: Product): Promise<any> {
-    console.log('get image reference', product);
+  /**
+   * Returns a promise which resolves to the productImage jsons for the provided product.
+   * @param {Product} product
+   * @returns {Promise<any>}
+   */
+  private getImageObjects(product: Product): Promise<any> {
     let _this = this;
     return new Promise(function(resolve, reject){
-      console.log(product);
-      console.log(product[0]);
-      if(product.productImages && product.productImages[0]){
-        resolve(product.productImages[0])
-      }else{
+      if (product.product_images && product.product_images[0]) {
+        resolve(product.product_images);
+      }else {
         _this.productService.getById(product.id)
           .toPromise()
           .then(
             (response) => {
-              console.log('response of product service by id', response);
-              resolve(response);
+              if(response.product_images) {
+                resolve(response.product_images);
+              }else {
+                reject();
+              }
             }
           );
       }
     });
   }
 
-  private _getImageFile(productImage: ProductImage): Promise<any>{
-    console.log('get image file', productImage);
-    let url = 'http://api.expanseservices.com/api/productImages/getImage/'+productImage.id;
-    return this.http.get(url, {
-      responseType: 'blob'
-    }).toPromise();
+  /**
+   * Returns the full href for a product image
+   */
+  private _getImageHref(productImage: ProductImage): String{
+    const url = AppSettings.IMAGES_BASEURL + productImage.image;
+    return url;
   }
 }
