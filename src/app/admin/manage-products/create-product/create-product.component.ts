@@ -70,7 +70,7 @@ export class CreateProductComponent implements OnInit {
 
     // Create product images form control separately since it's not a standard form element,
     // and will need to be referenced later in init.
-    this.productImagesCtrl = new FormControl(this.model.productImages, [
+    this.productImagesCtrl = new FormControl(this.model.product_images, [
       Validators.required
     ]);
     this.form = new FormGroup({
@@ -91,12 +91,12 @@ export class CreateProductComponent implements OnInit {
   }
 
   onUpload(event) {
-    event.caller.productImagesCtrl.reset(event.caller.model.productImages);
+    event.caller.productImagesCtrl.reset(event.caller.model.product_images);
   }
 
   addProductImage(productImage: ProductImage) {
-    this.model.productImages = this.model.productImages || [];
-    this.model.productImages.push(productImage);
+    this.model.product_images = this.model.product_images || [];
+    this.model.product_images.push(productImage);
     console.log(this.model);
   }
 

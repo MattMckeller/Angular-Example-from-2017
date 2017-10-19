@@ -68,17 +68,16 @@ export class ProductComponent implements OnInit {
   }
 
   /**
-   * Retrieve images from api, and convert them to object urls. Stores urls in thumbnail variable.
+   * Retrieve product iamge hrefs from api. Stores urls in thumbnail variable.
    */
   fetchThumbnails(){
     let _this = this;
     let product = this.product;
-    _this.productImageService.getProductImage(product).then(
-      (image) => {
-        let imageUrl = URL.createObjectURL(image);
+    this.productImageService.getProductImages(product).then(
+      (productImageHrefs) => {
         _this.thumbnails[product.id] = _this.thumbnails[product.id] || [];
-        _this.thumbnails[product.id].push(imageUrl);
-      });
+        productImageHrefs.forEach((imageHref) => _this.thumbnails[product.id].push(imageHref));
+    });
   }
 
   /**

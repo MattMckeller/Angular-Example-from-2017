@@ -4,12 +4,10 @@ export class Product {
     id: number;
     name: string;
     price: number;
-    imgHref: string;
-    productImages?: Array<ProductImage>;
+    product_images?: Array<ProductImage>;
     size?: string;
     attributes?: Array<Attribute>;
     tags?: Array<Tag>;
-    blobImages?: Array<any>
 }
 
 export class Attribute {

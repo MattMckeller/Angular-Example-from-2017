@@ -7,6 +7,7 @@ import {ProductImageService} from "@app/shared/services/product-image.service";
 import _ from "lodash";
 
 import "rxjs/add/operator/toPromise";
+import {AppSettings} from "@app/app-settings";
 
 @Component({
   selector: 'app-product-list',
@@ -36,16 +37,15 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Retrieve images from api, and convert them to object urls. Stores urls in thumbnail variable.
+   * Retrieve product iamge hrefs from api. Stores urls in thumbnail variable.
    */
   fetchThumbnails(){
     let _this = this;
     _.each(this.products, function(product){
-      _this.productImageService.getProductImage(product).then(
-        (image) => {
-          let imageUrl = URL.createObjectURL(image);
+      _this.productImageService.getProductImages(product).then(
+        (productImageHrefs) => {
           _this.thumbnails[product.id] = _this.thumbnails[product.id] || [];
-          _this.thumbnails[product.id].push(imageUrl);
+          productImageHrefs.forEach((imageHref) => _this.thumbnails[product.id].push(imageHref));
         });
     });
   }
@@ -53,7 +53,7 @@ export class ProductListComponent implements OnInit {
   /**
    * Returns the thumbnail for the provided product
    * @param product
-   * @return false | blobUrl
+   * @return false | href
    */
   getThumbnail(product) {
     if(product && this.thumbnails[product.id] && this.thumbnails[product.id][0]){
