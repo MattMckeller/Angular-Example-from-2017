@@ -56,12 +56,16 @@ export class CreateProductComponent implements OnInit {
     this.hasBaseDropZoneOver = e;
   }
 
+
   ngOnInit() {
     if (this.model === undefined) {
       this.model = new Product();
-      this.route.paramMap
-        .switchMap((params: ParamMap) => this.productService.getById(+params.get('id')))
-        .subscribe(product => this.model = product);
+      // Check if an id was provided to see if we are editing or creating
+      if (this.route.snapshot.params['id']) {
+        this.route.paramMap
+          .switchMap((params: ParamMap) => this.productService.getById(+params.get('id')))
+          .subscribe(product => this.model = product);
+      }
     }
 
     // Create product images form control separately since it's not a standard form element,
