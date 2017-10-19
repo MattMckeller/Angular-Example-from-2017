@@ -5,7 +5,7 @@ import {ManageProductsComponent} from "@app/admin/manage-products/manage-product
 import {CreateProductComponent} from "@app/admin/manage-products/create-product/create-product.component";
 
 const routes: Routes = [
-  { path: 'admin/manage-products/create-product',  component: CreateProductComponent },
+  { path: 'admin/manage-products/product/:id',  component: CreateProductComponent },
   { path: 'admin/manage-products',  component: ManageProductsComponent }
 ];
 
