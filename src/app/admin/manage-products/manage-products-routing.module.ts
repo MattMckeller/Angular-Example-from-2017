@@ -6,6 +6,7 @@ import {CreateProductComponent} from "@app/admin/manage-products/create-product/
 
 const routes: Routes = [
   { path: 'admin/manage-products/product/:id',  component: CreateProductComponent },
+  { path: 'admin/manage-products/product',  component: CreateProductComponent },
   { path: 'admin/manage-products',  component: ManageProductsComponent }
 ];
 
