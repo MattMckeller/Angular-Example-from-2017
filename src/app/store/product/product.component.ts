@@ -93,8 +93,4 @@ export class ProductComponent implements OnInit {
       return false;
     }
   }
-
-  formattedPrice(){
-    return this.productService.formatPrice(this.product);
-  }
 }

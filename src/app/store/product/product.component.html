@@ -11,7 +11,7 @@
             <label>Shipping:</label>
         </div>
         <div class="flex-start gutter">
-            <span class="price-display">{{formattedPrice(product)}}</span>
+            <span class="price-display">{{product.price | currency:'USD':true}}</span>
             <span class="shipping-display">Eventually</span>
         </div>
 
