@@ -1,4 +1,4 @@
-<mat-grid-list cols="12">
+<mat-grid-list cols="12" *ngIf="product">
     <mat-grid-tile colspan=6 rowspan="6">
         <img *ngIf="getThumbnail(product)" [src]="getThumbnail(product) | safeImage">
     </mat-grid-tile>
