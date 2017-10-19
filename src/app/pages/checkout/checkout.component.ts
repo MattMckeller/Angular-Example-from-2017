@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '@store/cart.service';
-import { ProductService } from '@store/product.service';
-import { Product } from '@store/product';
-import { Cart } from '@store/cart';
+import { CartService } from '@services/cart.service';
+import { ProductService } from '@services/product.service';
+import { Product } from '@models/product';
+import { Cart } from '@models/cart';
 import {Router} from "@angular/router";
 
 // todo create checkout module

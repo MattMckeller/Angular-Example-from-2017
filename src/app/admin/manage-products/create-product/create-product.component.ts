@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
-import {Product} from "@store/product";
+import {Product} from "@models/product";
 import {CustomRegularExpressions} from "@models/custom-regular-expressions";
 import {FileUploader} from "ng2-file-upload";
-import {ProductImage} from "@store/product-image";
+import {ProductImage} from "@models/product-image";
 import {ProductService} from "@app/admin/services/product.service";
 
 @Component({

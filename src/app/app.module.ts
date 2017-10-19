@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from '@shared/material/material.module';
 import { EcommerceModule } from '@store/ecommerce.module';
 
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
@@ -21,8 +21,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { MyCartComponent } from '@pages/my-cart/my-cart.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {AdminModule} from "@app/admin/admin.module";
-import {ProductImageService} from "@app/services/product-image.service";
-import {ImagePipeModule} from "@app/pipes/images/image-pipe.module";
+import {ProductImageService} from "@app/shared/services/product-image.service";
+import {ImagePipeModule} from "@app/shared/pipes/images/image-pipe.module";
 
 @NgModule({
   declarations: [

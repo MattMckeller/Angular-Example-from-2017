@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Product} from "@store/product";
-import {ProductService} from "@store/product.service";
+import {Product} from "@models/product";
+import {ProductService} from "@services/product.service";
 import {ProductImageService} from "@services/product-image.service";
 import _ from "lodash";
 import "rxjs/add/operator/toPromise";

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CartService } from '@app/store/cart.service';
-import { ProductService } from '@app/store/product.service';
-import { Product } from '@app/store/product';
-import { Cart } from '@app/store/cart';
+import { CartService } from '@app/shared/services/cart.service';
+import { ProductService } from '@app/shared/services/product.service';
+import { Product } from '@app/shared/models/product';
+import { Cart } from '@app/shared/models/cart';
 
 @Component({
   selector: 'checkout-cart-display',

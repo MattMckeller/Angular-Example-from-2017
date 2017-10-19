@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../product';
-import { ProductService } from '../product.service';
+import { Product } from '../../shared/models/product';
+import { ProductService } from '../../shared/services/product.service';
 import {Observable} from "rxjs/Observable";
-import {ProductImageService} from "@app/services/product-image.service";
+import {ProductImageService} from "@app/shared/services/product-image.service";
 import _ from "lodash";
 
 import "rxjs/add/operator/toPromise";

@@ -6,7 +6,7 @@ import "rxjs/add/operator/map";
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 import {ProductDatabase} from "@app/data/product/product-database";
-import {Product} from "@store/product";
+import {Product} from "@models/product";
 
 export class ProductDataSource extends DataSource<any> {
   constructor(

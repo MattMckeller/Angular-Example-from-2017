@@ -1,8 +1,8 @@
 /** An example database that the data source uses to retrieve data for the table. */
 
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Product} from "@store/product";
-import {ProductService} from "@app/store/product.service";
+import {Product} from "@models/product";
+import {ProductService} from "@services/product.service";
 
 export class ProductDatabase{
   /** Stream that emits whenever the data has been modified. */

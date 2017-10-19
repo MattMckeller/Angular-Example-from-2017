@@ -1,12 +1,12 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { CheckoutModel } from '@app/models/checkout';
+import { CheckoutModel } from '@app/shared/models/checkout';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-import {CardPaymentMethod} from "@app/models/card-payment-method";
-import {Address} from "@app/models/address";
-import {CartService} from "@app/store/cart.service";
-import {Product} from "@app/store/product";
-import {Cart} from "@app/store/cart";
-import {ShippingOption} from "@app/models/shipping-option";
+import {CardPaymentMethod} from "@app/shared/models/card-payment-method";
+import {Address} from "@app/shared/models/address";
+import {CartService} from "@app/shared/services/cart.service";
+import {Product} from "@app/shared/models/product";
+import {Cart} from "@app/shared/models/cart";
+import {ShippingOption} from "@app/shared/models/shipping-option";
 import { CustomValidators } from 'ng2-validation';
 
 import _ from "lodash";
@@ -14,7 +14,7 @@ import { Observable }        from 'rxjs/Observable';
 
 import {HttpClient} from "@angular/common/http";
 import {CheckoutService} from "@services/checkout.service";
-import {ShippingService} from "@app/services/shipping.service";
+import {ShippingService} from "@app/shared/services/shipping.service";
 
 @Component({
   selector: 'app-checkout-form',

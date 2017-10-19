@@ -20,9 +20,10 @@
       "@app/*": ["app/*"],
       "@forms/*":["app/forms/*"],
       "@store/*":["app/store/*"],
-      "@models/*":["app/models/*"],
+      "@models/*":["app/shared/models/*"],
       "@pages/*":["app/pages/*"],
-      "@services/*":["app/services/*"]
+      "@services/*":["app/shared/services/*"],
+      "@shared/*":["app/shared/*"]
     }
   }
 }

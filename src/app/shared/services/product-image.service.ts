@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Product} from "@app/store/product";
+import {Product} from "@app/shared/models/product";
 import {HttpClient} from "@angular/common/http";
-import {ProductService} from "@app/store/product.service";
-import {ProductImage} from "@app/store/product-image";
+import {ProductService} from "@app/shared/services/product.service";
+import {ProductImage} from "@app/shared/models/product-image";
 import {Observable} from "rxjs";
 
 import "rxjs/add/operator/toPromise";

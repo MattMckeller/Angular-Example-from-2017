@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SafeImagePipe} from "@app/pipes/images/safe-image.pipe";
+import {SafeImagePipe} from "@app/shared/pipes/images/safe-image.pipe";
 
 @NgModule({
   imports: [

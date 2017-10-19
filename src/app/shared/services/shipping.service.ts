@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ShippingOption} from "@app/models/shipping-option";
+import {ShippingOption} from "@app/shared/models/shipping-option";
 import {HttpClient} from "@angular/common/http";
 
 import { Observable }     from 'rxjs/Observable';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product'
+import { Product } from '../models/product'
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import _ from "lodash";

@@ -1,7 +1,6 @@
-import { Address } from './address';
-import { CardPaymentMethod } from './card-payment-method';
+import { Address } from '@models/address';
 import {ShippingOption} from "@models/shipping-option";
-import {Product} from "@store/product";
+import {Product} from "@models/product";
 
 export class CheckoutModel {
   constructor(

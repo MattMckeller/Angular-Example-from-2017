@@ -1,4 +1,4 @@
-import {ProductImage} from "@store/product-image";
+import {ProductImage} from "@models/product-image";
 
 export class Product {
     id: number;

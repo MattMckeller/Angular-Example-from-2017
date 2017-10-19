@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { ProductService } from '../product.service';
-import { CartService } from '../cart.service';
-import { Product } from '../product';
+import { CartService } from '@services/cart.service';
+import { Product } from '@models/product';
 import _ from "lodash";
 
 import 'rxjs/add/operator/switchMap';
 import {Observable} from "rxjs/Observable";
-import {ProductImageService} from "@services/product-image.service";
+
+import { ProductService } from '@services/product.service';
+import { ProductImageService } from "@services/product-image.service";
 
 @Component({
   selector: 'app-product',
