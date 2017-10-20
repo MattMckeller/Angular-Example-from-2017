@@ -10,11 +10,24 @@ import { CheckoutCartDisplayComponent } from './checkout-cart-display/checkout-c
 import {ImagePipeModule} from "@app/shared/pipes/images/image-pipe.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+
+const SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  threshold: 50,
+  spaceBetween: 5,
+  slidesPerView: 1,
+  centeredSlides: true,
+  keyboardControl: true
+};
+
 @NgModule({
   imports: [
     MaterialModule,
     ImagePipeModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SwiperModule.forRoot(SWIPER_CONFIG)
   ],
   exports: [
     ProductComponent,

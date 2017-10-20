@@ -9,6 +9,7 @@ import {Observable} from "rxjs/Observable";
 
 import { ProductService } from '@services/product.service';
 import { ProductImageService } from "@services/product-image.service";
+import {SwiperConfigInterface} from "ngx-swiper-wrapper";
 
 @Component({
   selector: 'app-product',
@@ -19,8 +20,28 @@ export class ProductComponent implements OnInit {
   finishedLoading = false;
   productObservable: Observable<Product>;
   product: Product;
-  thumbnails: Array<any> = [];
+  productImages: Array<string> = [];
   hasBeenAdded: boolean = false;
+  swiperConfig: SwiperConfigInterface = {
+    direction: 'horizontal',
+    effect: 'slide',
+    centeredSlides: true,
+    threshold: 50,
+    spaceBetween: 5,
+    slidesPerView: 1,
+    keyboardControl: true,
+
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+
+    loop: true,
+    // autoplay: 10000,
+    speed: 700,
+
+  };
 
   constructor(
     private productService: ProductService,
@@ -75,21 +96,7 @@ export class ProductComponent implements OnInit {
     let product = this.product;
     this.productImageService.getProductImages(product).then(
       (productImageHrefs) => {
-        _this.thumbnails[product.id] = _this.thumbnails[product.id] || [];
-        productImageHrefs.forEach((imageHref) => _this.thumbnails[product.id].push(imageHref));
+        _this.productImages = productImageHrefs;
     });
-  }
-
-  /**
-   * Returns the thumbnail for the provided product
-   * @param product
-   * @return false | blobUrl
-   */
-  getThumbnail(product) {
-    if(product && this.thumbnails[product.id] && this.thumbnails[product.id][0]){
-      return this.thumbnails[product.id][0];
-    }else{
-      return false;
-    }
   }
 }
