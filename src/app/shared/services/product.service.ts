@@ -35,7 +35,7 @@ export class ProductService {
   }
 
   update(productData: Product) {
-    const url = this.apiBaseUrl + 'products/updateProduct/' + productData.id;
+    const url = this.apiBaseUrl + 'products/editProduct/' + productData.id;
     this.http.post(url, {product: productData})
       .subscribe(
         this.nextHandler,
