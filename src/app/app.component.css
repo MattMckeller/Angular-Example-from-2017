@@ -1,5 +1,6 @@
 .header{
-    min-height: 10vh;
+    min-height: 15vh;
+    height: 15vh;
 }
 
 mat-sidenav{

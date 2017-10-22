@@ -1,16 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~normalize.css/normalize.css";
 
 .background-container{
     width: 100%;
     height: 100%;
-}
-
-.price-display{
-    font-weight: bold;
-    color: #c45500;
+    background: white !important;
 }
 
 .flex-start{
@@ -26,24 +21,4 @@
 .flex-center{
     display: flex;
     justify-content: center;
-}
-
-.inset{
-    box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
-}
-
-.card-hover{
-    cursor: pointer !important;;
-    transition: all .4s cubic-bezier(.25,.8,.25,1) !important;
-    transition-property: box-shadow !important;;
-}
-.card-hover:hover{
-    z-index: 2;
-    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12) !important;;
-}
-
-
-/*Override height of list items on checkout cart display*/
-checkout-cart-display md-list md-list-item .mat-list-item-content{
-    height: auto !important;
 }
