@@ -17,6 +17,8 @@ mat-sidenav-container{
     margin: 0 auto;
 }
 .router-container{
+    width: 80%;
+    margin: 0 auto;
     min-height: 80vh;
     position: relative;
     overflow: hidden;
