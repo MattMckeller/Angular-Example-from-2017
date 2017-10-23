@@ -26,7 +26,15 @@
     </mat-form-field>
 
     <div>
-      <app-product-description-editor></app-product-description-editor>
+      <mat-error *ngIf="productDescription.invalid && (productDescription.dirty || productDescription.touched)">
+        Product Description is invalid.
+      </mat-error>
+      <app-product-description-editor
+              [form]="form"
+              productControlName="productDescription"
+              [description]="model.description"
+              (descriptionChange)="model.description = $event"
+      ></app-product-description-editor>
     </div>
 
     <h3>Upload Product Images</h3>

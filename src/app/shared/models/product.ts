@@ -4,6 +4,7 @@ export class Product {
     id: number;
     name: string;
     price: number;
+    description: string;
     product_images?: Array<ProductImage>;
     size?: string;
     attributes?: Array<Attribute>;

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-product-description-editor',
@@ -6,29 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-description-editor.component.css']
 })
 export class ProductDescriptionEditorComponent implements OnInit {
-  description: any;
+  @Input() description: any;
+  @Output() descriptionChange = new EventEmitter<any>();
+  @Input() form: FormGroup;
+  @Input() productControlName: string;
   editorConfig: {uiColor: '#99000'};
 
   constructor() { }
 
-  ngOnInit() {
-    this.description = `<p>Product description goes here</p>`;
-  }
+  ngOnInit() {}
 
-  onChange(event) {
-    console.log('product description change', event);
+  onChange(value) {
+    this.descriptionChange.emit(value);
   }
 
   onReady(event) {
-    console.log('product description ready', event);
+    // console.log('product description ready', event);
   }
 
   onFocus(event) {
-    console.log('product description focus', event);
+    // console.log('product description focus', event);
   }
 
   onBlur(event) {
-    console.log('product description blur', event);
+    // console.log('product description blur', event);
   }
 
 }

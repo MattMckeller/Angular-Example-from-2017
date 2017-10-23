@@ -1,7 +1,8 @@
 <h3>Product Description</h3>
-<div>
+<div [formGroup]="form">
   <ckeditor
           [(ngModel)]="description"
+          formControlName="{{productControlName}}"
           [config]="editorConfig"
           [readonly]="false"
           (change)="onChange($event)"

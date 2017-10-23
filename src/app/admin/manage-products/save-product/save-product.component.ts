@@ -26,6 +26,7 @@ export class SaveProductComponent implements OnInit {
   allProductImages: Array<string> = [];
 
   productImagesCtrl: FormControl;
+  productDescriptionCtrl: FormControl;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,6 +66,7 @@ export class SaveProductComponent implements OnInit {
   ngOnInit() {
     if (this.model === undefined) {
       this.model = new Product();
+      this.model.description ='asdfadfadsf';
       // Check if an id was provided to see if we are editing or creating
       if (this.route.snapshot.params['id']) {
         this.saveType = 'edit';
@@ -92,6 +94,10 @@ export class SaveProductComponent implements OnInit {
     this.productImagesCtrl = new FormControl(this.model.product_images, [
       Validators.required
     ]);
+    this.productDescriptionCtrl = new FormControl(this.model.description, [
+      Validators.required,
+      Validators.minLength(20)
+    ]);
     this.form = new FormGroup({
       'productName': new FormControl(this.model.name, [
         Validators.required,
@@ -102,7 +108,8 @@ export class SaveProductComponent implements OnInit {
         Validators.required,
         Validators.pattern(CustomRegularExpressions.usdCurrency),
       ]),
-      'productImages': this.productImagesCtrl
+      'productImages': this.productImagesCtrl,
+      'productDescription': this.productDescriptionCtrl
     });
 
     this.imageUpload.subscribe(this.onUpload);
@@ -122,5 +129,6 @@ export class SaveProductComponent implements OnInit {
   get productName() { return this.form.get('productName'); }
   get productPrice() { return this.form.get('productPrice'); }
   get productImages() { return this.form.get('productImages'); }
+  get productDescription() { return this.form.get('productDescription'); }
 
 }
