@@ -21,11 +21,16 @@ export class SaveProductComponent implements OnInit {
   @Output() imageUpload: EventEmitter<any> = new EventEmitter();
   descriptionIsLoaded: boolean = false;
   saveType: string;
-  form: FormGroup;
-  uploader: FileUploader;
-  hasBaseDropZoneOver = false;
   allProductImages: Array<string> = [];
 
+  uploader: FileUploader;
+  hasBaseDropZoneOver = false;
+  uploaderOptions = {
+    url: AppSettings.API_BASEURL + 'productImages/addImage',
+    maxFileSize: 3 * 1024 * 1024 // 3mb allowed
+  };
+
+  form: FormGroup;
   productImagesCtrl: FormControl;
   productDescriptionCtrl: FormControl;
 
@@ -40,8 +45,7 @@ export class SaveProductComponent implements OnInit {
       hideRequired: false,
       floatPlaceholder: 'auto',
     });
-    const uploadUrl = AppSettings.API_BASEURL + 'productImages/addImage';
-    this.uploader = new FileUploader({url: uploadUrl});
+    this.uploader = new FileUploader(this.uploaderOptions);
     this.uploader.onSuccessItem =
       (item, response) => {
         const image = <ProductImage>JSON.parse(response);
