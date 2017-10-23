@@ -21,6 +21,7 @@
     width: 95%;
     padding: 0;
     margin: auto;
+    /*border: 1px solid #eee;*/
 }
 .mat-card img{
     cursor: pointer;
