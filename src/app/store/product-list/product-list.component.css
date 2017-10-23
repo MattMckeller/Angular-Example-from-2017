@@ -37,7 +37,7 @@ mat-card-header{
 mat-card-title a{
     cursor: pointer;
     text-decoration: none;
-    color: #0066c0;
+    /*color: #0066c0;*/
 }
 mat-card-title a:hover{
     text-decoration: underline;
