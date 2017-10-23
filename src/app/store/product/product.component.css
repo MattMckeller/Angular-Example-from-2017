@@ -38,7 +38,7 @@ swiper{
 }
 
 .slider-slide-container{
-
+    overflow: hidden !important;
 }
 
 .slide-wrapper{
