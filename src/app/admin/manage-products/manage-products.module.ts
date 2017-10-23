@@ -9,6 +9,7 @@ import { SaveProductComponent } from './save-product/save-product.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {ManageProductsRoutingModule} from "@app/admin/manage-products/manage-products-routing.module";
 import { CurrentImagesComponent } from './save-product/current-images/current-images.component';
+import {CKEditorModule} from "ng2-ckeditor";
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { CurrentImagesComponent } from './save-product/current-images/current-im
     TextMaskModule,
     FlexLayoutModule,
     FileUploadModule,
-    ManageProductsRoutingModule
+    ManageProductsRoutingModule,
+    CKEditorModule
   ],
   exports: [
     ManageProductsComponent
