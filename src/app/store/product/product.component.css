@@ -63,3 +63,8 @@ h1{
 p{
     text-align: justify;
 }
+
+.description-container{
+    margin-top: 16px;
+    width: 100%;
+}

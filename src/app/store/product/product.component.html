@@ -31,3 +31,7 @@
         <button mat-raised-button (click)="addToCart(product)"><mat-icon>add_shopping_cart</mat-icon></button>
     </mat-grid-tile>
 </mat-grid-list>
+<div *ngIf="product"
+     class="description-container"
+     [innerHtml]="product.description">
+</div>
