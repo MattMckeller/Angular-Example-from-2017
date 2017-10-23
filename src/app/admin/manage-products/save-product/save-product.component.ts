@@ -66,7 +66,6 @@ export class SaveProductComponent implements OnInit {
   ngOnInit() {
     if (this.model === undefined) {
       this.model = new Product();
-      this.model.description ='asdfadfadsf';
       // Check if an id was provided to see if we are editing or creating
       if (this.route.snapshot.params['id']) {
         this.saveType = 'edit';
@@ -80,10 +79,12 @@ export class SaveProductComponent implements OnInit {
           .switchMap((params: ParamMap) => this.productService.getById(+params.get('id')))
           .subscribe(product => {
             _thisRef.model = product;
-            console.log('yay here');
+            _thisRef.productImagesCtrl.reset(_thisRef.model.product_images);
             _thisRef.productImageService
               .getProductImages(product)
-              .then(images => _thisRef.allProductImages = images);
+              .then((images) => {
+                _thisRef.allProductImages = images;
+            });
           });
 
       }
@@ -123,7 +124,6 @@ export class SaveProductComponent implements OnInit {
   addProductImage(productImage: ProductImage) {
     this.model.product_images = this.model.product_images || [];
     this.model.product_images.push(productImage);
-    console.log(this.model);
   }
 
   get productName() { return this.form.get('productName'); }
