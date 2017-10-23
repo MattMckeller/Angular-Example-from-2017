@@ -25,7 +25,7 @@
       </mat-error>
     </mat-form-field>
 
-    <div>
+    <div *ngIf="productIsLoaded">
       <mat-error *ngIf="productDescription.invalid && (productDescription.dirty || productDescription.touched)">
         Product Description is invalid.
       </mat-error>
@@ -34,6 +34,7 @@
               productControlName="productDescription"
               [description]="model.description"
               (descriptionChange)="model.description = $event"
+              (onReadyChange) = "descriptionIsLoaded = $event"
       ></app-product-description-editor>
     </div>
 
@@ -86,8 +87,9 @@
       <app-current-images [images]="allProductImages"></app-current-images>
     </div>
 
-    <div class="submit-button-container" fxLayout="row" fxLayoutAlign="center">
-      <button mat-raised-button
+    <div *ngIf="finishedLoading" class="submit-button-container" fxLayout="row" fxLayoutAlign="center">
+      <button
+              mat-raised-button
               fxFlex.lt-md="50%"
               fxFlex.gt-sm="40%"
               type="submit"

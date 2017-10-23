@@ -9,6 +9,7 @@ import {FormGroup} from "@angular/forms";
 export class ProductDescriptionEditorComponent implements OnInit {
   @Input() description: any;
   @Output() descriptionChange = new EventEmitter<any>();
+  @Output() onReadyChange = new EventEmitter<boolean>();
   @Input() form: FormGroup;
   @Input() productControlName: string;
   editorConfig: {uiColor: '#99000'};
@@ -17,12 +18,12 @@ export class ProductDescriptionEditorComponent implements OnInit {
 
   ngOnInit() {}
 
-  onChange(value) {
-    this.descriptionChange.emit(value);
+  onChange(event) {
+    this.descriptionChange.emit(event);
   }
 
   onReady(event) {
-    // console.log('product description ready', event);
+    this.onReadyChange.emit(event);
   }
 
   onFocus(event) {

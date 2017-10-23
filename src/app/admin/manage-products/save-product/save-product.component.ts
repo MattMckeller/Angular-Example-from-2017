@@ -8,8 +8,8 @@ import {ProductService} from '@services/product.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
-import {ProductImageService} from "@services/product-image.service";
-import {AppSettings} from "@app/app-settings";
+import {ProductImageService} from '@services/product-image.service';
+import {AppSettings} from '@app/app-settings';
 
 @Component({
   selector: 'app-save-product',
@@ -19,6 +19,7 @@ import {AppSettings} from "@app/app-settings";
 export class SaveProductComponent implements OnInit {
   @Input() model: Product;
   @Output() imageUpload: EventEmitter<any> = new EventEmitter();
+  descriptionIsLoaded: boolean = false;
   saveType: string;
   form: FormGroup;
   uploader: FileUploader;
@@ -58,6 +59,14 @@ export class SaveProductComponent implements OnInit {
     }
   }
 
+  get finishedLoading(): boolean {
+    return this.descriptionIsLoaded && this.productIsLoaded;
+  }
+
+  get productIsLoaded(): boolean {
+    return (this.saveType === 'create' || (this.saveType === 'edit' && this.model.id)) ?
+      (true) : (false);
+  }
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
@@ -74,7 +83,7 @@ export class SaveProductComponent implements OnInit {
       }
 
       if (this.saveType === 'edit') {
-        let _thisRef = this;
+        const _thisRef = this;
         this.route.paramMap
           .switchMap((params: ParamMap) => this.productService.getById(+params.get('id')))
           .subscribe(product => {
