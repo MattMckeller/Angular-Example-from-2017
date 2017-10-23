@@ -1,25 +1,23 @@
-<mat-grid-list cols="12" rowHeight="500px" gutterSize="24px">
+<mat-grid-list cols="12" rowHeight="400px" gutterSize="24px">
   <mat-grid-tile *ngFor="let product of products" colspan="3">
     <div class="card-container">
-      <mat-card>
+      <mat-card class="mat-elevation-z5">
         <div fxFlexFill fxLayout="column" fxFlex="100%">
           <div class="card-details-container" fxFlexFill fxLayout="row" fxFlex="100%">
             <div fxFlex="100%" fxLayout="column" fxFlexFill>
 
-              <div class="card-image-container" fxFlex="50%">
+              <div class="card-image-container" fxFlex="70%" fxLayoutAlign="center center">
                 <img *ngIf="getThumbnail(product)" [src]="getThumbnail(product) | safeImage" (click)="redirect(product.id)">
               </div>
-              <div fxFlex="25%">
-                <mat-card-header >
+              <div fxFlex="30%">
+                <mat-card-header>
                   <mat-card-title>
                     <a (click)="redirect(product.id)">
                       <span>{{product.name}}</span>
                     </a>
                   </mat-card-title>
                 </mat-card-header>
-              </div>
-              <div fxFlex="25%">
-                <mat-card-content>
+                <mat-card-content >
                   <span class="price-display">{{product.price | currency:'USD':true}}</span>
                   <span class="shipping-display">Ships eventually</span>
                 </mat-card-content>
