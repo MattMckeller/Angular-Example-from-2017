@@ -1,20 +1,19 @@
 <h2 *ngIf="displayTitle">My Cart ({{itemPurchaseCount}}) {{checkoutTotal | currency:'USD':true}}</h2>
-<mat-list>
-  <mat-list-item *ngFor="let item of itemsBeingPurchased">
-    <div class="list-items">
-      <div class="item-container">
-        <div class="item-image">
-          <img class="item-icon" src="{{item.imgHref}}">
-        </div>
-        <div class="item-text">
-          <p>{{item.name}}</p>
-        </div>
-      </div>
-      <!--TODO: add item quantity-->
-      <div>{{item.price | currency:'USD':true}}</div>
-      <div *ngIf="displayRemove">
-        <button mat-button class="remove-item-button" (click)="removeItem(item)">Remove</button>
-      </div>
+<div class="list-container">
+  <div *ngFor="let item of itemsBeingPurchased"
+       fxLayout="row" fxFlex="100%" fxLayoutGap="1%"
+       class="list-row">
+    <div fxFlex="25%" class="item-image">
+        <img *ngIf="getThumbnail(item)" [src]="getThumbnail(item) | safeImage" (click)="redirect(item.id)">
     </div>
-  </mat-list-item>
-</mat-list>
+    <div fxFlex="25%" fxLayoutAlign="center center">
+        <p>{{item.name}}</p>
+    </div>
+    <div fxFlex="25%" *ngIf="displayRemove" fxLayoutAlign="center center">
+      <button mat-button class="remove-item-button" (click)="removeItem(item)">Remove</button>
+    </div>
+    <div fxFlex="25%" fxLayoutAlign="center center">
+      {{item.price | currency:'USD':true}}
+    </div>
+  </div>
+</div>
