@@ -1,3 +1,12 @@
+p{
+    margin-bottom: 0;
+}
+
+.summary-container{
+    text-align: right;
+    border-top: 1px solid lightslategray;
+    border-bottom: 1px solid lightslategray;
+}
 .list-container{
     max-height: 100%;
     min-height: 100%;
@@ -5,6 +14,11 @@
     min-width: 100%;
     height: 100%;
     width: 100%;
+}
+.list-container{
+    /*Add border to cart area*/
+    border-top: 1px solid lightslategray;
+    padding: 5px 0;
 }
 
 .list-row{
