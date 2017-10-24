@@ -12,26 +12,26 @@
 .cart-container{
     display: flex;
     flex-direction: row;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .button-container{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     flex-direction: row;
-    width: 70%;
+    width: 100%;
     margin: auto;
 }
 .button-container button{
-    margin: 0 5%;
+    margin: 0 0 0 2%;
 }
 
 .bottom-button-container{
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
-    width: 70%;
+    width: 100%;
     margin: auto;
 }
 
