@@ -1,14 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '@models/product';
 import {ProductImageService} from "@services/product-image.service";
+import {ProductImage} from "@models/product-image";
 
 @Component({
-  selector: 'product-thumbnail',
-  templateUrl: './product-thumbnail.component.html',
-  styleUrls: ['./product-thumbnail.component.css']
+  selector: 'product-image',
+  templateUrl: './product-image.component.html',
+  styleUrls: ['./product-image.component.css']
 })
-export class ProductThumbnailComponent implements OnInit {
+export class ProductImageComponent implements OnInit {
   @Input() product: Product;
+  @Input() productImage: ProductImage | null;
   @Input() cursorType = 'pointer';
   @Input() centerHorizontally = true;
 
