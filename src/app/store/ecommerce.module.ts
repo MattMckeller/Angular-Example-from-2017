@@ -12,6 +12,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { ProductThumbnailComponent } from './product-thumbnail/product-thumbnail.component';
 
 const SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -33,13 +34,16 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     ProductComponent,
     CartIconComponent,
     ProductListComponent,
+    ProductThumbnailComponent,
     CheckoutCartDisplayComponent
   ],
   declarations: [
     ProductComponent,
     CartIconComponent,
     ProductListComponent,
-    CheckoutCartDisplayComponent
+    ProductThumbnailComponent,
+    CheckoutCartDisplayComponent,
+    ProductThumbnailComponent
   ],
   providers: [
     ProductService,
