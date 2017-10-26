@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ProductImage} from "@models/product-image";
 
 @Component({
   selector: 'app-current-images',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./current-images.component.css']
 })
 export class CurrentImagesComponent implements OnInit {
-  @Input() images: Array<string>;
+  @Input() images: Array<ProductImage>;
 
   constructor() { }
 

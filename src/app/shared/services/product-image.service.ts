@@ -20,17 +20,12 @@ export class ProductImageService {
     private productService: ProductService
   ) { }
 
-  getProductImages(product: Product): Promise<any> {
+  getProductImages(product: Product): Promise<ProductImage[]> {
     let _this = this;
     return new Promise(function(resolve, reject){
       _this.getImageObjects(product).then(
         (productImages) => {
-          let productImagesResponse = [];
-          _.forEach(productImages, (productImage) => {
-            const imageHref = _this._getImageHref(productImage);
-            productImagesResponse.push(imageHref);
-          });
-          resolve(productImagesResponse);
+          resolve(productImages);
       });
     });
   }
@@ -40,7 +35,7 @@ export class ProductImageService {
    * @param {Product} product
    * @returns {Promise<any>}
    */
-  private getImageObjects(product: Product): Promise<any> {
+  private getImageObjects(product: Product): Promise<ProductImage[]> {
     let _this = this;
     return new Promise(function(resolve, reject){
       if (product.product_images && product.product_images[0]) {
@@ -67,7 +62,7 @@ export class ProductImageService {
       (productImages) => {
         let thumbnailImage = productImages[0] || false;
         if (thumbnailImage) {
-          return _this._getImageHref(thumbnailImage);
+          return _this.getHref(thumbnailImage);
         } else {
           throw new Error('Could not find thumbnail for provided product.');
         }
@@ -78,7 +73,7 @@ export class ProductImageService {
   /**
    * Returns the full href for a product image
    */
-  private _getImageHref(productImage: ProductImage): string{
+  getHref(productImage: ProductImage): string{
     const url = AppSettings.IMAGES_BASEURL + productImage.image;
     return url;
   }

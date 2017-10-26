@@ -1,16 +1,8 @@
 <mat-grid-list cols="12" *ngIf="product">
     <mat-grid-tile colspan=6 rowspan="6">
-        <div class="slider-container">
-            <swiper [config]="swiperConfig" >
-                <div fxLayout="row" fxLayoutAlign="center center" class="slider-slide-container" *ngFor="let imgSrc of productImages">
-                    <div class="slide-wrapper">
-                        <div class="slider-slide-content-container">
-                            <img [src]="imgSrc">
-                        </div>
-                    </div>
-                </div>
-            </swiper>
-        </div>
+        <product-image-slider
+                [product]="product"
+        ></product-image-slider>
     </mat-grid-tile>
     <mat-grid-tile colspan="6" rowspan="2">
         <h1>{{product?.name}}</h1>

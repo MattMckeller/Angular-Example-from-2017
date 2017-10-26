@@ -21,7 +21,7 @@ export class SaveProductComponent implements OnInit {
   @Output() imageUpload: EventEmitter<any> = new EventEmitter();
   descriptionIsLoaded: boolean = false;
   saveType: string;
-  allProductImages: Array<string> = [];
+  allProductImages: Array<ProductImage> = [];
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
