@@ -61,10 +61,24 @@ export class ProductImageService {
     });
   }
 
+  getThumbnail(product: Product) {
+    let _this = this;
+    return this.getImageObjects(product).then(
+      (productImages) => {
+        let thumbnailImage = productImages[0] || false;
+        if (thumbnailImage) {
+          return _this._getImageHref(thumbnailImage);
+        } else {
+          throw new Error('Could not find thumbnail for provided product.');
+        }
+      }
+    );
+  }
+
   /**
    * Returns the full href for a product image
    */
-  private _getImageHref(productImage: ProductImage): String{
+  private _getImageHref(productImage: ProductImage): string{
     const url = AppSettings.IMAGES_BASEURL + productImage.image;
     return url;
   }
