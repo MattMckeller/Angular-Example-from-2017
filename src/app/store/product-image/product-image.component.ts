@@ -23,24 +23,9 @@ export class ProductImageComponent implements OnInit {
   imgStyleCalculations() {
     this.imgStyleSubject.next({
       'cursor': this.cursorType,
-      'max-width': this.viewWidth+'px',
-      'max-height': this.viewHeight+'px',
-      'width': '100%',
-      'height': 'auto',
-      // 'width': this.viewWidth+'px',
-      // 'height': this.viewHeight+'px',
+      'max-width': '100%',
       'margin': (this.centerHorizontally === true) ? ('0 auto') : ('auto')
     });
-  }
-
-  get viewHeight() {
-    // console.log('height', this.imageContainer.nativeElement.offsetWidth);
-    return this.imageContainer.nativeElement.offsetHeight;
-  }
-
-  get viewWidth() {
-    // console.log('width', this.imageContainer.nativeElement.offsetWidth);
-    return this.imageContainer.nativeElement.offsetWidth;
   }
 
   constructor(
@@ -51,9 +36,9 @@ export class ProductImageComponent implements OnInit {
     let _thisRef = this;
     this.observer = new MutationObserver(mutations => {
       mutations.forEach(function(mutation) {
-        console.log('width', _thisRef.imageContainer.nativeElement.offsetWidth);
-        console.log(mutation.type);
-        _thisRef.imgStyleCalculations()
+        // console.log('width', _thisRef.imageContainer.nativeElement.offsetWidth);
+        // console.log(mutation.type);
+        _thisRef.imgStyleCalculations();
       });
     });
 
@@ -61,15 +46,16 @@ export class ProductImageComponent implements OnInit {
     this.observer.observe(this.imageContainer.nativeElement, config);
     this.imgStyleSubject.subscribe(
       (imgStyleValue) => {
-        console.log('inside subscribe', imgStyleValue);
+        // console.log('inside subscribe', imgStyleValue);
         this.imgStyle = imgStyleValue;
       }
     );
     this.imgStyleCalculations();
-    if(this.productImage) {
+    if (this.productImage) {
       this.imgSrc = this.productImageService.getHref(this.productImage);
-    }else{
+    }else {
       let _thisRef = this;
+      console.log(this.product);
       this.productImageService
         .getThumbnail(this.product)
         .then(
