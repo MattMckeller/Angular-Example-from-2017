@@ -5,7 +5,7 @@
          fxLayout="row" fxFlex="100%" fxLayoutGap="1%"
          class="list-row">
       <div fxFlex="25%" class="item-image">
-          <img *ngIf="getThumbnail(item)" [src]="getThumbnail(item) | safeImage" (click)="redirect(item.id)">
+        <product-image [product]="item" (click)="redirect(item.id)"></product-image>
       </div>
       <div fxFlex="25%" fxLayoutAlign="center center">
           <p class="mat-body-1">{{item.name}}</p>
