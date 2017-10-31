@@ -38,6 +38,7 @@ export class CheckoutService {
 
   confirmSubmit() {
     console.log('submit confirmed do something now?');
+    alert('Submit confirmed!'); // todo: Confirmation and alert definitely do not belong here
   }
 
 }
