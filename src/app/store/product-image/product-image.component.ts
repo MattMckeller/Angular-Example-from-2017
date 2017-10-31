@@ -55,7 +55,6 @@ export class ProductImageComponent implements OnInit {
       this.imgSrc = this.productImageService.getHref(this.productImage);
     }else {
       let _thisRef = this;
-      console.log(this.product);
       this.productImageService
         .getThumbnail(this.product)
         .then(
