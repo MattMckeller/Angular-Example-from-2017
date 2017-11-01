@@ -11,6 +11,8 @@ import {ManageProductsRoutingModule} from "@app/admin/manage-products/manage-pro
 import { CurrentImagesComponent } from './save-product/current-images/current-images.component';
 import {CKEditorModule} from "ng2-ckeditor";
 import { ProductDescriptionEditorComponent } from './save-product/description/product-description-editor.component';
+import {EcommerceModule} from "@store/ecommerce.module";
+import { RemoveImageFabComponent } from './save-product/current-images/remove-image-fab/remove-image-fab.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { ProductDescriptionEditorComponent } from './save-product/description/pr
     TextMaskModule,
     FlexLayoutModule,
     FileUploadModule,
+    EcommerceModule,
     ManageProductsRoutingModule,
     FormsModule,
     CKEditorModule
@@ -32,6 +35,7 @@ import { ProductDescriptionEditorComponent } from './save-product/description/pr
     SaveProductComponent,
     CurrentImagesComponent,
     ProductDescriptionEditorComponent,
+    RemoveImageFabComponent,
   ]
 })
 export class ManageProductsModule { }
