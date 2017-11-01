@@ -70,6 +70,11 @@ export class ProductImageService {
     );
   }
 
+  deleteImage(productImage: ProductImage): Observable<any>{
+    const url = AppSettings.API_BASEURL + 'products/deleteProduct/' + productImage.id;
+    return this.http.delete(url);
+  }
+
   /**
    * Returns the full href for a product image
    */

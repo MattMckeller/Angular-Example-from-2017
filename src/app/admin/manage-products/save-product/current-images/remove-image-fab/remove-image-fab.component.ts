@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductImage} from "@models/product-image";
-import {MatDialog} from "@angular/material";
-import {RemoveImageDialogComponent} from "@app/admin/manage-products/save-product/current-images/remove-image-dialog/remove-image-dialog.component";
+import {ProductImage} from '@models/product-image';
+import {MatDialog} from '@angular/material';
+import {RemoveImageDialogComponent} from '@app/admin/manage-products/save-product/current-images/remove-image-dialog/remove-image-dialog.component';
+import {ProductImageService} from '@services/product-image.service';
 
 @Component({
   selector: 'current-images-remove-image-fab',
@@ -11,7 +12,9 @@ import {RemoveImageDialogComponent} from "@app/admin/manage-products/save-produc
 export class RemoveImageFabComponent implements OnInit {
   @Input() productImage: ProductImage;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+              private productImageService: ProductImageService
+  ) {}
 
   ngOnInit() {
   }
@@ -21,7 +24,7 @@ export class RemoveImageFabComponent implements OnInit {
   }
 
   openDeleteDialog(onTrue, onFalse): void {
-    let dialogRef = this.dialog.open(RemoveImageDialogComponent, {
+    const dialogRef = this.dialog.open(RemoveImageDialogComponent, {
       width: '250px',
       data: { productImage: this.productImage }
     });
@@ -36,6 +39,10 @@ export class RemoveImageFabComponent implements OnInit {
   }
 
   doDelete() {
+    this.productImageService.deleteImage(this.productImage).subscribe(
+      (v) => console.log('Successfully deleted', v),
+      (e) => console.log('An error occurred while deleting the iamge.', e)
+    );
     console.log('Do delete the image.');
   }
 
