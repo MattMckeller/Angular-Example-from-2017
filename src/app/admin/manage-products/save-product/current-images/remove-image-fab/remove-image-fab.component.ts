@@ -12,7 +12,7 @@ import {ProductImageService} from '@services/product-image.service';
 export class RemoveImageFabComponent implements OnInit {
   @Input() productImage: ProductImage;
 
-  constructor(public dialog: MatDialog,
+  constructor(private dialog: MatDialog,
               private productImageService: ProductImageService
   ) {}
 
@@ -20,7 +20,17 @@ export class RemoveImageFabComponent implements OnInit {
   }
 
   onDelete() {
-    this.openDeleteDialog(this.doDelete, this.doNotDelete);
+    this.openDeleteDialog(
+      () => {
+        this.productImageService.deleteImage(this.productImage).subscribe(
+          (v) => console.log('Successfully deleted', v),
+          (e) => console.log('An error occurred while deleting the image.', e)
+        );
+        console.log('Do delete the image.');
+      },
+      () => {
+        console.log('Do not delete the image.');
+      });
   }
 
   openDeleteDialog(onTrue, onFalse): void {
@@ -36,17 +46,5 @@ export class RemoveImageFabComponent implements OnInit {
         onFalse();
       }
     });
-  }
-
-  doDelete() {
-    this.productImageService.deleteImage(this.productImage).subscribe(
-      (v) => console.log('Successfully deleted', v),
-      (e) => console.log('An error occurred while deleting the iamge.', e)
-    );
-    console.log('Do delete the image.');
-  }
-
-  doNotDelete() {
-    console.log('Do not delete the image.');
   }
 }
