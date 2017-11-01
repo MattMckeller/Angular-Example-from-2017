@@ -51,7 +51,7 @@ export class CartService {
    * @returns {boolean}
    */
   isEmpty() {
-    return this.cart.items.length > 0;
+    return !(this.cart.items.length > 0);
   }
 
   /**
