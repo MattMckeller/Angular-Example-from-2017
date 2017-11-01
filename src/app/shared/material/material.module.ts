@@ -17,7 +17,7 @@ import {
   MatSelectModule,
   MatOptionModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule, MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -38,7 +38,8 @@ import {
     MatSelectModule,
     MatOptionModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
 
   declarations: []
