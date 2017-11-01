@@ -15,6 +15,8 @@ import { Observable }        from 'rxjs/Observable';
 import {HttpClient} from "@angular/common/http";
 import {CheckoutService} from "@services/checkout.service";
 import {ShippingService} from "@app/shared/services/shipping.service";
+import {MatSnackBar} from "@angular/material";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-checkout-form',
@@ -42,7 +44,9 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
   constructor(
     private cartService: CartService,
     private checkoutService: CheckoutService,
-    private shippingService: ShippingService
+    private shippingService: ShippingService,
+    private router: Router,
+    public snackBar: MatSnackBar
   ) {}
 
   save() {
@@ -59,11 +63,22 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
       } else {
         // Send the token to your server
         this.model.stripeToken = result.token.id;
-        this.checkoutService.submit(this.model, result.token.id);
+        this.checkoutService.submit(this.model).then(
+          () => {
+            this.snackBar.open('Your order has been successfully placed!', 'Ok', {
+              duration: 30000,
+              verticalPosition: 'top'
+            });
+            this.router.navigate(['/home']);
+          },
+          (e) => {
+            alert('An error has occurred.');
+            console.log(e);
+          }
+        );
       }
     });
   }
-
 
   ngOnInit() {
     this.setupStripe();

@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {CheckoutModel} from "@models/checkout";
 
 import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CheckoutService {
@@ -11,34 +12,14 @@ export class CheckoutService {
     private http: HttpClient
   ) { }
 
-  submit(checkoutData: CheckoutModel, token=null) {
-    console.log('token from checkout service', token);
+  submit(checkoutData: CheckoutModel): Promise<any> {
     let url = 'http://api.expanseservices.com/api/checkout/submit';
-    this.http.post(url, checkoutData)
-      .subscribe(
-        data => {
-          this.confirmSubmit();
-        },
-        (err: HttpErrorResponse) => {
-          if (err.error instanceof Error) {
-            // A client-side or network error occurred.
-            console.log('An error occurred:', err.error.message);
-          } else {
-            // The backend returned an unsuccessful response code.
-            console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-          }
-        }
-      );
+    return this.http.post(url, checkoutData).toPromise();
   }
 
   save(checkoutData: CheckoutModel) {
     console.log('submit from service');
     console.log(checkoutData);
-  }
-
-  confirmSubmit() {
-    console.log('submit confirmed do something now?');
-    alert('Submit confirmed!'); // todo: Confirmation and alert definitely do not belong here
   }
 
 }
