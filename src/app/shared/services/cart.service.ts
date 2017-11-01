@@ -42,8 +42,16 @@ export class CartService {
   /**
    * Empties the users cart
    */
-  empty(){
+  empty() {
     this.cart.items.forEach((item)=> this.remove(item));
+  }
+
+  /**
+   * Checks to see if the users cart is empty.
+   * @returns {boolean}
+   */
+  isEmpty() {
+    return this.cart.items.length > 0;
   }
 
   /**
