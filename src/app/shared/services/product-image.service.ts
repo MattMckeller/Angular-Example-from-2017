@@ -70,8 +70,8 @@ export class ProductImageService {
     );
   }
 
-  deleteImage(productImage: ProductImage): Observable<any>{
-    const url = AppSettings.API_BASEURL + 'products/deleteProduct/' + productImage.id;
+  removeImage(productImage: ProductImage): Observable<any> {
+    const url = AppSettings.API_BASEURL + 'productImages/removeImage/' + productImage.id;
     return this.http.delete(url);
   }
 

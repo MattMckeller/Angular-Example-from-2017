@@ -22,7 +22,7 @@ export class RemoveImageFabComponent implements OnInit {
   onDelete() {
     this.openDeleteDialog(
       () => {
-        this.productImageService.deleteImage(this.productImage).subscribe(
+        this.productImageService.removeImage(this.productImage).subscribe(
           (v) => console.log('Successfully deleted', v),
           (e) => console.log('An error occurred while deleting the image.', e)
         );
