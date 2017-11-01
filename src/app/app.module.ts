@@ -23,6 +23,7 @@ import {FileUploadModule} from "ng2-file-upload";
 import {AdminModule} from "@app/admin/admin.module";
 import {ProductImageService} from "@app/shared/services/product-image.service";
 import {ImagePipeModule} from "@app/shared/pipes/images/image-pipe.module";
+import {RemoveImageDialogComponent} from "@app/admin/manage-products/save-product/current-images/remove-image-dialog/remove-image-dialog.component";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,9 @@ import {ImagePipeModule} from "@app/shared/pipes/images/image-pipe.module";
     SideNavService,
     ProductImageService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    RemoveImageDialogComponent
+  ]
 })
 export class AppModule {}

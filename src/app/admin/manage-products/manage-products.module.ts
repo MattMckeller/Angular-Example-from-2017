@@ -13,6 +13,7 @@ import {CKEditorModule} from "ng2-ckeditor";
 import { ProductDescriptionEditorComponent } from './save-product/description/product-description-editor.component';
 import {EcommerceModule} from "@store/ecommerce.module";
 import { RemoveImageFabComponent } from './save-product/current-images/remove-image-fab/remove-image-fab.component';
+import { RemoveImageDialogComponent } from './save-product/current-images/remove-image-dialog/remove-image-dialog.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { RemoveImageFabComponent } from './save-product/current-images/remove-im
     CurrentImagesComponent,
     ProductDescriptionEditorComponent,
     RemoveImageFabComponent,
+    RemoveImageDialogComponent,
   ]
 })
 export class ManageProductsModule { }
