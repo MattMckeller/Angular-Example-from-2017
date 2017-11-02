@@ -23,6 +23,7 @@ export class ProductImageComponent implements OnInit {
   imgStyleCalculations() {
     this.imgStyleSubject.next({
       'cursor': this.cursorType,
+      'max-height': '100%',
       'max-width': '100%',
       'margin': (this.centerHorizontally === true) ? ('0 auto') : ('auto')
     });

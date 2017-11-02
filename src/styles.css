@@ -9,6 +9,16 @@ html {
     box-sizing: inherit;
 }
 
+product-image{
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 .background-container{
     width: 100%;
     height: 100%;
