@@ -14,6 +14,7 @@ export class ProductImageComponent implements OnInit {
   @Input() productImage: ProductImage | null;
   @Input() cursorType = 'pointer';
   @Input() centerHorizontally = true;
+  @Input() height = '300px';
   @ViewChild('imageContainer') imageContainer: ElementRef;
   imgStyleSubject = new Subject<any> ();
   imgStyle;

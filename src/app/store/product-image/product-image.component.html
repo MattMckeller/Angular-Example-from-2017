@@ -1,4 +1,5 @@
-<div #imageContainer>
+<div #imageContainer [style.height]="height">
+
     <img
             *ngIf="imgSrc" [src]="imgSrc"
             [ngStyle]="imgStyle"
