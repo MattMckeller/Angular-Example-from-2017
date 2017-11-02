@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SwiperConfigInterface} from "ngx-swiper-wrapper";
-import {Product} from "@models/product";
+import {SwiperConfigInterface} from 'ngx-swiper-wrapper';
+import {Product} from '@models/product';
 import {ProductImageService} from '@app/shared/services/product-image.service';
-import {ProductImage} from "@models/product-image";
+import {ProductImage} from '@models/product-image';
 
 @Component({
   selector: 'product-image-slider',
@@ -11,7 +11,11 @@ import {ProductImage} from "@models/product-image";
 })
 export class ProductImageSliderComponent implements OnInit {
   @Input() product: Product;
+  @Input() height = '100%';
   productImages: Array<ProductImage> = [];
+  get imgHeight(): string {
+    return parseInt(this.height) - 100 + 'px';
+  }
 
   swiperConfig: SwiperConfigInterface = {
     direction: 'horizontal',
@@ -38,8 +42,8 @@ export class ProductImageSliderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let _this = this;
-    let product = this.product;
+    const _this = this;
+    const product = this.product;
     this.productImageService.getProductImages(product).then(
       (productImageHrefs) => {
         _this.productImages = productImageHrefs;
@@ -51,8 +55,8 @@ export class ProductImageSliderComponent implements OnInit {
    * Retrieve product iamge hrefs from api. Stores urls in thumbnail variable.
    */
   fetchThumbnails(){
-    let _this = this;
-    let product = this.product;
+    const _this = this;
+    const product = this.product;
     this.productImageService.getProductImages(product).then(
       (productImageHrefs) => {
         _this.productImages = productImageHrefs;

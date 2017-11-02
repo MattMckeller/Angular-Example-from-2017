@@ -1,22 +1,24 @@
-<mat-grid-list cols="12" *ngIf="product">
+<mat-grid-list cols="12" *ngIf="product" rowHeight="100px">
     <mat-grid-tile colspan=6 rowspan="6">
         <product-image-slider
                 [product]="product"
+                height="600px"
         ></product-image-slider>
     </mat-grid-tile>
     <mat-grid-tile colspan="6" rowspan="2">
         <h1>{{product?.name}}</h1>
     </mat-grid-tile>
     <mat-grid-tile colspan="6" rowspan="2">
-        <div class="flex-end gutter">
-            <label>Price:</label>
-            <label>Shipping:</label>
+        <div fxLayout="column" fxLayoutAlign="center center" class="w-container">
+            <div fxFlex="100%">
+                <label>Price:</label>
+                <span class="price-display">{{product.price | currency:'USD':true}}</span>
+            </div>
+            <div fxFlex="100%">
+                <label>Shipping:</label>
+                <span class="shipping-display">Eventually</span>
+            </div>
         </div>
-        <div class="flex-start gutter">
-            <span class="price-display">{{product.price | currency:'USD':true}}</span>
-            <span class="shipping-display">Eventually</span>
-        </div>
-
     </mat-grid-tile>
     <mat-grid-tile colspan="6" rowspan="2">
         <button mat-raised-button (click)="buy()">Buy Now</button>
