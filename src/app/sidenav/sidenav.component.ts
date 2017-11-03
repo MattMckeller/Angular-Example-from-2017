@@ -22,7 +22,7 @@ export class SidenavComponent implements OnInit {
     {
       link: '/vintage',
       icon: 'donut_large',
-      text: 'Vintage'
+      text: 'Shop'
     }
   ];
 
