@@ -3,21 +3,22 @@ import { Product } from '../models/product';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import _ from 'lodash';
+import { environment } from '@environment';
 
 @Injectable()
 export class ProductService {
-  apiBaseUrl = 'http://api.expanseservices.com/api/';
+
   constructor(
     private http: HttpClient
   ) { }
 
   get(): Observable<Product[]> {
-    const url = this.apiBaseUrl + 'products/getProducts';
+    const url = environment.API_BASEURL + 'products/getProducts';
     return this.http.get<Product[]>(url);
   }
 
   getById(id: any): Observable<Product> {
-    const url = this.apiBaseUrl + 'products/getProduct/' + id;
+    const url = environment.API_BASEURL + 'products/getProduct/' + id;
     return this.http.get<Product>(url);
   }
 
@@ -26,7 +27,7 @@ export class ProductService {
   }
 
   create(productData: Product) {
-    const url = this.apiBaseUrl + 'products/createProduct';
+    const url = environment.API_BASEURL + 'products/createProduct';
     this.http.post(url, {product: productData})
       .subscribe(
         this.nextHandler,
@@ -35,7 +36,7 @@ export class ProductService {
   }
 
   update(productData: Product) {
-    const url = this.apiBaseUrl + 'products/editProduct/' + productData.id;
+    const url = environment.API_BASEURL + 'products/editProduct/' + productData.id;
     this.http.post(url, {product: productData})
       .subscribe(
         this.nextHandler,

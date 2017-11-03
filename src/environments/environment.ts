@@ -5,5 +5,8 @@
 
 export const environment = {
   production: false,
-  stripeKey: 'pk_test_QqDWcYHU6irSiaodHmX2eFEy'
+  stripeKey: 'pk_test_QqDWcYHU6irSiaodHmX2eFEy',
+  API_BASEURL: 'http://api.expanseservices.com/api/',
+  IMAGES_BASEURL: 'http://api.expanseservices.com/',
+
 };

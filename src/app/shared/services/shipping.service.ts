@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ShippingOption} from "@app/shared/models/shipping-option";
 import {HttpClient} from "@angular/common/http";
+import { environment } from '@environment';
 
 import { Observable }     from 'rxjs/Observable';
 
@@ -12,7 +13,7 @@ export class ShippingService {
   ) { }
 
   get(): Observable<ShippingOption[]> {
-    let url = 'http://api.expanseservices.com/api/shipping/getOptions';
+    let url = environment.API_BASEURL + 'shipping/getOptions';
     return this.http.get<ShippingOption[]>(url);
   }
 
