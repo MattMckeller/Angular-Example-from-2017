@@ -23,7 +23,8 @@
       "@models/*":["app/shared/models/*"],
       "@pages/*":["app/pages/*"],
       "@services/*":["app/shared/services/*"],
-      "@shared/*":["app/shared/*"]
+      "@shared/*":["app/shared/*"],
+      "@environment":["environments/environment"]
     }
   }
 }
