@@ -1,6 +1,12 @@
 @import '~@angular/material/_theming';
 
+.mat-body-2{
+  /*Fix for font-weight problems*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+//$font-family:   'Inconsolata, monospace',
 $custom-typography: mat-typography-config(
   $font-family: 'Dosis, sans-serif',
   $display-4:     mat-typography-level(112px, 112px, 300),
