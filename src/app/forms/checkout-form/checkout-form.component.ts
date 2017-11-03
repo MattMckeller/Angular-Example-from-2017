@@ -1,4 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+import { environment } from '@environment';
 import { CheckoutModel } from '@app/shared/models/checkout';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {CardPaymentMethod} from "@app/shared/models/card-payment-method";
@@ -114,7 +115,7 @@ export class CheckoutFormComponent implements OnInit, DoCheck {
 
   setupStripe(){
     // Create a Stripe client
-    this.stripe.instance = (<any>window).Stripe('pk_test_QqDWcYHU6irSiaodHmX2eFEy');
+    this.stripe.instance = (<any>window).Stripe(environment.stripeKey);
     this.stripe.style = {
       base: {
         color: '#32325d',
