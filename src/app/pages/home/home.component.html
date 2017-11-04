@@ -5,8 +5,10 @@
             <h1 routerLink="/vintage">
                 Authentic Vintage Clothing for Women.
             </h1>
-            <div fxLayout="row" routerLink="/vintage">
-                <div fxFlex="50%" *ngFor="let product of products">
+            <div fxLayout="row" fxLayoutWrap routerLink="/vintage">
+                <div fxFlex="0 0 100%"
+                     fxFlex.md="0 0 50%"
+                     *ngFor="let product of products">
                     <product-image [product]="product"></product-image>
                 </div>
             </div>
