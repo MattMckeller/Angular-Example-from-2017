@@ -15,6 +15,8 @@ export class ProductListComponent implements OnInit {
 
   products: Product[];
   colCount = "12";
+  rowHeight = "400px";
+  imageHeight = "400px";
 
 
   constructor(
@@ -58,15 +60,20 @@ export class ProductListComponent implements OnInit {
 
   phoneLayout(){
     this.colCount = "3";
+    this.rowHeight = "300px";
+    this.imageHeight = "150px";
   }
   tabletLayout(){
     this.colCount = "6";
+    this.rowHeight = "300px";
+    this.imageHeight = "200px";
   }
   webLayout(){
     this.colCount = "12";
+    this.rowHeight = "400px";
+    this.imageHeight = "300px";
   }
   redirect(productID){
-    console.log('do redirect for ' + productID);
     this.router.navigate(['/product', productID]);
   }
 

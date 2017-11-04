@@ -1,4 +1,4 @@
-<mat-grid-list [cols]="colCount" rowHeight="400px" gutterSize="24px">
+<mat-grid-list [cols]="colCount" [rowHeight]="rowHeight" gutterSize="24px">
   <mat-grid-tile *ngFor="let product of products" colspan="3">
     <div class="card-container">
       <mat-card class="mat-elevation-z0">
@@ -7,7 +7,7 @@
             <div fxFlex="100%" fxLayout="column" fxFlexFill>
 
               <div class="card-image-container" fxFlex="70%" fxLayoutAlign="center center">
-                <product-image [product]="product" (click)="redirect(product.id)"></product-image>
+                <product-image [height]="imageHeight" [product]="product" (click)="redirect(product.id)"></product-image>
               </div>
               <div fxFlex="30%">
                 <mat-card-header>
