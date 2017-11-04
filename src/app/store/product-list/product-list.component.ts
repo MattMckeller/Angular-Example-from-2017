@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../../shared/models/product';
-import { ProductService } from '../../shared/services/product.service';
+import { Product } from '@shared/models/product';
+import { ProductService } from '@shared/services/product.service';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 import "rxjs/add/operator/toPromise";
 
@@ -13,10 +14,13 @@ import "rxjs/add/operator/toPromise";
 export class ProductListComponent implements OnInit {
 
   products: Product[];
+  colCount = "12";
+
 
   constructor(
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
   ) { }
 
   /**
@@ -27,8 +31,40 @@ export class ProductListComponent implements OnInit {
       (products) => {
         this.products = products;
       });
+
+    this.breakpointObserver.observe([
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result=>{
+      if(result.matches){
+        this.phoneLayout();
+      }
+    });
+    this.breakpointObserver.observe([
+      Breakpoints.TabletPortrait
+    ]).subscribe(result=>{
+      if(result.matches){
+        this.tabletLayout();
+      }
+    });
+    this.breakpointObserver.observe([
+      Breakpoints.WebPortrait
+    ]).subscribe(result=>{
+      if(result.matches){
+        this.webLayout();
+      }
+    });
+
   }
 
+  phoneLayout(){
+    this.colCount = "3";
+  }
+  tabletLayout(){
+    this.colCount = "6";
+  }
+  webLayout(){
+    this.colCount = "12";
+  }
   redirect(productID){
     console.log('do redirect for ' + productID);
     this.router.navigate(['/product', productID]);

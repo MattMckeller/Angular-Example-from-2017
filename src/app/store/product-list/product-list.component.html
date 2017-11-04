@@ -1,4 +1,4 @@
-<mat-grid-list cols="12" rowHeight="400px" gutterSize="24px">
+<mat-grid-list [cols]="colCount" rowHeight="400px" gutterSize="24px">
   <mat-grid-tile *ngFor="let product of products" colspan="3">
     <div class="card-container">
       <mat-card class="mat-elevation-z0">
