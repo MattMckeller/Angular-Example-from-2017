@@ -31,6 +31,10 @@ product-image{
     align-items: center;
 }
 
+.italic{
+    font-style: italic;
+}
+
 .background-container{
     width: 100%;
     height: 100%;
