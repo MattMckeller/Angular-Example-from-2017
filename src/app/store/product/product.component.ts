@@ -8,6 +8,7 @@ import 'rxjs/add/operator/switchMap';
 import {Observable} from "rxjs/Observable";
 
 import { ProductService } from '@services/product.service';
+import {Breakpoints, BreakpointObserver} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-product',
@@ -20,11 +21,18 @@ export class ProductComponent implements OnInit {
   product: Product;
   hasBeenAdded: boolean = false;
 
+  totalCols = "12";
+  sliderCols = "6";
+  detailsCols = "6";
+  detailsRows = "2";
+
+
   constructor(
     private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   addToCart(){
@@ -53,5 +61,46 @@ export class ProductComponent implements OnInit {
       .subscribe(product => {
         this.product = product;
       });
+
+    this.breakpointObserver.observe([
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result=>{
+      if(result.matches){
+        this.phoneLayout();
+      }
+    });
+    this.breakpointObserver.observe([
+      Breakpoints.TabletPortrait
+    ]).subscribe(result=>{
+      if(result.matches){
+        this.tabletLayout();
+      }
+    });
+    this.breakpointObserver.observe([
+      Breakpoints.WebPortrait
+    ]).subscribe(result=>{
+      if(result.matches){
+        this.webLayout();
+      }
+    });
+  }
+
+  phoneLayout(){
+    this.totalCols = "12";
+    this.sliderCols = "12";
+    this.detailsCols = "12";
+    this.detailsRows = "1";
+  }
+  tabletLayout(){
+    this.totalCols = "12";
+    this.sliderCols = "12";
+    this.detailsCols = "12";
+    this.detailsRows = "2";
+  }
+  webLayout(){
+    this.totalCols = "12";
+    this.sliderCols = "6";
+    this.detailsCols = "6";
+    this.detailsRows = "2";
   }
 }
