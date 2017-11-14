@@ -30,6 +30,14 @@
                 <mat-cell *matCellDef="let product"> todo </mat-cell>
             </ng-container>
 
+            <!-- Color Column -->
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef> Delete Product </mat-header-cell>
+                <mat-cell *matCellDef="let product">
+                    <app-delete-product-button [product]="product"></app-delete-product-button>
+                </mat-cell>
+            </ng-container>
+
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/admin/manage-products/product/{{row.id}}"></mat-row>
         </mat-table>

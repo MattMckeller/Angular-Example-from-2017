@@ -22,6 +22,7 @@ export class ProductDataSource extends DataSource<any> {
       this._paginator.page
     ];
     return Observable.merge(...displayDataChanges).map(() => {
+      console.log('detected change');
       const data = this._database.data.slice();
       // Grab the page's slice of data.
       const startIndex = this._paginator.pageIndex * this._paginator.pageSize;

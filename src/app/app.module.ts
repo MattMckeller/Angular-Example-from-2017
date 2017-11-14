@@ -24,6 +24,7 @@ import {AdminModule} from "@app/admin/admin.module";
 import {ProductImageService} from "@app/shared/services/product-image.service";
 import {ImagePipeModule} from "@app/shared/pipes/images/image-pipe.module";
 import {RemoveImageDialogComponent} from "@app/admin/manage-products/save-product/current-images/remove-image-dialog/remove-image-dialog.component";
+import {DeleteProductDialogComponent} from "@app/admin/manage-products/delete-product-dialog/delete-product-dialog.component";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {RemoveImageDialogComponent} from "@app/admin/manage-products/save-produc
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    RemoveImageDialogComponent
+    RemoveImageDialogComponent,
+    DeleteProductDialogComponent
   ]
 })
 export class AppModule {}

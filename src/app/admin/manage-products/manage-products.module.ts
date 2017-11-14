@@ -14,6 +14,8 @@ import { ProductDescriptionEditorComponent } from './save-product/description/pr
 import {EcommerceModule} from "@store/ecommerce.module";
 import { RemoveImageFabComponent } from './save-product/current-images/remove-image-fab/remove-image-fab.component';
 import { RemoveImageDialogComponent } from './save-product/current-images/remove-image-dialog/remove-image-dialog.component';
+import { DeleteProductButtonComponent } from './delete-product-button/delete-product-button.component';
+import { DeleteProductDialogComponent } from './delete-product-dialog/delete-product-dialog.component';
 
 @NgModule({
   imports: [
@@ -38,6 +40,8 @@ import { RemoveImageDialogComponent } from './save-product/current-images/remove
     ProductDescriptionEditorComponent,
     RemoveImageFabComponent,
     RemoveImageDialogComponent,
+    DeleteProductButtonComponent,
+    DeleteProductDialogComponent,
   ]
 })
 export class ManageProductsModule { }

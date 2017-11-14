@@ -10,13 +10,9 @@ export class ProductDatabase{
   get data(): Product[] { return this.dataChange.value; }
 
   constructor(
-    productService: ProductService
+    private productService: ProductService
   ) {
-      productService.get().toPromise().then(
-        (products) => {
-          products.forEach((product) => this.addProduct(product));
-          // this.fetchThumbnails();
-        });
+    this._getProducts();
   }
 
   /** Adds a new user to the database. */
@@ -24,6 +20,19 @@ export class ProductDatabase{
     const copiedData = this.data.slice();
     copiedData.push(product);
     this.dataChange.next(copiedData);
+  }
+
+  refresh() {
+    this.dataChange.next([]);
+    this._getProducts();
+  }
+
+  private _getProducts() {
+    this.productService.get().toPromise().then(
+      (products) => {
+        products.forEach((product) => this.addProduct(product));
+        // this.fetchThumbnails();
+      });
   }
 
 }

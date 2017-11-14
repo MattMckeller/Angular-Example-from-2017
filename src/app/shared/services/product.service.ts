@@ -44,6 +44,11 @@ export class ProductService {
       );
   }
 
+  deleteProduct(productData: Product) {
+    const url = environment.API_BASEURL + 'products/removeProduct/' + productData.id;
+    return this.http.delete(url);
+  }
+
   nextHandler(successData) {
     console.log(successData);
   }
